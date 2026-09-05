@@ -971,13 +971,8 @@
   "@type": "ClothingStore",
   "name": "Vellora Fashion & Luxury",
   "telephone": "+917434053550",
-  "email": "support@vellora.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "717, MBH-1, Near Amiras Hotel and Oppo. Zoo Park, Sarthana Jakatnaka",
-    "addressLocality": "Surat", "addressRegion": "Gujarat", "postalCode": "395006", "addressCountry": "IN"
-  },
-  "sameAs": ["https://instagram.com/vellora.fashion.luxury", "https://wa.me/917434053550"],
+  "email": "support.vellorajewellery@gmail.com",
+  "sameAs": ["https://www.instagram.com/vellorajewellers?igsi=YzZycGczcmdiajIz", "https://wa.me/917434053550"],
   "paymentAccepted": "Cash on Delivery"
 }
   </script>
@@ -1528,24 +1523,18 @@
             (works with VPN too) and convert prices using live daily exchange rates with a small international margin.
             You only ever see your own currency; India sees ₹.</p>
         </details>
-        <details class="faq card p-5">
-          <summary class="flex justify-between items-center font-semibold text-sm">Where is Vellora Fashion & Luxury
-            located?<span class="faqicon text-gld text-lg">+</span></summary>
-          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">717, MBH-1, Near Amiras Hotel and Oppo. Zoo
-            Park, Sarthana Jakatnaka, Surat, Gujarat – 395006. Call 7434053550.</p>
-        </details>
       </div>
     </section>
     <!-- ==================== INSTAGRAM ==================== -->
     <section class="py-10 md:py-16 w-full" style="background:var(--bg2);" id="instagram">
       <div class="wrap">
         <div class="text-center mb-8" data-reveal="up">
-          <p class="micro micro-gold mb-2">@vellora.fashion.luxury</p>
+          <p class="micro micro-gold mb-2">@vellorajewellers</p>
           <h2 class="disp font-semibold" style="font-size:var(--fs-h2);">Follow the Aesthetic</h2>
         </div>
         <div id="instaRow" class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4"></div>
         <p class="text-center mt-6 md:mt-8">
-          <a href="https://instagram.com/vellora.fashion.luxury" target="_blank" rel="noopener"
+          <a href="https://www.instagram.com/vellorajewellers?igsi=YzZycGczcmdiajIz" target="_blank" rel="noopener"
             class="pill btn-line px-8 py-3 text-xs tracking-wide2 uppercase">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
               <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -2269,7 +2258,7 @@ function renderInsta(){
   const ids = ['t1','p1','g1','r1','l1','t7'];
   $('#instaRow').innerHTML = ids.map((id,i) => {
     const p = prodById(id);
-    return `<a href="https://instagram.com/vellora.fashion.luxury" target="_blank" rel="noopener" class="relative rounded-xl md:rounded-2xl overflow-hidden group aspect-square" data-reveal="zoom" data-delay="${i*60}">${imgTag(p, p.colors[0][0], 0, 'w-full h-full object-cover group-hover:scale-110')}<span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">${ic('camera','w-6 h-6')}</span></a>`;
+    return `<a href="https://www.instagram.com/vellorajewellers?igsi=YzZycGczcmdiajIz" target="_blank" rel="noopener" class="relative rounded-xl md:rounded-2xl overflow-hidden group aspect-square" data-reveal="zoom" data-delay="${i*60}">${imgTag(p, p.colors[0][0], 0, 'w-full h-full object-cover group-hover:scale-110')}<span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">${ic('camera','w-6 h-6')}</span></a>`;
   }).join('');
 }
 /* ---------------- HERO ---------------- */
@@ -2701,7 +2690,7 @@ function buildBill(info, t, oid, otp){
   L.push('• India: COD at doorstep. Worldwide: confirmed on WhatsApp.');
   L.push('');
   L.push('💛 Thank you — *Vellora*, Surat, India');
-  L.push('📞 7434053550 • 📍 717 MBH-1, Sarthana Jakatnaka, Surat 395006');
+  L.push('📞 7434053550');
   return { text: L.join('\n') };
 }
 /* ---------------- ORDER STATUS ENGINE ---------------- */
