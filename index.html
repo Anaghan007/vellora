@@ -734,18 +734,18 @@
     }
 
     /* ========================================= */
-    /* 🌟 PROFESSIONAL TRACKING TIMELINE CSS     */
+    /* 🌟 HORIZONTAL TRACKING TIMELINE CSS       */
     /* ========================================= */
     .track-timeline {
       display: flex;
       flex-direction: row;
-      /* Items ne aadi (horizontal) line ma gotavva */
+      /* Horizontal layout */
       justify-content: space-between;
-      margin-top: 24px;
+      margin-top: 16px;
+      width: 100%;
       overflow-x: auto;
-      /* Mobile ma text na kapay etla mate scroll */
+      /* Allows scrolling on small mobile screens */
       scrollbar-width: none;
-      padding-bottom: 10px;
     }
 
     .track-timeline::-webkit-scrollbar {
@@ -755,26 +755,27 @@
     .track-step {
       display: flex;
       flex-direction: column;
-      /* Icon upar, text niche */
+      /* Icon on top, text below */
       align-items: center;
       text-align: center;
       position: relative;
       flex: 1;
       min-width: 90px;
-      /* Text ekbija par overlap na thay etla mate */
+      /* Prevents text from squishing */
     }
 
+    /* Connect the dots horizontally */
     .track-step::before {
       content: '';
       position: absolute;
       left: 50%;
-      /* Icon ni vachhma thi start thase */
+      /* Starts from the center of current icon */
       top: 15px;
-      /* 32px na icon ni vachhma (approx) */
+      /* Centers the line with the 32px icon */
       width: 100%;
-      /* Bija step sudhi lambai */
+      /* Reaches the center of the next icon */
       height: 2px;
-      /* Line ni jhadai */
+      /* Horizontal line thickness */
       background: var(--line);
       z-index: 0;
       transition: background 0.5s ease;
@@ -782,13 +783,43 @@
 
     .track-step:last-child::before {
       display: none;
-      /* Chhella icon pachi line na aavi joiye */
+      /* Hide line after the last step */
     }
 
-    /* Text ne icon thi thodu dur rakhva */
-    .track-step .pt-1 {
-      padding-top: 12px;
-      width: 100%;
+    .track-step.done::before {
+      background: var(--text);
+    }
+
+    .track-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card);
+      border: 2px solid var(--line);
+      color: var(--mut);
+      z-index: 2;
+      /* Keeps icon above the line */
+      transition: all 0.4s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-bottom: 8px;
+      /* Space between icon and text */
+    }
+
+    .track-step.done .track-icon {
+      background: var(--text);
+      border-color: var(--text);
+      color: var(--gold);
+    }
+
+    .track-step.active .track-icon {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+      box-shadow: 0 0 0 6px rgba(176, 141, 87, 0.15), 0 4px 12px rgba(176, 141, 87, 0.3);
+      animation: pulseTrack 2.5s infinite;
     }
 
     @keyframes pulseTrack {
