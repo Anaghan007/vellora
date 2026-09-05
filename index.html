@@ -45,7 +45,6 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -1277,13 +1276,13 @@
     <section class="wrap py-10 md:py-16 w-full">
       <div class="grid md:grid-cols-2 gap-4 md:gap-6">
         <div class="card p-7 text-center" data-reveal="zoom">
-          <span class="text-3xl"><i class="ph ph-paint-brush-broad text-4xl mb-2" style="color:var(--gold);"></i></span>
+          <span class="text-3xl">🎨</span>
           <h3 class="disp text-lg mt-3 font-semibold">Custom T-Shirts</h3>
           <p class="text-xs mt-2 leading-relaxed" style="color:var(--mut);">Own text/design + own colour choice on any
             graphic T-Shirt.</p>
         </div>
         <div class="card p-7 text-center" data-reveal="zoom" data-delay="100">
-          <span class="text-3xl"><i class="ph ph-money text-4xl mb-2" style="color:var(--gold);"></i></span>
+          <span class="text-3xl">💵</span>
           <h3 class="disp text-lg mt-3 font-semibold">Easy COD</h3>
           <p class="text-xs mt-2 leading-relaxed" style="color:var(--mut);">India: pay at doorstep. Global: WhatsApp
             order.</p>
@@ -1457,28 +1456,18 @@
           <li><button id="trackOpen2" class="hover:text-gld transition">Track Order</button></li>
           <li><button id="sizeOpen" class="hover:text-gld transition">Size Guide</button></li>
           <li><a href="#faq" class="hover:text-gld transition">FAQs</a></li>
-          <li><span style="color:var(--mut);">No Return / No Exchange</span></li>
-          <li><a href="mailto:support.vellorajewellery@gmail.com"
-              class="hover:text-gld transition">support.vellorajewellery@gmail.com</a></li>
         </ul>
       </div>
       <div data-reveal="up" data-delay="200">
         <p class="micro mb-4" style="color:var(--gold);">Reach Us</p>
         <ul class="space-y-3 text-sm">
-          <li>
-            <a href="tel:7434053550" class="group flex items-center gap-3 hover:text-gld transition">
-              <i class="ph ph-phone text-lg text-mut group-hover:text-gld transition"></i>
-              <span>7434053550</span>
-              <span class="chip border hairline text-[9px]" style="background:var(--card);">TAP TO CALL</span>
-            </a>
+          <li><a href="tel:7434053550"
+              class="flex items-center gap-3 hover:text-gld transition"><span>📞</span>7434053550
+              <span class="chip border hairline text-[9px]" style="background:var(--card);">TAP TO CALL</span></a></li>
+          <li><a href="mailto:support.vellorajewellery@gmail.com"
+              class="flex items-center gap-3 hover:text-gld transition"><span>✉️</span><span>support.vellorajewellery@gmail.com</span></a>
           </li>
-          <li>
-            <a href="mailto:support.vellorajewellery@gmail.com"
-              class="group flex items-center gap-3 hover:text-gld transition">
-              <i class="ph ph-envelope-simple text-lg text-mut group-hover:text-gld transition"></i>
-              <span>support.vellorajewellery@gmail.com</span>
-            </a>
-          </li>
+          <li><span style="color:var(--mut);">No Return / No Exchange</span></li>
           <li>
             <button id="footAdmin" class="hover:text-gld transition text-[10px] tracking-widest uppercase" style="color:var(--mut);">Staff / Admin Portal</button>
           </li>
@@ -2039,13 +2028,13 @@ function renderRails(){
   });
 }
 function renderMobileNav(){
-  const icons = { tshirts:'<i class="ph ph-t-shirt"></i>', pendants:'<i class="ph ph-drop"></i>', bolo:'<i class="ph ph-link"></i>', rings:'<i class="ph ph-diamond"></i>', bracelets:'<i class="ph ph-sparkle"></i>' };
-const top = [
-  { l:'New Arrivals', a:'data-catpage="new"', i:'<i class="ph ph-stars"></i>' },
-  { l:'Offers & Sale', a:'data-catpage="sale"', i:'<i class="ph ph-fire"></i>' },
-  { l:'All Products', a:'data-catpage=""', i:'<i class="ph ph-tote"></i>' },
-  { l:'My Orders', a:'data-openhistory', i:'<i class="ph ph-package"></i>' }
-];
+  const icons = { tshirts:'👕', pendants:'📿', bolo:'⛓️', rings:'💍', bracelets:'✨' };
+  const top = [
+    { l:'New Arrivals', a:'data-catpage="new"', i:'✨' },
+    { l:'Offers & Sale', a:'data-catpage="sale"', i:'🔥' },
+    { l:'All Products', a:'data-catpage=""', i:'🛍️' },
+    { l:'My Orders', a:'data-openhistory', i:'📦' }
+  ];
   const cats = Object.keys(CATMETA).map(c => ({ l:CATMETA[c].name, a:`data-catpage="${c}"`, i:icons[c]||'💎' }));
   const all = [...top, ...cats];
   $('#mobileNav').innerHTML = all.map((it,idx) => `
