@@ -904,7 +904,7 @@
   <div id="mobileMenu" class="fixed inset-0 z-[60] hidden w-full">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-md" data-close="mobileMenu"></div>
     <div class="absolute left-0 top-0 h-full w-[88%] max-w-sm overflow-y-auto flex flex-col border-r hairline"
-     style="background:linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); animation:slideL .4s cubic-bezier(0.2,0.8,0.2,1) both;">
+      style="background:linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); animation:slideL .4s cubic-bezier(0.2,0.8,0.2,1) both;">
       <div class="relative p-6 pb-5 border-b hairline overflow-hidden">
         <div class="absolute -top-12 -right-12 w-44 h-44 rounded-full opacity-25 blur-3xl pointer-events-none"
           style="background:var(--gold);"></div>
@@ -1236,8 +1236,9 @@
           data-desc="Dainty Chain Bracelet that stack perfectly."></article>
         <article data-id="l6" data-name="Charm Layered Bracelet" data-price="1149" data-mrp="1649" data-rating="4.7"
           data-reviews="55" data-sizes="Adjustable" data-colors="GS" data-desc="Charm-studded layered duo."></article>
-        <article data-id="l7" data-name="Butterfly Charm Double Layered Chain Bracelet" data-price="1249" data-mrp="1799" data-rating="4.8"
-          data-reviews="69" data-sizes="Adjustable" data-colors="GS" data-desc="Butterfly Charm Double Layered Chain Bracelet , sleek."></article>
+        <article data-id="l7" data-name="Butterfly Charm Double Layered Chain Bracelet" data-price="1249"
+          data-mrp="1799" data-rating="4.8" data-reviews="69" data-sizes="Adjustable" data-colors="GS"
+          data-desc="Butterfly Charm Double Layered Chain Bracelet , sleek."></article>
         <article data-id="l8" data-name="Minimal Trio Bracelet" data-price="999" data-mrp="1499" data-rating="4.6"
           data-reviews="48" data-sizes="Adjustable" data-colors="GS" data-desc="Three thin lines of quiet luxury.">
         </article>
@@ -1248,8 +1249,9 @@
           data-reviews="66" data-sizes="Adjustable" data-colors="GS" data-desc="Full festive wrist moment."></article>
         <article data-id="l11" data-name="Paperclip Chain Bracelet" data-price="1199" data-mrp="1699" data-rating="4.8"
           data-reviews="58" data-sizes="Adjustable" data-colors="GS" data-desc="Trendy paperclip links."></article>
-        <article data-id="l12" data-name="Gold Layered Chain Bracelet with Heart Charms" data-price="1099" data-mrp="1599" data-rating="4.7"
-          data-reviews="52" data-sizes="Adjustable" data-colors="GS" data-desc="Duo Chain Bracelet with Heart Charms stack."></article>
+        <article data-id="l12" data-name="Gold Layered Chain Bracelet with Heart Charms" data-price="1099"
+          data-mrp="1599" data-rating="4.7" data-reviews="52" data-sizes="Adjustable" data-colors="GS"
+          data-desc="Duo Chain Bracelet with Heart Charms stack."></article>
         <article data-id="l13" data-name="Herringbone Stack" data-price="1299" data-mrp="1799" data-rating="4.8"
           data-reviews="61" data-tags="hot" data-sizes="Adjustable" data-colors="GS"
           data-desc="Liquid herringbone layers."></article>
@@ -1403,7 +1405,14 @@
         <div id="instaRow" class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4"></div>
         <p class="text-center mt-6 md:mt-8">
           <a href="https://instagram.com/vellora.fashion.luxury" target="_blank" rel="noopener"
-            class="pill btn-line px-8 py-3 text-xs tracking-wide2 uppercase">📸 Follow Us</a>
+            class="pill btn-line px-8 py-3 text-xs tracking-wide2 uppercase">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            Follow Us
+          </a>
         </p>
       </div>
     </section>
@@ -1415,9 +1424,11 @@
         <a href="#home" class="inline-block" aria-label="Back to top">
           <img src="images/logo.png" class="h-14 md:h-16 w-auto object-contain mb-5" alt="Vellora" style="opacity:1;">
         </a>
-        <p class="text-sm leading-relaxed" style="color:var(--mut);">Graphic tees &amp; anti-tarnish jewellery, curated in Surat for the world.</p>
+        <p class="text-sm leading-relaxed" style="color:var(--mut);">Graphic tees &amp; anti-tarnish jewellery, curated
+          in Surat for the world.</p>
         <div class="flex gap-3 mt-6">
-          <a href="https://www.instagram.com/vellorajewellers?igsi=YzZycGczcmdiajIz" target="_blank" rel="noopener" aria-label="Instagram"
+          <a href="https://www.instagram.com/vellorajewellers?igsi=YzZycGczcmdiajIz" target="_blank" rel="noopener"
+            aria-label="Instagram"
             class="w-10 h-10 rounded-full border hairline flex items-center justify-center transition hover:border-[var(--gold)] hover:text-gld">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
               <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -1446,7 +1457,8 @@
           <li><button id="sizeOpen" class="hover:text-gld transition">Size Guide</button></li>
           <li><a href="#faq" class="hover:text-gld transition">FAQs</a></li>
           <li><span style="color:var(--mut);">No Return / No Exchange</span></li>
-          <li><a href="mailto:support.vellorajewellery@gmail.com" class="hover:text-gld transition">support.vellorajewellery@gmail.com</a></li>
+          <li><a href="mailto:support.vellorajewellery@gmail.com"
+              class="hover:text-gld transition">support.vellorajewellery@gmail.com</a></li>
         </ul>
       </div>
       <div data-reveal="up" data-delay="200">
@@ -1455,10 +1467,8 @@
           <li><a href="tel:7434053550"
               class="flex items-center gap-3 hover:text-gld transition"><span>📞</span>7434053550
               <span class="chip border hairline text-[9px]" style="background:var(--card);">TAP TO CALL</span></a></li>
-          <li><a
-              href="https://www.google.com/maps/search/?api=1&query=717%2C%20MBH-1%2C%20Near%20Amiras%20Hotel%20and%20Oppo.%20Zoo%20Park%2C%20Sarthana%20jakatnaka%2C%20Surat%2C%20Gujarat%20395006"
-              target="_blank" rel="noopener"
-              class="flex items-start gap-3 hover:text-gld transition"><span>📍</span><span>717, MBH-1, Near Amiras Hotel and Oppo. Zoo Park, Sarthana Jakatnaka, Surat, Gujarat – 395006 <span class="chip border hairline mt-1 text-[9px]" style="background:var(--card);">GET DIRECTIONS</span></span></a>
+          <li><a href="mailto:support.vellorajewellery@gmail.com"
+              class="flex items-center gap-3 hover:text-gld transition"><span>✉️</span><span>support.vellorajewellery@gmail.com</span></a>
           </li>
           <li>
             <button id="footAdmin" class="hover:text-gld transition text-[10px] tracking-widest uppercase" style="color:var(--mut);">Staff / Admin Portal</button>
@@ -1467,7 +1477,8 @@
       </div>
     </div>
     <div class="border-t hairline w-full">
-      <div class="wrap py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px]" style="color:var(--mut);">
+      <div class="wrap py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px]"
+        style="color:var(--mut);">
         <p>© 2026 Vellora Fashion & Luxury. All rights reserved.</p>
         <p>💵 COD India • 🌍 Worldwide • ⟲ No Return / No Exchange</p>
         <p class="flex gap-3 font-extrabold" style="color:var(--text);">
