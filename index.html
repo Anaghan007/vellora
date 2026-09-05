@@ -2797,7 +2797,7 @@ function renderHistory(){
   });
   const box = $('#historyList');
   if (!orders.length){
-    box.innerHTML = '<div class="text-center py-20 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 text-[var(--mut)]">${ic(\'box\',\'w-16 h-16\')}</span><p class="text-base font-bold">No active orders right now</p></div>';
+    box.innerHTML = `<div class="text-center py-20 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 text-[var(--mut)]">${ic('box','w-16 h-16')}</span><p class="text-base font-bold">No active orders right now</p></div>`;
     return;
   }
   box.innerHTML = orders.map(o => {
