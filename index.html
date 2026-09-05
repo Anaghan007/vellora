@@ -3,15 +3,10 @@
 
 <head>
   <!-- ================================================================== -->
-  <!--  VELLORA FASHION & LUXURY — v18.0                                  -->
-  <!--  ✔ Only logo.png everywhere (header, footer, side menu)           -->
-  <!--  ✔ All "VELLORA" + "FASHION & LUXURY" text removed                -->
-  <!--  ✔ Favicon + PWA icons → images/logo.png                          -->
-  <!--  ✔ Full-Screen Hero on ALL devices                                -->
-  <!--  ✔ T-Shirt Hover → smooth Front ⇄ Back flip                       -->
-  <!--  ✔ Instant Currency with live FX engine                           -->
-  <!--  ✔ Premium Slide Menu (right side)                                -->
-  <!--  ✔ PWA Manifest + Service Worker                                  -->
+  <!--  VELLORA FASHION & LUXURY — v19.0 (Professional UI Upgrade)        -->
+  <!--  ✔ Professional SVG Icons (No System Emojis)                       -->
+  <!--  ✔ Real Logistics Tracking Timeline Animation                      -->
+  <!--  ✔ Premium E-commerce Hover Effects (Shine, Lift, Blur)            -->
   <!-- ================================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -86,7 +81,6 @@
 
     @media (min-width:768px) {
       :root {
-        /* Desktop layout variables (Colors removed to force light theme globally) */
         --fs-hero: clamp(2.6rem, 1.6rem + 3.6vw, 4.6rem);
         --fs-h2: clamp(1.4rem, 1.1rem + 1.4vw, 2.2rem);
         --pad: clamp(20px, 4vw, 56px);
@@ -289,38 +283,98 @@
       font-weight: 700;
     }
 
+    /* ========================================= */
+    /* 🌟 PROFESSIONAL HOVER EFFECTS (UPGRADED)  */
+    /* ========================================= */
     .card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--rad);
       overflow: hidden;
-      transition: transform .5s cubic-bezier(.2, .7, .2, 1), box-shadow .5s, border-color .3s;
+      transition: transform .5s cubic-bezier(.2, .8, .2, 1), box-shadow .5s, border-color .3s;
     }
 
     @media (hover:hover) {
       .card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow);
-        border-color: var(--gold);
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .15);
+        border-color: color-mix(in srgb, var(--gold) 40%, var(--line));
       }
 
       .card:hover .cardimg img {
-        transform: scale(1.07);
+        transform: scale(1.08);
+        filter: brightness(1.05);
       }
 
       .card:hover .quickadd {
         transform: translateY(0);
+        opacity: 1;
+      }
+
+      .card:hover .cardimg::after {
+        left: 150%;
       }
     }
 
+    .cardimg {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cardimg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: skewX(-25deg);
+      transition: left .8s ease;
+      pointer-events: none;
+      z-index: 5;
+    }
+
     .quickadd {
-      transform: translateY(110%);
-      transition: transform .4s cubic-bezier(.2, .7, .2, 1);
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform .4s cubic-bezier(.2, .7, .2, 1), opacity .4s;
+      backdrop-filter: blur(8px);
+      background: rgba(23, 20, 16, 0.85);
+      color: var(--bg);
     }
 
     @media (hover:none) {
       .quickadd {
         transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .card button[data-wish] {
+      transition: transform .2s, background .2s;
+    }
+
+    .card button[data-wish]:hover {
+      transform: scale(1.1);
+      background: color-mix(in srgb, var(--gold) 10%, var(--card));
+    }
+
+    .card button[data-wish]:hover svg {
+      animation: heartBeat .4s ease-in-out;
+    }
+
+    @keyframes heartBeat {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+
+      100% {
+        transform: scale(1);
       }
     }
 
@@ -679,6 +733,90 @@
       animation: pulseDot 1.6s infinite;
     }
 
+    /* ========================================= */
+    /* 🌟 PROFESSIONAL TRACKING TIMELINE CSS     */
+    /* ========================================= */
+    .track-timeline {
+      display: flex;
+      flex-direction: column;
+      margin-top: 16px;
+    }
+
+    .track-step {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .track-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .track-step::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 32px;
+      bottom: 0;
+      width: 2px;
+      background: var(--line);
+      z-index: 0;
+      transition: background 0.5s ease;
+    }
+
+    .track-step:last-child::before {
+      display: none;
+    }
+
+    .track-step.done::before {
+      background: var(--text);
+    }
+
+    .track-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card);
+      border: 2px solid var(--line);
+      color: var(--mut);
+      z-index: 2;
+      transition: all 0.4s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .track-step.done .track-icon {
+      background: var(--text);
+      border-color: var(--text);
+      color: var(--gold);
+    }
+
+    .track-step.active .track-icon {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+      box-shadow: 0 0 0 6px rgba(176, 141, 87, 0.15), 0 4px 12px rgba(176, 141, 87, 0.3);
+      animation: pulseTrack 2.5s infinite;
+    }
+
+    @keyframes pulseTrack {
+      0% {
+        box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.4), 0 4px 12px rgba(176, 141, 87, 0.3);
+      }
+
+      70% {
+        box-shadow: 0 0 0 12px rgba(176, 141, 87, 0), 0 4px 12px rgba(176, 141, 87, 0.3);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(176, 141, 87, 0), 0 4px 12px rgba(176, 141, 87, 0.3);
+      }
+    }
+
     @media (max-width:767px) {
       body {
         padding-bottom: 4.6rem;
@@ -896,7 +1034,10 @@
         <button class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0" data-openhistory>My Orders</button>
         <a href="#contact"
           class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0">Contact</a>
-        <button id="curChip" class="chip border hairline shrink-0 hover:border-gold" style="color:var(--gold);" title="Auto-detected country & live currency — tap to re-detect">🌍 Detecting…</button>
+        <button id="curChip" class="chip border hairline shrink-0 hover:border-gold gap-1.5" style="color:var(--gold);" title="Auto-detected country & live currency — tap to re-detect">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Detecting…
+        </button>
       </div>
     </nav>
   </header>
@@ -1276,13 +1417,13 @@
     <section class="wrap py-10 md:py-16 w-full">
       <div class="grid md:grid-cols-2 gap-4 md:gap-6">
         <div class="card p-7 text-center" data-reveal="zoom">
-          <span class="text-3xl">🎨</span>
+          <span class="text-3xl text-[var(--gold)] flex justify-center mb-2"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.1-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5.5-4.5-9-10-9z"/></svg></span>
           <h3 class="disp text-lg mt-3 font-semibold">Custom T-Shirts</h3>
           <p class="text-xs mt-2 leading-relaxed" style="color:var(--mut);">Own text/design + own colour choice on any
             graphic T-Shirt.</p>
         </div>
         <div class="card p-7 text-center" data-reveal="zoom" data-delay="100">
-          <span class="text-3xl">💵</span>
+          <span class="text-3xl text-[var(--gold)] flex justify-center mb-2"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span>
           <h3 class="disp text-lg mt-3 font-semibold">Easy COD</h3>
           <p class="text-xs mt-2 leading-relaxed" style="color:var(--mut);">India: pay at doorstep. Global: WhatsApp
             order.</p>
@@ -1463,10 +1604,10 @@
         <p class="micro mb-4" style="color:var(--gold);">Reach Us</p>
         <ul class="space-y-3 text-sm">
           <li><a href="tel:7434053550"
-              class="flex items-center gap-3 hover:text-gld transition"><span>📞</span>7434053550
+              class="flex items-center gap-3 hover:text-gld transition"><span class="text-[var(--gold)]"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>7434053550
               <span class="chip border hairline text-[9px]" style="background:var(--card);">TAP TO CALL</span></a></li>
           <li><a href="mailto:support.vellorajewellery@gmail.com"
-              class="flex items-center gap-3 hover:text-gld transition"><span>✉️</span><span>support.vellorajewellery@gmail.com</span></a>
+              class="flex items-center gap-3 hover:text-gld transition"><span class="text-[var(--gold)]"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>support.vellorajewellery@gmail.com</span></a>
           </li>
           <li>
             <button id="footAdmin" class="hover:text-gld transition text-[10px] tracking-widest uppercase" style="color:var(--mut);">Staff / Admin Portal</button>
@@ -1478,7 +1619,13 @@
       <div class="wrap py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px]"
         style="color:var(--mut);">
         <p>© 2026 Vellora Fashion & Luxury. All rights reserved.</p>
-        <p>💵 COD India • 🌍 Worldwide • ⟲ No Return / No Exchange</p>
+        <p class="flex gap-4 items-center font-extrabold" style="color:var(--text);">
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> COD India</span>
+          •
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Worldwide</span>
+          •
+          <span>⟲ No Return</span>
+        </p>
         <p class="flex gap-3 font-extrabold" style="color:var(--text);">
           <span>VISA</span><span>MC</span><span>UPI</span><span>GPay</span><span>COD</span>
         </p>
@@ -1559,10 +1706,19 @@
             </div>
           </div>
           <div class="p-4 md:p-5 space-y-3 w-full">
-            <p class="micro micro-gold">Delivery Details — Cash on Delivery</p>
+            <p class="micro micro-gold flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg> Delivery Details — Cash on Delivery</p>
             <div class="flex items-center justify-between gap-2 border hairline rounded-full px-4 py-2"
               style="background:var(--bg2);">
-              <p class="text-[11px] font-bold" style="color:var(--text);">📍 <span id="coCountryTxt">Detecting…</span>
+              <p class="text-[11px] font-bold flex items-center gap-1.5" style="color:var(--text);"><svg
+                  class="w-3.5 h-3.5 text-[var(--gold)]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg> <span id="coCountryTxt">Detecting…</span>
               </p>
               <button id="coDetect" class="pill btn-line px-3 py-1.5 text-[10px]">Re-detect</button>
             </div>
@@ -1576,9 +1732,14 @@
             <input id="coPin" maxlength="10" class="field" placeholder="PIN / ZIP *">
             <input type="text" name="website" id="coHoney" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
             <p id="coErr" class="text-[11px] hidden" style="color:#DC2626;"></p>
-            <button id="placeOrder" class="pill btn-gold w-full py-4 text-xs tracking-wide2 uppercase">💬 Place Order on WhatsApp — COD</button>
-            <p class="text-[10px] text-center" style="color:var(--mut);">⚠️ No Return / No Exchange • Deep professional
-              bill opens in WhatsApp.</p>
+            <button id="placeOrder" class="pill btn-gold w-full py-4 text-xs tracking-wide2 uppercase flex items-center justify-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Place Order on WhatsApp — COD</button>
+            <p class="text-[10px] text-center flex items-center justify-center gap-1" style="color:var(--mut);"><svg
+                class="w-3.5 h-3.5 text-[#DC2626]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg> No Return / No Exchange • Deep professional bill opens in WhatsApp.</p>
           </div>
         </div>
       </div>
@@ -1642,13 +1803,29 @@
         <button data-close="staffModal" class="w-9 h-9 rounded-full border hairline" aria-label="Close">✕</button>
       </div>
       <div class="border hairline rounded-2xl p-5 mb-6" style="background:var(--bg2);">
-        <h4 class="font-bold text-sm mb-3" style="color:var(--gold);">🚚 Delivery Agent: Verify &amp; Deliver</h4>
+        <h4 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:var(--gold);">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" />
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+            <circle cx="5.5" cy="18.5" r="2.5" />
+            <circle cx="18.5" cy="18.5" r="2.5" />
+          </svg>
+          Delivery Agent: Verify &amp; Deliver
+        </h4>
         <input id="delOrderId" maxlength="10" class="field mb-2 uppercase" placeholder="Order ID (e.g. VEL123456)">
         <input id="delOtp" maxlength="4" class="field mb-3" placeholder="4-Digit Customer OTP">
         <button id="delVerify" class="pill btn-gold w-full py-3 text-xs tracking-wide2 uppercase">Verify OTP &amp; Mark Delivered</button>
       </div>
       <div class="border hairline rounded-2xl p-5" style="background:var(--bg2);">
-        <h4 class="font-bold text-sm mb-3" style="color:var(--gold);">🔒 Admin Control Panel</h4>
+        <h4 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:var(--gold);">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          Admin Control Panel
+        </h4>
         <div id="adminLoginBox">
           <input id="adminPass" type="password" class="field mb-3" placeholder="Enter Admin Passcode">
           <button id="adminLoginBtn" class="pill btn-ink w-full py-3 text-xs tracking-wide2 uppercase">Unlock Admin Panel</button>
@@ -1743,6 +1920,43 @@ function shade(hex, p){
   const f = c => Math.round((a-c)*q + c);
   return '#' + [f(r),f(g),f(b)].map(c => c.toString(16).padStart(2,'0')).join('');
 }
+
+/* ========================================= */
+/* 🌟 PROFESSIONAL SVG ICONS SYSTEM          */
+/* ========================================= */
+const ICONS = {
+  phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+  mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+  palette: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.1-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5.5-4.5-9-10-9z"/></svg>`,
+  cash: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`,
+  tshirt: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>`,
+  pendant: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><circle cx="12" cy="14" r="4"/><path d="M8 6l4-4 4 4"/></svg>`,
+  chain: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`,
+  ring: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M8 4l4-2 4 2"/><path d="M8 4l4 4 4-4"/></svg>`,
+  sparkle: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L19.7 10.7l-5.8 1.9L12 18.4l-1.9-5.8L4.3 10.7l5.8-1.9L12 3z"/></svg>`,
+  fire: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
+  bag: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+  box: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+  cart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`,
+  party: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3L2 22l10.7-3.8"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="M22 2l-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/></svg>`,
+  lock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+  pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  gear: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
+  truck: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+  check: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+  heart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  bell: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>`,
+  cross: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+  warn: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+  globe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  ruler: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"/><path d="M12 12v.01"/><path d="M16 16v.01"/><path d="M21 3l-9 9"/><path d="M21 3h-5"/><path d="M21 3v5"/></svg>`,
+  share: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+  camera: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+  chat: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  tag: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`
+};
+function ic(n, c='w-4 h-4') { return `<span class="inline-flex items-center justify-center ${c}">${ICONS[n]||''}</span>`; }
+
 const SC = {};
 function studio(cat, hex, a){
   const key = cat+'|'+hex+'|'+a;
@@ -1853,7 +2067,7 @@ async function ensureLive(note){
     const wasDown = fxStatus !== 'live';
     fxStatus = 'live'; fxRetry = 0;
     updateCountryUI(); refreshPrices();
-    if (note || wasDown) toast('Live exchange rates connected', '📡');
+    if (note || wasDown) toast('Live exchange rates connected', 'globe');
     return true;
   }
   fxStatus = 'retry';
@@ -1894,7 +2108,7 @@ async function detectCountry(showNote){
   const changed = !!(c && COUNTRY_CUR[c] && c !== country);
   if (c && COUNTRY_CUR[c]) country = c;
   updateCountryUI();
-  if (showNote) toast('Location detected: ' + (COUNTRY_NAME[country] || country), '📍');
+  if (showNote) toast('Location detected: ' + (COUNTRY_NAME[country] || country), 'pin');
   return changed;
 }
 function updateCountryUI(){
@@ -1902,7 +2116,7 @@ function updateCountryUI(){
   const chip = $('#curChip');
   if (chip){
     const dot = fxStatus === 'live' ? '🟢' : fxStatus === 'retry' ? '🔴' : '🟡';
-    chip.textContent = `${dot} ${country} · ${c}`;
+    chip.innerHTML = `${dot} ${country} · ${c}`;
     chip.title = fxStatus === 'live'
       ? `LIVE rates via ${RATES_SRC} • updated ${new Date(RATES_AT).toLocaleTimeString()}`
       : 'Connecting to live exchange rates…';
@@ -1996,7 +2210,7 @@ function card(p, anim='a-up', delay=0){
       ${multi
         ? imgTag(p, p.colors[0][0], 0, 'swap front', 'data-main data-color="' + esc(p.colors[0][0]) + '"') + imgTag(p, p.colors[0][0], 1, 'swap back', '', true)
         : imgTag(p, p.colors[0][0], 0, 'w-full h-full object-cover', 'data-main data-color="' + esc(p.colors[0][0]) + '"')}
-      <span class="absolute inset-x-0 bottom-0 quickadd text-center micro py-3" style="background:color-mix(in srgb, var(--text) 92%, transparent); color:var(--bg);">${multi ? 'Front ⇄ Back' : 'Quick View'}</span>
+      <span class="absolute inset-x-0 bottom-0 quickadd text-center micro py-3">${multi ? 'Front ⇄ Back' : 'Quick View'}</span>
     </div>
     <div class="p-3 md:p-4">
       <p class="micro hidden md:block">${esc(CATMETA[p.cat].name)}</p>
@@ -2008,7 +2222,7 @@ function card(p, anim='a-up', delay=0){
         <span class="chip" style="background:rgba(16,185,129,.1); color:#059669;">${offPct(p)}%</span>
       </div>
       ${dots.length ? `<div class="flex items-center gap-1.5 mt-1.5 md:mt-2">${dots.map((c,i) => `<button class="dot ${i===0?'on':''}" style="background:${c[1]};" data-rc="${p.id}" data-color="${esc(c[0])}" aria-label="${esc(c[0])}" title="${esc(c[0])}"></button>`).join('')}</div>` : ''}
-      <button class="pill btn-ink w-full mt-2 md:mt-3 py-2.5 text-[11px] tracking-wide2 uppercase" data-add="${p.id}">Add to Cart</button>
+      <button class="pill btn-ink w-full mt-2 md:mt-3 py-2.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-add="${p.id}">${ic('cart','w-3.5 h-3.5')} Add to Cart</button>
     </div>
   </article>`;
 }
@@ -2028,19 +2242,19 @@ function renderRails(){
   });
 }
 function renderMobileNav(){
-  const icons = { tshirts:'👕', pendants:'📿', bolo:'⛓️', rings:'💍', bracelets:'✨' };
+  const icons = { tshirts:ic('tshirt'), pendants:ic('pendant'), bolo:ic('chain'), rings:ic('ring'), bracelets:ic('sparkle') };
   const top = [
-    { l:'New Arrivals', a:'data-catpage="new"', i:'✨' },
-    { l:'Offers & Sale', a:'data-catpage="sale"', i:'🔥' },
-    { l:'All Products', a:'data-catpage=""', i:'🛍️' },
-    { l:'My Orders', a:'data-openhistory', i:'📦' }
+    { l:'New Arrivals', a:'data-catpage="new"', i:ic('sparkle') },
+    { l:'Offers & Sale', a:'data-catpage="sale"', i:ic('fire') },
+    { l:'All Products', a:'data-catpage=""', i:ic('bag') },
+    { l:'My Orders', a:'data-openhistory', i:ic('box') }
   ];
-  const cats = Object.keys(CATMETA).map(c => ({ l:CATMETA[c].name, a:`data-catpage="${c}"`, i:icons[c]||'💎' }));
+  const cats = Object.keys(CATMETA).map(c => ({ l:CATMETA[c].name, a:`data-catpage="${c}"`, i:icons[c]||ic('sparkle') }));
   const all = [...top, ...cats];
   $('#mobileNav').innerHTML = all.map((it,idx) => `
     <button class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl border hairline transition active:scale-[0.98] text-left" style="background:color-mix(in srgb, var(--card) 55%, transparent); animation:fadeUp .5s both; animation-delay:${idx*40}ms;" ${it.a}>
       <span class="flex items-center gap-3 min-w-0">
-        <span class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0" style="background:color-mix(in srgb, var(--gold) 14%, transparent);">${it.i}</span>
+        <span class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 text-[var(--gold)]" style="background:color-mix(in srgb, var(--gold) 14%, transparent);">${it.i}</span>
         <span class="disp text-[15px] font-medium truncate">${esc(it.l)}</span>
       </span>
       <span class="micro micro-gold shrink-0">→</span>
@@ -2051,7 +2265,7 @@ function renderInsta(){
   const ids = ['t1','p1','g1','r1','l1','t7'];
   $('#instaRow').innerHTML = ids.map((id,i) => {
     const p = prodById(id);
-    return `<a href="https://instagram.com/vellora.fashion.luxury" target="_blank" rel="noopener" class="relative rounded-xl md:rounded-2xl overflow-hidden group aspect-square" data-reveal="zoom" data-delay="${i*60}">${imgTag(p, p.colors[0][0], 0, 'w-full h-full object-cover group-hover:scale-110')}<span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">📸</span></a>`;
+    return `<a href="https://instagram.com/vellora.fashion.luxury" target="_blank" rel="noopener" class="relative rounded-xl md:rounded-2xl overflow-hidden group aspect-square" data-reveal="zoom" data-delay="${i*60}">${imgTag(p, p.colors[0][0], 0, 'w-full h-full object-cover group-hover:scale-110')}<span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">${ic('camera','w-6 h-6')}</span></a>`;
   }).join('');
 }
 /* ---------------- HERO ---------------- */
@@ -2080,9 +2294,9 @@ function renderHero(){
           </div>
           <p class="ha-up text-sm md:text-base max-w-md mx-auto md:mx-0" style="color:var(--mut); animation-delay:.15s;">${esc(p.desc)}</p>
           <div class="ha-up flex flex-wrap gap-2 justify-center md:justify-start" style="animation-delay:.2s;">
-            <span class="chip border hairline" style="background:var(--card); color:var(--text);">💵 COD</span>
-            <span class="chip border hairline" style="background:var(--card); color:var(--text);">${isT ? '📏 Free Size' : '✨ Anti-Tarnish'}</span>
-            <span class="chip border hairline" style="background:var(--card); color:var(--text);">🌍 Worldwide</span>
+            <span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">${ic('cash','w-3 h-3')} COD</span>
+            <span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">${isT ? ic('ruler','w-3 h-3') + ' Free Size' : ic('sparkle','w-3 h-3') + ' Anti-Tarnish'}</span>
+            <span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">${ic('globe','w-3 h-3')} Worldwide</span>
           </div>
           <div class="ha-up flex gap-3 justify-center md:justify-start flex-wrap pt-1" style="animation-delay:.25s;">
             <button class="pill btn-gold px-8 py-4 text-xs tracking-wide2 uppercase" data-open-product="${p.id}">Shop This</button>
@@ -2096,7 +2310,7 @@ function renderHero(){
               ${heroImg(p, p.colors[0][0])}
             </div>
             <span class="absolute -top-3 -right-3 chip py-2 px-4 shadow-lift hero-off-badge" style="background:var(--gold); color:var(--on-gold);">✦ ${offPct(p)}% OFF</span>
-            <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 chip py-2 px-4 whitespace-nowrap border hairline shadow-soft" style="background:var(--card); color:var(--text);">${isT ? '🎨 Customisable' : '✨ Gold & Silver'}</span>
+            <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 chip py-2 px-4 whitespace-nowrap border hairline shadow-soft gap-1.5" style="background:var(--card); color:var(--text);">${isT ? ic('palette','w-3 h-3') + ' Customisable' : ic('sparkle','w-3 h-3') + ' Gold & Silver'}</span>
           </div>
         </div>
       </div>
@@ -2149,11 +2363,11 @@ function reveal(){
   }), { threshold:.1 });
   $$('[data-reveal]').forEach(el => io.observe(el));
 }
-function toast(msg, icon){
+function toast(msg, iconName){
   const t = document.createElement('div');
-  t.className = 'toast pill px-5 py-3.5 shadow-lift';
+  t.className = 'toast pill px-5 py-3.5 shadow-lift gap-2';
   t.style.cssText = 'background:var(--text); color:var(--bg); font-size:12px; font-weight:700;';
-  t.innerHTML = `<span style="color:var(--gold);">${icon}</span><span>${esc(msg)}</span>`;
+  t.innerHTML = `<span style="color:var(--gold);">${ic(iconName, 'w-4 h-4')}</span><span>${esc(msg)}</span>`;
   $('#toasts').appendChild(t);
   setTimeout(() => { t.style.transition = 'all .4s'; t.style.opacity = 0; t.style.transform = 'translateX(30px)'; setTimeout(() => t.remove(), 400); }, 2400);
 }
@@ -2169,7 +2383,7 @@ function addToCart(id, color, size, qty=1, ex=null){
   else cart.push({ key:k, id, color, size, qty, custom: ex ? ex.custom : null, colorChoice: ex ? ex.colorChoice : '' });
   store.set('cart', cart);
   renderCart();
-  toast(`${p.name} — added to cart`, '🛒');
+  toast(`${p.name} — added to cart`, 'cart');
 }
 function couponInfo(sub){
   if (!coupon || !COUPONS[coupon.code]) return null;
@@ -2190,11 +2404,11 @@ function renderCart(){
   $('#cartN').textContent = n ? `(${n})` : '';
   if (!cart.length && coupon){ coupon = null; store.set('coupon', null); }
   const t = totals();
-  $('#shipMsg').innerHTML = t.last >= 1499 && cart.length ? '🎉 <b>FREE delivery</b> unlocked!' : (cart.length ? `Add <b>${fmt(1499 - t.last)}</b> more for <b>FREE delivery</b>` : '');
+  $('#shipMsg').innerHTML = t.last >= 1499 && cart.length ? `${ic('party','w-4 h-4 text-[#059669]')} <b>FREE delivery</b> unlocked!` : (cart.length ? `Add <b>${fmt(1499 - t.last)}</b> more for <b>FREE delivery</b>` : '');
   $('#shipBar').style.width = Math.min(100, (t.last/1499)*100) + '%';
   const box = $('#cartItems');
   if (!cart.length){
-    box.innerHTML = `<div class="text-center py-16" style="color:var(--mut);"><span class="text-5xl block mb-4 a-float">🛍️</span>Your cart is empty.<br><button class="pill btn-ink px-6 py-3 mt-5 text-xs tracking-wide2 uppercase" data-close="cartDrawer" data-catpage="">Start Shopping</button></div>`;
+    box.innerHTML = `<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 a-float text-[var(--gold)]">${ic('bag','w-16 h-16')}</span><p class="text-base font-bold">Your cart is empty</p><button class="pill btn-ink px-6 py-3 mt-5 text-xs tracking-wide2 uppercase" data-close="cartDrawer" data-catpage="">Start Shopping</button></div>`;
   } else {
     box.innerHTML = cart.map(l => {
       const p = prodById(l.id);
@@ -2203,7 +2417,7 @@ function renderCart(){
         <div class="w-20 h-24 rounded-2xl overflow-hidden shrink-0 cursor-pointer" style="background:var(--bg2);" data-open-product="${p.id}">${imgTag(p, l.color, 0, 'w-full h-full object-cover')}</div>
         <div class="flex-1 min-w-0">
           <h4 class="text-xs font-extrabold truncate">${esc(p.name)}${p.hasColors ? ' — ' + esc(l.color) : ''}</h4>
-          <p class="text-[10px] mt-0.5" style="color:var(--mut);">Size: ${esc(l.size)}${l.custom ? ' • 🎨 Custom' : ''}${l.colorChoice ? ' • 🎨 Colour: ' + esc(l.colorChoice) : ''}</p>
+          <p class="text-[10px] mt-0.5 flex items-center gap-1" style="color:var(--mut);">Size: ${esc(l.size)}${l.custom ? ' • ' + ic('palette','w-3 h-3') + ' Custom' : ''}${l.colorChoice ? ' • ' + ic('palette','w-3 h-3') + ' Colour: ' + esc(l.colorChoice) : ''}</p>
           <div class="flex items-center justify-between mt-2">
             <div class="flex items-center gap-2">
               <button class="qtybtn" data-cq="${l.key}" data-d="-1">−</button>
@@ -2254,7 +2468,7 @@ function applyCoupon(){
   const c = COUPONS[code];
   if (sub >= c.min){
     coupon = { code }; store.set('coupon', coupon); renderCart();
-    toast(`Coupon ${code} applied`, '🏷');
+    toast(`Coupon ${code} applied`, 'tag');
   } else {
     coupon = null; store.set('coupon', null); renderCart();
     $('#couponMsg').textContent = `🔒 ${code} applies only on orders of ${fmt(c.min)} or more — add ${fmt(c.min - sub)} more.`;
@@ -2273,7 +2487,7 @@ function toggleWish(id){
 function renderWish(){
   $('#wishCount').textContent = wish.length;
   const box = $('#wishItems');
-  if (!wish.length){ box.innerHTML = `<div class="text-center py-16" style="color:var(--mut);"><span class="text-5xl block mb-4 a-float">♡</span>Nothing saved yet.</div>`; return; }
+  if (!wish.length){ box.innerHTML = `<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 a-float text-[var(--mut)]">${ic('heart','w-16 h-16')}</span><p class="text-base font-bold">Nothing saved yet</p></div>`; return; }
   box.innerHTML = wish.map(id => {
     const p = prodById(id);
     if (!p) return '';
@@ -2284,7 +2498,7 @@ function renderWish(){
         <h4 class="text-xs font-extrabold truncate">${esc(p.name)}</h4>
         <b class="disp text-sm">${fmt(p.price)}</b> <s class="text-[10px]" style="color:var(--mut);">${fmt(p.mrp)}</s>
         <div class="flex gap-2 mt-2">
-          <button class="pill btn-ink px-4 py-2 text-[10px] tracking-wide2 uppercase" data-add="${p.id}">Add</button>
+          <button class="pill btn-ink px-4 py-2 text-[10px] tracking-wide2 uppercase flex items-center gap-1" data-add="${p.id}">${ic('cart','w-3 h-3')} Add</button>
           <button class="pill btn-line px-4 py-2 text-[10px]" data-wish="${p.id}">Remove</button>
         </div>
       </div>
@@ -2311,8 +2525,8 @@ function drawProduct(){
       <div class="md:flex md:gap-4 w-full">
         ${imgs.length > 1 ? `<div class="hidden md:flex flex-col gap-2 order-1">${imgs.map((im,i) => `<button class="w-14 h-16 rounded-xl overflow-hidden border transition" style="border-color:${i===pm.angle ? 'var(--gold)' : 'var(--line)'};" data-angle="${i}">${imgTag(p, cn, i, 'pimg w-full h-full object-cover')}</button>`).join('')}</div>` : ''}
         <div class="relative flex-1 order-2 min-w-0">
-          <span class="absolute top-3 left-3 z-10 chip" style="background:var(--text); color:var(--gold);">COD ✓</span>
-          <button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-share aria-label="Share">↗</button>
+          <span class="absolute top-3 left-3 z-10 chip gap-1" style="background:var(--text); color:var(--gold);">${ic('check','w-3 h-3')} COD</span>
+          <button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-share aria-label="Share">${ic('share','w-4 h-4')}</button>
           <div class="rounded-[18px] md:rounded-[20px] overflow-hidden aspect-[4/5] w-full">${imgTag(p, cn, pm.angle, 'pimg w-full h-full object-cover', 'id="pmMain"')}</div>
           ${imgs.length > 1 ? `<button class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="-1" aria-label="Previous">‹</button><button class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="1" aria-label="Next">›</button>` : ''}
           <p class="text-[10px] text-center mt-2" style="color:var(--mut);">${isT ? `View ${pm.angle+1}/2 • ${['FRONT','BACK'][pm.angle]}` : 'Front view'}${p.hasColors ? ' • ' + esc(cn) : ''}</p>
@@ -2340,7 +2554,7 @@ function drawProduct(){
           <p class="micro mb-2" style="color:var(--mut);">Size</p>
           <div class="flex gap-2 flex-wrap">${p.sizes.map((s,i) => `<button class="sizechip ${i===pm.size ? 'active' : ''}" data-psize="${i}">${esc(s)}</button>`).join('')}</div>
         </div>
-        <button class="micro micro-gold" data-sizeopen>Size Guide</button>
+        <button class="micro micro-gold flex items-center gap-1" data-sizeopen>${ic('ruler','w-3 h-3')} Size Guide</button>
       </div>
       <div class="mt-4 md:mt-5 flex items-center gap-4">
         <p class="micro" style="color:var(--mut);">Qty</p>
@@ -2352,14 +2566,14 @@ function drawProduct(){
       </div>
       ${isT ? `
       <div class="border hairline rounded-3xl p-4 mt-5" style="background:var(--bg2); border-color:var(--gold);">
-        <p class="text-xs font-bold" style="color:var(--gold);">💡 Want YOUR own colour?</p>
+        <p class="text-xs font-bold flex items-center gap-1.5" style="color:var(--gold);">${ic('palette','w-4 h-4')} Want YOUR own colour?</p>
         <p class="text-[10px] mt-1" style="color:var(--mut);">Tell us your choice — we'll confirm on WhatsApp. It goes into your bill.</p>
         <input id="pmColorChoice" maxlength="40" class="field mt-2" placeholder="e.g. Olive Green, Pastel Pink…" value="${esc(pm.colorChoice)}">
       </div>
       <div class="border hairline rounded-3xl p-4 mt-3" style="background:var(--bg2);">
         <label class="flex items-center gap-2 text-xs font-bold cursor-pointer">
           <input type="checkbox" id="pmCustomOn" class="accent-[#B08D57]" ${pm.customOn ? 'checked' : ''}>
-          🎨 Customise this T-Shirt (own text / design)
+          ${ic('palette','w-4 h-4')} Customise this T-Shirt (own text / design)
         </label>
         <div id="pmCustomBox" class="${pm.customOn ? '' : 'hidden'} mt-3 space-y-2">
           <select id="pmCustomPos" class="field">
@@ -2375,20 +2589,20 @@ function drawProduct(){
         <p class="micro micro-gold mb-1">Highlights</p>
         <p>◆ ${isT ? '240 GSM oversized cotton • Free Size' : 'Anti-tarnish • Adjustable • Gold/Silver'}</p>
         <p>◆ ${isT ? 'Front + Back views of the uploaded colour' : 'Single Front view, clean studio look'}</p>
-        <p class="rounded-full px-3 py-2 mt-2 font-bold" style="background:rgba(220,38,38,.08); color:#DC2626;">⚠ No Return / No Exchange</p>
+        <p class="rounded-full px-3 py-2 mt-2 font-bold flex items-center gap-1.5" style="background:rgba(220,38,38,.08); color:#DC2626;">${ic('warn','w-4 h-4')} No Return / No Exchange</p>
       </div>
       <p class="text-sm leading-relaxed mt-4" style="color:var(--mut);">${esc(p.desc)}</p>
       <div class="hidden md:grid grid-cols-2 gap-3 mt-6">
-        <button class="pill btn-ink py-3.5 text-xs tracking-wide2 uppercase" data-pm-add>🛒 Add to Cart</button>
-        <button class="pill btn-gold py-3.5 text-xs tracking-wide2 uppercase" data-pm-buy>⚡ Buy Now — COD</button>
+        <button class="pill btn-ink py-3.5 text-xs tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-pm-add>${ic('cart','w-4 h-4')} Add to Cart</button>
+        <button class="pill btn-gold py-3.5 text-xs tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-pm-buy>${ic('cash','w-4 h-4')} Buy Now — COD</button>
       </div>
-      <button class="hidden md:flex pill btn-line w-full mt-3 py-3 text-xs" data-pm-wa>💬 Ask on WhatsApp</button>
+      <button class="hidden md:flex pill btn-line w-full mt-3 py-3 text-xs items-center justify-center gap-1.5" data-pm-wa>${ic('chat','w-4 h-4')} Ask on WhatsApp</button>
     </div>
   </div>
   <div class="md:hidden sticky bottom-0 border-t hairline p-3 flex gap-2 glassbar w-full">
-    <button class="pill btn-ink flex-1 py-3.5 text-[11px] tracking-wide2 uppercase" data-pm-add>Add</button>
-    <button class="pill btn-gold flex-1 py-3.5 text-[11px] tracking-wide2 uppercase" data-pm-buy>Buy — COD</button>
-    <button class="pill btn-line w-12 py-3.5" data-pm-wa aria-label="WhatsApp">💬</button>
+    <button class="pill btn-ink flex-1 py-3.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1" data-pm-add>${ic('cart','w-4 h-4')} Add</button>
+    <button class="pill btn-gold flex-1 py-3.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1" data-pm-buy>${ic('cash','w-4 h-4')} Buy</button>
+    <button class="pill btn-line w-12 py-3.5" data-pm-wa aria-label="WhatsApp">${ic('chat','w-4 h-4')}</button>
   </div>`;
   const on = $('#pmCustomOn');
   if (on){ on.addEventListener('change', () => { pm.customOn = on.checked; $('#pmCustomBox').classList.toggle('hidden', !on.checked); }); }
@@ -2488,23 +2702,23 @@ function buildBill(info, t, oid, otp){
 }
 /* ---------------- ORDER STATUS ENGINE ---------------- */
 const STAGES = [
-  { t:'Order Placed', icon:'✅' },
-  { t:'Confirmed on WhatsApp', icon:'💬' },
-  { t:'In Processing', icon:'⚙️' },
-  { t:'Order Packed', icon:'📦' },
-  { t:'Out for Delivery', icon:'🚚' },
-  { t:'Delivered', icon:'✅' }
+  { t:'Order Placed', icon:'check' },
+  { t:'Confirmed on WhatsApp', icon:'chat' },
+  { t:'In Processing', icon:'gear' },
+  { t:'Order Packed', icon:'box' },
+  { t:'Out for Delivery', icon:'truck' },
+  { t:'Delivered', icon:'check' }
 ];
 function getOrderStatus(order){
-  if (order.deliveredAt || order.manualStatus === 'Delivered') return { text:'Delivered', icon:'✅', color:'#059669' };
-  if (order.manualStatus === 'Cancelled') return { text:'Cancelled', icon:'❌', color:'#DC2626' };
-  if (order.manualStatus) return { text:order.manualStatus, icon:'📦', color:'var(--gold)' };
+  if (order.deliveredAt || order.manualStatus === 'Delivered') return { text:'Delivered', icon:'check', color:'#059669' };
+  if (order.manualStatus === 'Cancelled') return { text:'Cancelled', icon:'cross', color:'#DC2626' };
+  if (order.manualStatus) return { text:order.manualStatus, icon:'box', color:'var(--gold)' };
   const hrs = (Date.now() - order.timestamp) / 3600000;
-  if (hrs < 2)  return { text:'Order Placed', icon:'✅', color:'var(--mut)' };
-  if (hrs < 12) return { text:'Confirmed on WhatsApp', icon:'💬', color:'#25D366' };
-  if (hrs < 24) return { text:'In Processing', icon:'⚙️', color:'var(--gold)' };
-  if (hrs < 36) return { text:'Order Packed', icon:'📦', color:'#B08D57' };
-  return { text:'Out for Delivery', icon:'🚚', color:'#0284C7' };
+  if (hrs < 2)  return { text:'Order Placed', icon:'check', color:'var(--mut)' };
+  if (hrs < 12) return { text:'Confirmed on WhatsApp', icon:'chat', color:'#25D366' };
+  if (hrs < 24) return { text:'In Processing', icon:'gear', color:'var(--gold)' };
+  if (hrs < 36) return { text:'Order Packed', icon:'box', color:'#B08D57' };
+  return { text:'Out for Delivery', icon:'truck', color:'#0284C7' };
 }
 function currentStageIdx(order){
   const st = getOrderStatus(order).text;
@@ -2513,20 +2727,33 @@ function currentStageIdx(order){
 }
 function statusTimeline(order){
   const ci = currentStageIdx(order);
-  if (ci === -1) return `<p class="text-xs font-bold" style="color:#DC2626;">❌ Order Cancelled</p>`;
+  if (ci === -1) return `<p class="text-xs font-bold flex items-center gap-2" style="color:#DC2626;">${ic('cross','w-4 h-4')} Order Cancelled</p>`;
   const delivered = ci === 5;
-  return `<ol class="space-y-3 text-xs">` + STAGES.map((s,i) => {
+  
+  let html = `<div class="track-timeline">`;
+    
+  html += STAGES.map((s,i) => {
     const done = delivered ? true : i < ci;
     const active = !delivered && i === ci;
+    const cls = done ? 'done' : (active ? 'active' : '');
+    
     return `
-    <li class="flex gap-3 items-center">
-      <span class="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-extrabold shrink-0 ${active ? 'st-active' : ''}"
-        style="${done ? 'background:var(--text); color:var(--gold);' : active ? 'background:var(--gold); color:var(--on-gold);' : 'background:var(--bg2); color:var(--mut); border:1px solid var(--line);'}">
-        ${done ? '✓' : s.icon}
-      </span>
-      <span class="${done || active ? 'font-extrabold' : ''}" style="${done || active ? '' : 'color:var(--mut);'}">${s.t}</span>
-    </li>`;
-  }).join('') + `</ol>`;
+    <div class="track-step ${cls}">
+      <div class="track-icon">
+        ${done ? ic('check','w-4 h-4') : ic(s.icon,'w-4 h-4')}
+      </div>
+      <div class="pt-1">
+        <p class="text-[13px] font-bold" style="color: ${done || active ? 'var(--text)' : 'var(--mut)'};">${s.t}</p>
+        ${active ? `<p class="text-[11px] mt-0.5 font-medium flex items-center gap-1" style="color:var(--gold);">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse"></span> Currently In Progress
+        </p>` : ''}
+        ${done && i===5 ? `<p class="text-[11px] mt-0.5 font-medium" style="color:#059669;">Successfully Delivered</p>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+  
+  html += `</div>`;
+  return html;
 }
 /* ---------------- PLACE ORDER ---------------- */
 let lock = false;
@@ -2577,7 +2804,7 @@ function renderHistory(){
   });
   const box = $('#historyList');
   if (!orders.length){
-    box.innerHTML = '<div class="text-center py-20" style="color:var(--mut);"><span class="text-5xl block mb-4">📦</span>No active orders right now.</div>';
+    box.innerHTML = '<div class="text-center py-20 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 text-[var(--mut)]">${ic(\'box\',\'w-16 h-16\')}</span><p class="text-base font-bold">No active orders right now</p></div>';
     return;
   }
   box.innerHTML = orders.map(o => {
@@ -2591,7 +2818,7 @@ function renderHistory(){
           <b class="disp text-sm">${o.id}</b>
           <p class="text-[10px] mt-1" style="color:var(--mut);">${date}</p>
         </div>
-        <span class="chip" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${st.icon} ${st.text}</span>
+        <span class="chip gap-1" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
       </div>
       ${statusTimeline(o)}
       <div class="border-t hairline pt-3 space-y-2">
@@ -2613,7 +2840,7 @@ function renderHistory(){
           ${canCancel ? `<button class="chip text-[10px]" style="background:rgba(220,38,38,.1); color:#DC2626;" data-cancel-order="${o.id}">Cancel Order</button>` : ''}
         </div>
       </div>
-      ${o.otp && st.text !== 'Cancelled' ? `<p class="text-[10px] font-bold text-center py-2 rounded-lg" style="background:var(--bg2); color:var(--gold);">🔒 Delivery OTP: ${o.otp}</p>` : ''}
+      ${o.otp && st.text !== 'Cancelled' ? `<p class="text-[10px] font-bold text-center py-2 rounded-lg flex items-center justify-center gap-1.5" style="background:var(--bg2); color:var(--gold);">${ic('lock','w-3 h-3')} Delivery OTP: ${o.otp}</p>` : ''}
     </div>`;
   }).join('');
 }
@@ -2627,7 +2854,7 @@ function cancelOrder(orderId){
       order.manualStatus = 'Cancelled';
       store.set('orders', orders);
       renderHistory();
-      toast('Order Cancelled Successfully', '❌');
+      toast('Order Cancelled Successfully', 'cross');
       const cancelMsg = [
         '🔔 *ORDER CANCELLED*',
         '',
@@ -2652,7 +2879,7 @@ function cancelOrder(orderId){
       ].join('\n');
       goWA(cancelMsg);
     } else {
-      toast('Cannot cancel after 24 hours', '⚠️');
+      toast('Cannot cancel after 24 hours', 'warn');
     }
   }
 }
@@ -2700,17 +2927,17 @@ function track(){
       <div class="border hairline rounded-xl p-4 mb-4" style="background:var(--card);">
         <div class="flex justify-between items-center mb-2">
           <b class="text-sm">${o.id}</b>
-          <span class="chip" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${st.icon} ${st.text}</span>
+          <span class="chip gap-1" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
         </div>
         <p class="text-[10px]" style="color:var(--mut);">Placed: ${new Date(o.timestamp).toLocaleString('en-IN')}</p>
       </div>
       ${statusTimeline(o)}
-      <a class="pill btn-ink w-full py-3 mt-5 text-[10px] tracking-wide2 uppercase" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">Live Help on WhatsApp</a>`;
+      <a class="pill btn-ink w-full py-3 mt-5 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">${ic('chat','w-4 h-4')} Live Help on WhatsApp</a>`;
     return;
   }
   $('#trackResult').innerHTML = `
     <p class="text-xs mb-3" style="color:var(--mut);">Order not found on this device. Ask us live on WhatsApp:</p>
-    <a class="pill btn-ink w-full py-3 text-[10px] tracking-wide2 uppercase" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">Live Status on WhatsApp</a>`;
+    <a class="pill btn-ink w-full py-3 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">${ic('chat','w-4 h-4')} Live Status on WhatsApp</a>`;
 }
 /* ---------------- modals ---------------- */
 function openModal(id){ $('#'+id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
@@ -2803,22 +3030,22 @@ $('#delVerify').onclick = () => {
   const otp = $('#delOtp').value.trim();
   const orders = store.get('orders', []);
   const o = orders.find(x => x.id === id);
-  if (!o) return toast('Order not found', '❌');
+  if (!o) return toast('Order not found', 'cross');
   if (o.otp === otp){
     o.deliveredAt = Date.now();
     o.manualStatus = 'Delivered';
     store.set('orders', orders);
-    toast('Delivery Confirmed!', '✅');
+    toast('Delivery Confirmed!', 'check');
     $('#delOrderId').value = ''; $('#delOtp').value = '';
-  } else { toast('Invalid OTP', '❌'); }
+  } else { toast('Invalid OTP', 'cross'); }
 };
 $('#adminLoginBtn').onclick = () => {
   if ($('#adminPass').value === 'VEL2026'){
     adminAuth = true;
     $('#adminLoginBox').classList.add('hidden');
     $('#adminDashBox').classList.remove('hidden');
-    toast('Admin Unlocked', '🔓');
-  } else { toast('Wrong Passcode', '❌'); }
+    toast('Admin Unlocked', 'lock');
+  } else { toast('Wrong Passcode', 'cross'); }
 };
 $('#adminSearchId').addEventListener('input', debounce(() => {
   const q = $('#adminSearchId').value.trim().toUpperCase();
@@ -2832,7 +3059,7 @@ $('#adminSearchId').addEventListener('input', debounce(() => {
     <div class="border hairline rounded-xl p-4" style="background:var(--card);">
       <div class="flex justify-between items-center mb-2">
         <b class="text-sm">${o.id}</b>
-        <span class="chip" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${st.icon} ${st.text}</span>
+        <span class="chip gap-1" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
       </div>
       <p class="text-[10px] mb-3" style="color:var(--mut);">${o.customer.name} • ${o.customer.phone}</p>
       <div class="flex gap-2 flex-wrap">
@@ -2858,7 +3085,7 @@ $('#adminSearchId').addEventListener('input', debounce(() => {
       orders[idx].manualStatus = v || null;
       if (v === 'Delivered') orders[idx].deliveredAt = Date.now();
       store.set('orders', orders);
-      toast('Status Updated', '✅');
+      toast('Status Updated', 'check');
       $('#adminSearchId').dispatchEvent(new Event('input'));
     }
   };
