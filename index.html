@@ -21,6 +21,8 @@
     content="Graphic, Minimalist, Custom, Cropped, Polo & Anime Tees • New Drops • Best Sell • Under ₹499 / ₹599 / ₹699 • COD India • WhatsApp order.">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdn.tailwindcss.com https://fonts.googleapis.com https://fonts.gstatic.com https://wa.me https://api.whatsapp.com https://www.instagram.com https://www.google.com https://open.er-api.com https://ipapi.co https://ipwho.is;">
   <link rel="icon" type="image/png" href="images/android-chrome-512x512.png">
   <link rel="apple-touch-icon" href="images/android-chrome-512x512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,12 +33,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-theme: { extend: {
-colors: { gld: 'var(--gold)', gld2: 'var(--gold2)', bgc: 'var(--bg)', bg2: 'var(--bg2)', crd: 'var(--card)', txt: 'var(--text)', mut: 'var(--mut)', lne: 'var(--line)' },
+theme: {
+extend: {
+colors: {
+gld: 'var(--gold)', gld2: 'var(--gold2)', bgc: 'var(--bg)', bg2: 'var(--bg2)',
+crd: 'var(--card)', txt: 'var(--text)', mut: 'var(--mut)', lne: 'var(--line)'
+},
 fontFamily: { sans: ['Poppins','system-ui','sans-serif'], luxe: ['Cinzel','serif'] },
-boxShadow: { soft: '0 14px 40px -18px rgba(0,0,0,.25)', lift: '0 30px 70px -28px rgba(0,0,0,.45)', bar: '0 -10px 34px -14px rgba(0,0,0,.25)' },
+boxShadow: {
+soft: '0 14px 40px -18px rgba(0,0,0,.25)',
+lift: '0 30px 70px -28px rgba(0,0,0,.45)',
+bar: '0 -10px 34px -14px rgba(0,0,0,.25)'
+},
 letterSpacing: { wide2: '.08em', luxe: '.25em' }
-}}
+}
+}
 }
   </script>
   <style>
@@ -71,7 +82,6 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
     html,
     body {
       overflow-x: hidden;
-      overflow-x: clip;
       max-width: 100%;
     }
 
@@ -90,11 +100,8 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
     }
 
     img {
-      transition: opacity .5s ease, transform .9s cubic-bezier(.2, .7, .2, 1);
-    }
-
-    img.img-pending {
       opacity: 0;
+      transition: opacity .5s ease, transform .9s cubic-bezier(.2, .7, .2, 1);
     }
 
     img.ld {
@@ -247,7 +254,7 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
 
     .field:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent);
+      box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.25);
     }
 
     .field::placeholder {
@@ -277,7 +284,7 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       .card:hover {
         transform: translateY(-8px);
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .15);
-        border-color: color-mix(in srgb, var(--gold) 40%, var(--line));
+        border-color: rgba(176, 141, 87, 0.4);
       }
 
       .card:hover .cardimg img {
@@ -336,7 +343,25 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
 
     .card button[data-wish]:hover {
       transform: scale(1.1);
-      background: color-mix(in srgb, var(--gold) 10%, var(--card));
+      background: rgba(176, 141, 87, 0.1);
+    }
+
+    .card button[data-wish]:hover svg {
+      animation: heartBeat .4s ease-in-out;
+    }
+
+    @keyframes heartBeat {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     .cardimg .swap {
@@ -371,6 +396,14 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       cursor: pointer;
       transition: transform .2s, box-shadow .2s;
       flex: none;
+    }
+
+    .dot:hover {
+      transform: scale(1.2);
+    }
+
+    .dot.on {
+      box-shadow: 0 0 0 2px var(--gold);
     }
 
     .swatch {
@@ -453,6 +486,30 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       }
     }
 
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-36px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes fadeRight {
+      from {
+        opacity: 0;
+        transform: translateX(36px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     @keyframes zoomIn {
       from {
         opacity: 0;
@@ -462,6 +519,18 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       to {
         opacity: 1;
         transform: scale(1);
+      }
+    }
+
+    @keyframes flipIn {
+      from {
+        opacity: 0;
+        transform: perspective(800px) rotateX(18deg) translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
       }
     }
 
@@ -513,12 +582,34 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       }
     }
 
+    @keyframes pulseWa {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, .45);
+      }
+
+      100% {
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+    }
+
     .a-up {
       animation: fadeUp .8s both;
     }
 
+    .a-left {
+      animation: fadeLeft .8s both;
+    }
+
+    .a-right {
+      animation: fadeRight .8s both;
+    }
+
     .a-zoom {
       animation: zoomIn .7s both;
+    }
+
+    .a-flip {
+      animation: flipIn .8s both;
     }
 
     .a-pop {
@@ -533,36 +624,50 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       animation: fadeUp .6s cubic-bezier(.2, .7, .2, 1) both;
     }
 
+    .ha-left {
+      animation: fadeLeft .6s cubic-bezier(.2, .7, .2, 1) both;
+    }
+
+    .ha-right {
+      animation: fadeRight .6s cubic-bezier(.2, .7, .2, 1) both;
+    }
+
     .ha-zoom {
       animation: zoomIn .6s cubic-bezier(.2, .7, .2, 1) both;
     }
 
+    /* FIX: Prevent hidden elements if JS fails to load on mobile */
     [data-reveal] {
-      transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1);
-      will-change: opacity, transform;
+      opacity: 1;
+      transform: none;
     }
 
-    [data-reveal].reveal-prep {
+    .js-enabled [data-reveal] {
       opacity: 0;
+      transition: all .9s cubic-bezier(.2, .7, .2, 1);
     }
 
-    [data-reveal="up"].reveal-prep {
+    .js-enabled [data-reveal="up"] {
       transform: translateY(40px);
     }
 
-    [data-reveal="left"].reveal-prep {
+    .js-enabled [data-reveal="left"] {
       transform: translateX(-46px);
     }
 
-    [data-reveal="right"].reveal-prep {
+    .js-enabled [data-reveal="right"] {
       transform: translateX(46px);
     }
 
-    [data-reveal="zoom"].reveal-prep {
+    .js-enabled [data-reveal="zoom"] {
       transform: scale(.88);
     }
 
-    [data-reveal].revealed {
+    .js-enabled [data-reveal="flip"] {
+      transform: perspective(800px) rotateX(16deg) translateY(28px);
+    }
+
+    .js-enabled [data-reveal].revealed {
       opacity: 1;
       transform: none;
     }
@@ -573,6 +678,10 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
 
     .toast {
       animation: popIn .35s both;
+    }
+
+    .wa-float {
+      animation: pulseWa 1.8s infinite;
     }
 
     .hero-slide {
@@ -588,6 +697,26 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       min-height: calc(100dvh - 120px);
     }
 
+    .db {
+      display: none;
+    }
+
+    @keyframes pulseDot {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.6);
+      }
+
+      50% {
+        box-shadow: 0 0 0 8px transparent;
+      }
+    }
+
+    .st-active {
+      animation: pulseDot 1.6s infinite;
+    }
+
     .track-timeline {
       display: flex;
       flex-direction: row;
@@ -596,7 +725,6 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       width: 100%;
       overflow-x: auto;
       scrollbar-width: none;
-      padding-bottom: 4px;
     }
 
     .track-timeline::-webkit-scrollbar {
@@ -622,50 +750,50 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       height: 3px;
       background: var(--line);
       z-index: 0;
-      border-radius: 2px;
-      overflow: hidden;
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 0.8s ease, background 0.5s ease;
     }
 
-    .track-step::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 15px;
-      width: 0%;
-      height: 3px;
-      background: var(--gold);
-      z-index: 1;
-      border-radius: 2px;
-      transition: width .8s ease;
-    }
-
-    .track-step:last-child::before,
-    .track-step:last-child::after {
+    .track-step:last-child::before {
       display: none;
     }
 
-    .track-step.done::after {
-      width: 100%;
-      background: var(--gold);
-    }
-
     .track-step.done::before {
-      background: color-mix(in srgb, var(--gold) 35%, var(--line));
+      background: var(--gold);
+      transform: scaleX(1);
+      animation: fillLine 1.2s cubic-bezier(.4, 0, .2, 1) forwards;
     }
 
-    .track-step.active::after {
-      width: var(--partial, 0%);
+    .track-step.active::before {
       background: var(--gold);
-      animation: fillLine 1.5s ease forwards;
+      animation: pulseLine 2s infinite ease-in-out;
     }
 
     @keyframes fillLine {
-      from {
-        width: 0%;
+      0% {
+        transform: scaleX(0);
       }
 
-      to {
-        width: var(--partial, 0%);
+      100% {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes pulseLine {
+      0% {
+        transform: scaleX(0.2);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scaleX(0.6);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scaleX(0.2);
+        opacity: 0.5;
       }
     }
 
@@ -686,37 +814,31 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
     }
 
     .track-step.done .track-icon {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #fff;
+      background: var(--text);
+      border-color: var(--text);
+      color: var(--gold);
     }
 
     .track-step.active .track-icon {
       background: var(--gold);
       border-color: var(--gold);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(176, 141, 87, .35);
+      box-shadow: 0 0 0 6px rgba(176, 141, 87, .15), 0 4px 12px rgba(176, 141, 87, .3);
+      animation: pulseTrack 2.5s infinite;
     }
 
-    .progress-timer {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 12px;
-      padding: 8px 14px;
-      background: var(--bg2);
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--gold);
-    }
+    @keyframes pulseTrack {
+      0% {
+        box-shadow: 0 0 0 0 rgba(176, 141, 87, .4), 0 4px 12px rgba(176, 141, 87, .3);
+      }
 
-    .progress-timer .dot-live {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
+      70% {
+        box-shadow: 0 0 0 12px rgba(176, 141, 87, 0), 0 4px 12px rgba(176, 141, 87, .3);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(176, 141, 87, 0), 0 4px 12px rgba(176, 141, 87, .3);
+      }
     }
 
     @media (max-width:767px) {
@@ -799,7 +921,15 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
     }
   </style>
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"ClothingStore","name":"Joseph & James","telephone":"+917434053550","email":"xyz@gmail.com","sameAs":["https://www.instagram.com/josephandjames","https://wa.me/917434053550"],"paymentAccepted":"Cash on Delivery"}
+    {
+"@context":"https://schema.org",
+"@type":"ClothingStore",
+"name":"Joseph & James",
+"telephone":"+917434053550",
+"email":"xyz@gmail.com",
+"sameAs":["https://www.instagram.com/josephandjames","https://wa.me/917434053550"],
+"paymentAccepted":"Cash on Delivery"
+}
   </script>
 </head>
 
@@ -878,6 +1008,7 @@ Detecting…
             <img src="images/logo.png" class="h-12 w-auto object-contain" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <span class="h-12 items-center font-luxe text-xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH & JAMES</span>
           </div>
+          <!-- REMOVED CLOSE BUTTON AS REQUESTED -->
         </div>
       </div>
       <nav class="flex-1 p-4 space-y-2.5" id="mobileNav"></nav>
@@ -903,7 +1034,7 @@ Detecting…
   </div>
   <main class="w-full">
     <section id="heroSec" class="relative overflow-hidden w-full" aria-label="Hero"
-      style="background:radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb,var(--gold) 18%,transparent), transparent 60%), radial-gradient(900px 500px at 10% 110%, color-mix(in srgb,var(--gold) 12%,transparent), transparent 55%), linear-gradient(135deg,var(--bg2),var(--bg));">
+      style="background:radial-gradient(1200px 600px at 80% -10%, rgba(176, 141, 87, 0.18), transparent 60%), radial-gradient(900px 500px at 10% 110%, rgba(176, 141, 87, 0.12), transparent 55%), linear-gradient(135deg,var(--bg2),var(--bg));">
       <div id="heroSlides" class="w-full"></div>
       <button id="heroPrev" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-11 md:h-11 rounded-full border hairline glassbar transition hover:text-gld" aria-label="Previous slide">‹</button>
       <button id="heroNext" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-11 md:h-11 rounded-full border hairline glassbar transition hover:text-gld" aria-label="Next slide">›</button>
@@ -931,12 +1062,15 @@ Detecting…
       </div>
     </section>
     <section class="py-10 md:py-16 w-full" style="background:var(--bg);" id="sec-featured">
-      <div class="wrap text-center mb-8" data-reveal="up">
-        <p class="micro micro-gold mb-2">Joseph & James</p>
-        <h2 class="disp font-semibold" style="font-size:var(--fs-h2);">Featured Collection</h2>
-        <p class="text-xs mt-2" style="color:var(--mut);">6 Categories · 5 Best Picks Each</p>
+      <div class="wrap flex items-end justify-between mb-6 md:mb-8" data-reveal="up">
+        <div>
+          <p class="micro micro-gold mb-2">Joseph & James</p>
+          <h2 class="disp font-semibold" style="font-size:var(--fs-h2);">Featured Collection</h2>
+        </div>
+        <button class="micro micro-gold transition shrink-0" data-catpage="">View All →</button>
       </div>
-      <div id="featuredGrid" class="w-full"></div>
+      <div class="wrap grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6" id="featuredGrid"
+        data-reveal="up" data-delay="100"></div>
     </section>
     <section class="wrap py-10 md:py-16 w-full">
       <div class="grid md:grid-cols-2 gap-4 md:gap-6">
@@ -1102,10 +1236,10 @@ Detecting…
         <p class="micro mb-4" style="color:var(--gold);">Reach Us</p>
         <ul class="space-y-3 text-sm">
           <li><a href="tel:7434053550"
-              class="flex items-center gap-3 hover:text-gld transition"><span class="text-[var(--gold)]"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>7434053550
+              class="flex items-center gap-3 hover:text-gld transition"><span class="text-[var(--gold)]"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>7434053550
               <span class="chip border hairline text-[9px]" style="background:var(--card);">TAP TO CALL</span></a></li>
           <li><a href="mailto:xyz@gmail.com"
-              class="flex items-center gap-3 hover:text-gld transition"><span class="text-[var(--gold)]"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>xyz@gmail.com</span></a>
+              class="flex items-center gap-3 hover:text-gld transition"><span class="text-[var(--gold)]"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>xyz@gmail.com</span></a>
           </li>
           <li>
             <button id="footAdmin" class="hover:text-gld transition text-[10px] tracking-widest uppercase" style="color:var(--mut);">Staff / Admin Portal</button>
@@ -1118,9 +1252,9 @@ Detecting…
         style="color:var(--mut);">
         <p>© 2026 Joseph & James. All rights reserved.</p>
         <p class="flex gap-4 items-center font-extrabold" style="color:var(--text);">
-          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> COD India</span>
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> COD India</span>
           •
-          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Worldwide</span>
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Worldwide</span>
           •
           <span>⟲ No Return</span>
         </p>
@@ -1186,7 +1320,7 @@ Detecting…
           </div>
           <div class="p-4 md:p-5 space-y-3 w-full">
             <p class="micro micro-gold flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2">
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                 <circle cx="12" cy="10" r="3" />
               </svg> Delivery Details — Cash on Delivery</p>
@@ -1194,7 +1328,7 @@ Detecting…
               style="background:var(--bg2);">
               <p class="text-[11px] font-bold flex items-center gap-1.5" style="color:var(--text);"><svg
                   class="w-3.5 h-3.5 text-[var(--gold)]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg> <span id="coCountryTxt">Detecting…</span></p>
@@ -1216,7 +1350,7 @@ Place Order on WhatsApp — COD
 </button>
             <p class="text-[10px] text-center flex items-center justify-center gap-1" style="color:var(--mut);"><svg
                 class="w-3.5 h-3.5 text-[#DC2626]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
                 <line x1="12" y1="9" x2="12" y2="13" />
                 <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -1279,7 +1413,8 @@ Place Order on WhatsApp — COD
       </div>
       <div class="border hairline rounded-2xl p-5 mb-6" style="background:var(--bg2);">
         <h4 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:var(--gold);">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <rect x="1" y="3" width="15" height="13" />
             <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
             <circle cx="5.5" cy="18.5" r="2.5" />
@@ -1293,7 +1428,8 @@ Place Order on WhatsApp — COD
       </div>
       <div class="border hairline rounded-2xl p-5" style="background:var(--bg2);">
         <h4 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:var(--gold);">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
             <path d="M7 11V7a5 5 0 0 1 10 0v4" />
           </svg>
@@ -1365,7 +1501,7 @@ Place Order on WhatsApp — COD
   <div id="toasts" class="fixed top-20 right-3 md:right-5 z-[99] space-y-3 w-[19rem] max-w-[92vw]"></div>
   <a id="waFloat" href="https://wa.me/917434053550?text=Hi%20Joseph%20%26%20James!" target="_blank" rel="noopener"
     aria-label="WhatsApp"
-    class="fixed bottom-6 right-6 z-[65] w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lift transition hover:scale-110">
+    class="wa-float fixed bottom-6 right-6 z-[65] w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lift transition hover:scale-110">
     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
       <path
         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -1374,6 +1510,8 @@ Place Order on WhatsApp — COD
   <button id="toTop" class="fixed bottom-24 md:bottom-6 left-4 md:left-6 z-[65] w-11 h-11 rounded-full shadow-lift opacity-0 pointer-events-none transition hover:scale-110" style="background:var(--text); color:var(--bg);" aria-label="Top">↑</button>
   <script>
     'use strict';
+document.documentElement.classList.add('js-enabled'); // FIX: Ensures CSS fallback works if JS crashes
+
 const $ = (s,r=document) => r.querySelector(s);
 const $$ = (s,r=document) => [...r.querySelectorAll(s)];
 const esc = (s='') => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -1390,6 +1528,16 @@ const n = parseInt(hex.slice(1),16), a = p < 0 ? 0 : 255, q = Math.abs(p)/100;
 const r = n>>16, g = n>>8 & 255, b = n & 255;
 const f = c => Math.round((a-c)*q + c);
 return '#' + [f(r),f(g),f(b)].map(c => c.toString(16).padStart(2,'0')).join('');
+}
+function hexToRgba(hex, alpha) {
+    if (!hex) return `rgba(176, 141, 87, ${alpha})`;
+    if (hex.startsWith('#')) {
+        const r = parseInt(hex.slice(1,3), 16);
+        const g = parseInt(hex.slice(3,5), 16);
+        const b = parseInt(hex.slice(5,7), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+    return hex;
 }
 const ICONS = {
 phone:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
@@ -1418,8 +1566,7 @@ ruler:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
 share:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
 camera:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
 chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
-tag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`,
-clock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
+tag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`
 };
 function ic(n,c='w-4 h-4'){ return `<span class="inline-flex items-center justify-center ${c}">${ICONS[n]||''}</span>`; }
 const SC = {};
@@ -1444,9 +1591,8 @@ if (t.dataset.fbed) return;
 t.dataset.fbed = '1';
 t.src = studio(t.dataset.fbcat, t.dataset.fbhex || '#171410', +(t.dataset.fba || 0));
 t.classList.add('ld');
-t.classList.remove('img-pending');
 };
-window.__imgld = function(t){ t.classList.add('ld'); t.classList.remove('img-pending'); };
+window.__imgld = function(t){ t.classList.add('ld'); };
 const MARKUP = 5.00;
 const COUNTRY_CUR = { IN:'INR',US:'USD',GB:'GBP',AE:'AED',SA:'SAR',QA:'QAR',KW:'KWD',BH:'BHD',OM:'OMR',JO:'JOD',EG:'EGP',ZA:'ZAR',NG:'NGN',KE:'KES',GH:'GHS',MA:'MAD',TR:'TRY',AU:'AUD',NZ:'NZD',CA:'CAD',SG:'SGD',MY:'MYR',TH:'THB',ID:'IDR',PH:'PHP',VN:'VND',KR:'KRW',JP:'JPY',CN:'CNY',HK:'HKD',BD:'BDT',PK:'PKR',LK:'LKR',NP:'NPR',CH:'CHF',SE:'SEK',NO:'NOK',DK:'DKK',PL:'PLN',RU:'RUB',UA:'UAH',MX:'MXN',BR:'BRL',AR:'ARS',CL:'CLP',CO:'COP',PE:'PEN',DZ:'DZD',TN:'TND',IL:'ILS',DE:'EUR',FR:'EUR',IT:'EUR',ES:'EUR',NL:'EUR',BE:'EUR',PT:'EUR',IE:'EUR',AT:'EUR',FI:'EUR',GR:'EUR' };
 const COUNTRY_NAME = { IN:'India',US:'United States',GB:'United Kingdom',AE:'UAE',SA:'Saudi Arabia',QA:'Qatar',KW:'Kuwait',BH:'Bahrain',OM:'Oman',JO:'Jordan',EG:'Egypt',ZA:'South Africa',NG:'Nigeria',KE:'Kenya',GH:'Ghana',MA:'Morocco',TR:'Türkiye',AU:'Australia',NZ:'New Zealand',CA:'Canada',SG:'Singapore',MY:'Malaysia',TH:'Thailand',ID:'Indonesia',PH:'Philippines',VN:'Vietnam',KR:'South Korea',JP:'Japan',CN:'China',HK:'Hong Kong',BD:'Bangladesh',PK:'Pakistan',LK:'Sri Lanka',NP:'Nepal',CH:'Switzerland',SE:'Sweden',NO:'Norway',DK:'Denmark',PL:'Poland',RU:'Russia',UA:'Ukraine',MX:'Mexico',BR:'Brazil',AR:'Argentina',CL:'Chile',CO:'Colombia',PE:'Peru',DZ:'Algeria',TN:'Tunisia',IL:'Israel',DE:'Germany',FR:'France',IT:'Italy',ES:'Spain',NL:'Netherlands',BE:'Belgium',PT:'Portugal',IE:'Ireland',AT:'Austria',FI:'Finland',GR:'Greece' };
@@ -1579,16 +1725,21 @@ if (ct) ct.textContent = `${COUNTRY_NAME[country] || country} (${c})`;
 }
 const curCode = () => COUNTRY_CUR[country] || 'USD';
 function fmt(inr){
-if (country === 'IN') return '₹' + Number(inr).toLocaleString('en-IN');
-const c = curCode();
-if (RATES && Number(RATES[c]) > 0){
-const v = inr * MARKUP * RATES[c];
-try{ return new Intl.NumberFormat(undefined, { style:'currency', currency:c, minimumFractionDigits:0, maximumFractionDigits:2 }).format(v); }
-catch(e){ return c + ' ' + Math.round(v); }
+    inr = Number(inr) || 0;
+    if (isNaN(inr)) inr = 0;
+    if (country === 'IN') return '₹' + inr.toLocaleString('en-IN');
+    const c = curCode();
+    if (RATES && RATES[c] && Number(RATES[c]) > 0){
+        const v = inr * MARKUP * RATES[c];
+        if (isNaN(v)) return '₹' + inr.toLocaleString('en-IN');
+        try{ return new Intl.NumberFormat(undefined, { style:'currency', currency:c, minimumFractionDigits:0, maximumFractionDigits:2 }).format(v); }
+        catch(e){ return c + ' ' + Math.round(v); }
+    }
+    return '₹' + inr.toLocaleString('en-IN');
 }
-return '…';
-}
+let liveRefresh = false;
 function refreshPrices(){
+liveRefresh = true;
 renderFeatured();
 updateHeroPrices();
 renderCart();
@@ -1603,6 +1754,8 @@ const CATMETA = {
 'polo-tee': { name:'Polo T-Shirts', main:'T-Shirt', type:'clothing', views:2 },
 'anime-tee': { name:'Anime/Gaming Tees', main:'T-Shirt', type:'clothing', views:2 }
 };
+const TSHIRT_CATS = Object.keys(CATMETA);
+const SHIRT_CATS = [];
 const PRODUCTS = [];
 function generateProducts() {
 const names = {
@@ -1619,8 +1772,11 @@ names[cat].forEach((name, i) => {
 const price = [499, 549, 599, 649, 699][i % 5];
 PRODUCTS.push({
 id: `p${pid++}`,
-cat, anim: 'up',
-name, price, mrp: price + 500,
+cat,
+anim: 'up',
+name,
+price,
+mrp: price + 500,
 rating: +(4.5 + Math.random() * 0.5).toFixed(1),
 reviews: Math.floor(50 + Math.random() * 150),
 tags: i < 2 ? 'new' : (i < 4 ? 'best' : (i < 5 ? 'hot' : '')),
@@ -1636,6 +1792,7 @@ const prodById = id => PRODUCTS.find(p => p.id === id);
 const offPct = p => Math.round((1 - p.price / p.mrp) * 100);
 const stars = r => { const f = Math.round(r); return '<span style="color:var(--gold);font-size:11px;">' + '★'.repeat(f) + '☆'.repeat(5-f) + '</span>'; };
 const viewsOf = p => CATMETA[p.cat].views;
+const slug = c => c.toLowerCase().replace(/[^a-z0-9]+/g,'');
 function imgURLs(p,color){
 const pidNum = parseInt(p.id.replace('p', ''), 10);
 const imgIndex = ((pidNum - 1) % 20) + 1;
@@ -1645,7 +1802,7 @@ return Array.from({ length: viewsOf(p) }, (_,i) => base + (i+1) + '.jpeg');
 const hexOf = (p,c) => (p.colors.find(x => x[0] === c) || p.colors[0])[1];
 function imgTag(p,color,a,cls,extra,eager){
 const h = hexOf(p,color);
-return `<img ${extra||''} class="${cls} img-pending" onerror="__imgfb(this)" onload="__imgld(this)" data-fbcat="${p.cat}" data-fbhex="${h}" data-fba="${a}" src="${imgURLs(p,color)[a]}" alt="${esc(p.name)} ${['Front','Back'][a]||''}" loading="${eager?'eager':'lazy'}" decoding="async" style="height:100%; width:100%; object-fit:cover;">`;
+return `<img ${extra||''} class="${cls}" onerror="__imgfb(this)" onload="__imgld(this)" data-fbcat="${p.cat}" data-fbhex="${h}" data-fba="${a}" src="${imgURLs(p,color)[a]}" alt="${esc(p.name)} ${['Front','Back'][a]||''}" loading="${eager?'eager':'lazy'}" decoding="async" style="height:100%; width:100%; object-fit:cover;">`;
 }
 function heroImg(p,color){
 const h = hexOf(p,color);
@@ -1696,28 +1853,28 @@ ${multi
 let cart = store.get('cart', []);
 let wish = store.get('wish', []);
 function renderFeatured(){
-const cats = Object.keys(CATMETA);
-let html = '';
-cats.forEach(cat => {
-const prods = PRODUCTS.filter(p => p.cat === cat).slice(0, 5);
-if (!prods.length) return;
-html += `
-<div class="wrap mb-10 md:mb-14">
-<div class="flex items-end justify-between mb-5 gap-3">
-<div>
-<p class="micro micro-gold mb-1">${esc(CATMETA[cat].name)}</p>
-<h3 class="disp font-semibold" style="font-size:clamp(1rem, .8rem + 1vw, 1.35rem);">Trending Now</h3>
-</div>
-<button class="micro micro-gold transition shrink-0" data-catpage="${cat}">View All →</button>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-${prods.map((p, i) => card(p, 'a-up', i * 50)).join('')}
-</div>
-</div>`;
-});
-$('#featuredGrid').innerHTML = html;
+    let html = '';
+    const categories = Object.keys(CATMETA);
+    categories.forEach((cat, catIdx) => {
+        const prods = PRODUCTS.filter(p => p.cat === cat).slice(0, 5);
+        if(prods.length === 0) return;
+        html += `<div class="col-span-full flex items-center justify-between mt-8 mb-3 ${catIdx === 0 ? 'mt-0' : ''}">
+            <h3 class="disp text-base md:text-lg font-bold" style="color:var(--text);">${CATMETA[cat].name}</h3>
+            <button class="micro micro-gold transition shrink-0 flex items-center gap-1" data-catpage="${cat}">View All <span>→</span></button>
+        </div>`;
+        html += prods.map((p, i) => `<div>${card(p, 'a-up', i * 50)}</div>`).join('');
+    });
+    $('#featuredGrid').innerHTML = html;
 }
 function renderMobileNav(){
+const icons = {
+'graphic-tee':ic('sparkle'),
+'minimal-tee':ic('tshirt'),
+'custom-tee':ic('palette'),
+'cropped-tee':ic('heart'),
+'polo-tee':ic('shirt'),
+'anime-tee':ic('fire')
+};
 const top = [
 { l:'New Drops', a:'data-catpage="new"', i:ic('sparkle') },
 { l:'Best Sell', a:'data-catpage="best"', i:ic('fire') },
@@ -1728,10 +1885,11 @@ const top = [
 { l:'My Orders', a:'data-openhistory', i:ic('box') },
 { l:'Contact', a:'href="#contact" data-close="mobileMenu"', i:ic('chat') }
 ];
-$('#mobileNav').innerHTML = top.map((it,idx) => `
-<button class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl border hairline transition active:scale-[0.98] text-left" style="background:color-mix(in srgb, var(--card) 55%, transparent); animation:fadeUp .5s both; animation-delay:${idx*40}ms;" ${it.a}>
+const all = [...top];
+$('#mobileNav').innerHTML = all.map((it,idx) => `
+<button class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl border hairline transition active:scale-[0.98] text-left" style="background:rgba(255, 255, 255, 0.55); animation:fadeUp .5s both; animation-delay:${idx*40}ms;" ${it.a}>
 <span class="flex items-center gap-3 min-w-0">
-<span class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 text-[var(--gold)]" style="background:color-mix(in srgb, var(--gold) 14%, transparent);">${it.i}</span>
+<span class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 text-[var(--gold)]" style="background:rgba(176, 141, 87, 0.14);">${it.i}</span>
 <span class="disp text-[15px] font-medium truncate">${esc(it.l)}</span>
 </span>
 <span class="micro micro-gold shrink-0">→</span>
@@ -1742,13 +1900,16 @@ function renderShopCats() {
 $('#shopCats').innerHTML = Object.keys(CATMETA).map(c => {
 const prod = PRODUCTS.find(p => p.cat === c);
 return `
-<button class="group flex flex-col items-center gap-3 text-center w-full" data-catpage="${c}">
+<button class="group flex flex-col items-center gap-3 text-center" data-catpage="${c}">
 <div class="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden border hairline shadow-soft transition group-hover:shadow-lift group-hover:-translate-y-2" style="background:var(--card);">
 ${prod ? imgTag(prod, prod.colors[0][0], 0, 'w-full h-full object-cover transition group-hover:scale-110') : ''}
-<div class="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none" style="background:linear-gradient(to top, rgba(0,0,0,.35), transparent);"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-0 right-0 flex flex-col items-center gap-1 text-white">
+<span class="text-xs md:text-sm font-bold drop-shadow-lg">${CATMETA[c].name}</span>
 </div>
-<span class="text-xs md:text-sm font-semibold leading-tight" style="color:var(--text);">${esc(CATMETA[c].name)}</span>
-</button>`;
+</div>
+</button>
+`;
 }).join('');
 }
 function renderInsta(){
@@ -1826,7 +1987,7 @@ set('.hero-off-badge', '✦ ' + offPct(p) + '% OFF');
 }
 function renderDots(){
 const total = buildSlides().length;
-$('#heroDots').innerHTML = Array.from({ length: total }, (_,i) => `<button class="h-[3px] rounded-full transition-all" style="background:${i===sIdx ? 'var(--gold)' : 'color-mix(in srgb, var(--text) 25%, transparent)'}; width:${i===sIdx ? '2rem' : '0.9rem'};" data-slide-go="${i}" aria-label="Slide ${i+1}"></button>`).join('');
+$('#heroDots').innerHTML = Array.from({ length: total }, (_,i) => `<button class="h-[3px] rounded-full transition-all" style="background:${i===sIdx ? 'var(--gold)' : 'rgba(23, 20, 16, 0.25)'}; width:${i===sIdx ? '2rem' : '0.9rem'};" data-slide-go="${i}" aria-label="Slide ${i+1}"></button>`).join('');
 }
 function replayAnims(slide){
 slide.querySelectorAll('[class*="ha-"]').forEach(el => { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
@@ -1840,7 +2001,7 @@ renderDots();
 function startSlider(){
 if (reduceMotion) return;
 clearInterval(sTimer);
-sTimer = setInterval(() => goSlide(sIdx+1), 5000);
+sTimer = setInterval(() => goSlide(sIdx+1), 3000);
 }
 function sizeHero(){
 const hh = $('#header') ? $('#header').offsetHeight : 0;
@@ -1850,24 +2011,10 @@ if (sec) sec.style.minHeight = avail + 'px';
 $$('.hero-slide').forEach(s => { s.style.minHeight = avail + 'px'; });
 }
 function reveal(){
-const els = $$('[data-reveal]');
-els.forEach(el => el.classList.add('reveal-prep'));
-const show = (el) => {
-setTimeout(() => el.classList.add('revealed'), +el.dataset.delay || 0);
-};
-if (!('IntersectionObserver' in window)) {
-els.forEach(show);
-return;
-}
-try{
 const io = new IntersectionObserver(es => es.forEach(e => {
-if (e.isIntersecting){ show(e.target); io.unobserve(e.target); }
-}), { threshold: 0.01, rootMargin: '0px 0px -30px 0px' });
-els.forEach(el => io.observe(el));
-}catch(e){
-els.forEach(show);
-}
-setTimeout(() => els.forEach(el => el.classList.add('revealed')), 2500);
+if (e.isIntersecting){ const el = e.target; setTimeout(() => el.classList.add('revealed'), +el.dataset.delay || 0); io.unobserve(el); }
+}), { threshold:.1 });
+$$('[data-reveal]').forEach(el => io.observe(el));
 }
 function toast(msg, iconName){
 const t = document.createElement('div');
@@ -1899,7 +2046,7 @@ if (last >= 1499) del = 0;
 else if (last >= 999) del = 49;
 else del = 99;
 }
-return { sub, del, total:last + del, last };
+return { sub, disc:0, del, total:last + del, last, ci:null };
 }
 function renderCart(){
 const n = cart.reduce((a,l) => a + l.qty, 0);
@@ -1957,12 +2104,12 @@ renderWish();
 function renderWish(){
 $('#wishCount').textContent = wish.length;
 const box = $('#wishItems');
-if (!wish.length){ box.innerHTML = `<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 a-float">${ic('heart','w-16 h-16')}</span><p class="text-base font-bold">Nothing saved yet</p></div>`; return; }
+if (!wish.length){ box.innerHTML = `<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 a-float text-[var(--mut)]">${ic('heart','w-16 h-16')}</span><p class="text-base font-bold">Nothing saved yet</p></div>`; return; }
 box.innerHTML = wish.map(id => {
 const p = prodById(id);
 if (!p) return '';
 return `
-<div class="flex gap-3 border hairline rounded-3xl p-3 w-full" style="background:var(--card);">
+<div class="flex gap-3 border hairline rounded-3xl p-3 a-left w-full" style="background:var(--card);">
 <div class="w-20 h-24 rounded-2xl overflow-hidden cursor-pointer" style="background:var(--bg2);" data-open-product="${p.id}">${imgTag(p,p.colors[0][0],0,'w-full h-full object-cover')}</div>
 <div class="flex-1 min-w-0">
 <h4 class="text-xs font-extrabold truncate">${esc(p.name)}</h4>
@@ -1982,11 +2129,12 @@ if (!p) return;
 pm = { id, color:0, size:0, qty:1, angle:0, customOn:false, customPos:'Front + Back', customNote:'', colorChoice:'' };
 drawProduct();
 openModal('productModal', true);
-if (!skipRoute) history.pushState({ modal: 'productModal', id }, '', '#product/' + id);
+if (!skipRoute) {
+history.pushState({ modal: 'productModal', id }, '', '#product/' + id);
+}
 }
 function drawProduct(){
 const p = prodById(pm.id);
-if (!p) return;
 const cn = p.colors[pm.color][0];
 const imgs = imgURLs(p,cn);
 const isT = p.cat.includes('tee');
@@ -2126,7 +2274,8 @@ else if (cp.special === 'under599') title = 'Under ₹599';
 else if (cp.special === 'under699') title = 'Under ₹699';
 else if (cp.cat && CATMETA[cp.cat]) title = CATMETA[cp.cat].name;
 $('#catPageTitle').textContent = `${title} (${items.length})`;
-$('#catPageGrid').innerHTML = items.map((p,i) => card(p,'a-up',(i%8)*50)).join('') || '<p class="col-span-full text-center py-20" style="color:var(--mut);">No products found.</p>';
+let html = items.map((p,i) => card(p,'a-up',(i%8)*50)).join('');
+$('#catPageGrid').innerHTML = html || '<p class="col-span-full text-center py-20" style="color:var(--mut);">No products found.</p>';
 }
 function buildBill(info,t,oid,otp){
 const now = new Date();
@@ -2185,59 +2334,61 @@ L.push('📞 7434053550');
 return { text: L.join('\n') };
 }
 const STAGES = [
-{ t:'Order Placed', icon:'check', h:0 },
-{ t:'Order Confirmed', icon:'chat', h:2 },
-{ t:'In Process', icon:'gear', h:24 },
-{ t:'Order Ready', icon:'box', h:30 },
-{ t:'Dispatched', icon:'truck', h:36 },
-{ t:'Out For Delivery', icon:'truck', h:48 },
-{ t:'Delivered', icon:'check', h:60 }
+{ t:'Order Placed', icon:'check' },
+{ t:'Order Confirmed', icon:'chat' },
+{ t:'In Process', icon:'gear' },
+{ t:'Order Ready', icon:'box' },
+{ t:'Dispatched', icon:'truck' },
+{ t:'Out For Delivery', icon:'truck' },
+{ t:'Delivered', icon:'check' }
 ];
+const COLORS = {
+    mut: '#7D7468',
+    gold: '#B08D57',
+    green: '#059669',
+    red: '#DC2626',
+    blue: '#0284C7',
+    wa: '#25D366'
+};
 function getOrderStatus(order){
-if (order.deliveredAt || order.manualStatus === 'Delivered') return { text:'Delivered', icon:'check', color:'#059669' };
-if (order.manualStatus === 'Cancelled') return { text:'Cancelled', icon:'cross', color:'#DC2626' };
-if (order.manualStatus) return { text:order.manualStatus, icon:'box', color:'var(--gold)' };
-const hrs = (Date.now() - order.timestamp) / 3600000;
-if (hrs < STAGES[1].h) return { text:'Order Placed', icon:'check', color:'var(--gold)' };
-if (hrs < STAGES[2].h) return { text:'Order Confirmed', icon:'chat', color:'#25D366' };
-if (hrs < STAGES[3].h) return { text:'In Process', icon:'gear', color:'var(--gold)' };
-if (hrs < STAGES[4].h) return { text:'Order Ready', icon:'box', color:'#B08D57' };
-if (hrs < STAGES[5].h) return { text:'Dispatched', icon:'truck', color:'#0284C7' };
-return { text:'Out For Delivery', icon:'truck', color:'#0284C7' };
+if (order.deliveredAt || order.manualStatus === 'Delivered') return { text:'Delivered', icon:'check', color:COLORS.green };
+if (order.manualStatus === 'Cancelled') return { text:'Cancelled', icon:'cross', color:COLORS.red };
+if (order.manualStatus) return { text:order.manualStatus, icon:'box', color:COLORS.gold };
+const mins = (Date.now() - order.timestamp) / 60000;
+const hrs = mins / 60;
+if (mins < 2) return { text:'Order Placed', icon:'check', color:COLORS.mut };
+if (hrs < 2) return { text:'Order Confirmed', icon:'chat', color:COLORS.wa };
+if (hrs < 24) return { text:'In Process', icon:'gear', color:COLORS.gold };
+if (hrs < 30) return { text:'Order Ready', icon:'box', color:'#8C6D3F' };
+if (hrs < 36) return { text:'Dispatched', icon:'truck', color:COLORS.blue };
+return { text:'Out For Delivery', icon:'truck', color:COLORS.blue };
+}
+function currentStageIdx(order){
+const st = getOrderStatus(order).text;
+const map = { 'Order Placed':0, 'Order Confirmed':1, 'In Process':2, 'Order Ready':3, 'Dispatched':4, 'Out For Delivery':5, 'Delivered':6, 'Cancelled':-1 };
+return map[st] ?? 0;
 }
 function statusTimeline(order){
-const totalHrs = (Date.now() - order.timestamp) / 3600000;
-const isDelivered = !!(order.deliveredAt || order.manualStatus === 'Delivered');
-if (order.manualStatus === 'Cancelled') return `<p class="text-xs font-bold flex items-center gap-2" style="color:#DC2626;">${ic('cross','w-4 h-4')} Order Cancelled</p>`;
-let ci = 0;
-for (let i = 0; i < STAGES.length; i++){ if (totalHrs >= STAGES[i].h) ci = i; }
-let progress, segFrac = 0;
-if (isDelivered){ ci = 6; progress = 100; }
-else {
-const prev = STAGES[ci].h;
-const next = ci < 6 ? STAGES[ci+1].h : STAGES[ci].h + 1;
-segFrac = Math.min(1, (totalHrs - prev) / (next - prev));
-progress = Math.min(100, (totalHrs / STAGES[6].h) * 100);
-}
+const ci = currentStageIdx(order);
+if (ci === -1) return `<p class="text-xs font-bold flex items-center gap-2" style="color:#DC2626;">${ic('cross','w-4 h-4')} Order Cancelled</p>`;
+const delivered = ci === 6;
 let html = `<div class="track-timeline">`;
 html += STAGES.map((s,i) => {
-const done = isDelivered ? true : i < ci;
-const active = !isDelivered && i === ci;
+const done = delivered ? true : i < ci;
+const active = !delivered && i === ci;
 const cls = done ? 'done' : (active ? 'active' : '');
-const styleAttr = active ? `style="--partial:${(segFrac*100).toFixed(1)}%"` : '';
 return `
-<div class="track-step ${cls}" ${styleAttr}>
+<div class="track-step ${cls}">
 <div class="track-icon">${done ? ic('check','w-4 h-4') : ic(s.icon,'w-4 h-4')}</div>
 <div class="pt-1">
-<p class="text-[12px] font-bold" style="color:${done || active ? 'var(--text)' : 'var(--mut)'};">${s.t}</p>
-${active ? `<p class="text-[10px] mt-0.5 font-medium" style="color:var(--gold);">In Progress</p>` : ''}
-${done && i===6 ? `<p class="text-[11px] mt-0.5 font-medium" style="color:#059669;">Done</p>` : ''}
+<p class="text-[13px] font-bold" style="color:${done || active ? 'var(--text)' : 'var(--mut)'};">${s.t}</p>
+${active ? `<p class="text-[11px] mt-0.5 font-medium flex items-center gap-1" style="color:var(--gold);">Currently In Progress</p>` : ''}
+${done && i===6 ? `<p class="text-[11px] mt-0.5 font-medium" style="color:#059669;">Successfully Delivered</p>` : ''}
 </div>
 </div>`;
 }).join('');
 html += `</div>`;
-html += `<div class="progress-timer"><span class="dot-live"></span> Live Progress: ${progress.toFixed(1)}%</div>`;
-html += `<p class="text-[11px] mt-3 font-medium text-center" style="color:var(--mut);">🕒 Expected Delivery Time: 9:00 AM - 7:00 PM</p>`;
+html += `<p class="text-[11px] mt-4 font-medium text-center" style="color:var(--mut);">🕒 Expected Delivery Time: 9:00 AM - 7:00 PM</p>`;
 return html;
 }
 let lock = false;
@@ -2286,7 +2437,7 @@ return st !== 'Delivered' && st !== 'Cancelled';
 });
 const box = $('#historyList');
 if (!orders.length){
-box.innerHTML = `<div class="text-center py-20 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4">${ic('box','w-16 h-16')}</span><p class="text-base font-bold">No active orders right now</p></div>`;
+box.innerHTML = `<div class="text-center py-20 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 text-[var(--mut)]">${ic('box','w-16 h-16')}</span><p class="text-base font-bold">No active orders right now</p></div>`;
 return;
 }
 box.innerHTML = orders.map(o => {
@@ -2300,14 +2451,14 @@ return `
 <b class="disp text-sm">${o.id}</b>
 <p class="text-[10px] mt-1" style="color:var(--mut);">${date}</p>
 </div>
-<span class="chip gap-1" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
+<span class="chip gap-1" style="background:${hexToRgba(st.color, 0.15)}; color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
 </div>
 ${statusTimeline(o)}
 <div class="border-t hairline pt-3 space-y-2">
 ${o.items.map(l => {
 const p = prodById(l.id);
 return `<div class="flex gap-3 items-center">
-<div class="w-12 h-14 rounded-lg overflow-hidden shrink-0" style="background:var(--bg2);">${imgTag(p,l.color,0,'w-full h-full object-cover')}</div>
+<div class="w-12 h-14 rounded-lg overflow-hidden shrink-0" style="background:var(--bg2);">${imgTag(p,l.color,0,'w-full h-full object-cover ld')}</div>
 <div class="flex-1 min-w-0">
 <p class="text-xs font-bold truncate">${esc(p.name)}</p>
 <p class="text-[10px]" style="color:var(--mut);">Qty: ${l.qty} • ${fmt(p.price * l.qty)}</p>
@@ -2337,17 +2488,31 @@ store.set('orders', orders);
 renderHistory();
 toast('Order Cancelled Successfully','cross');
 const cancelMsg = [
-'🔔 *ORDER CANCELLED*','','━━━━━━━━━━━━━━━━━━━━━━',
+'🔔 *ORDER CANCELLED*',
+'',
+'━━━━━━━━━━━━━━━━━━━━━━',
 `• Order ID : *${order.id}*`,
 `• Customer : ${order.customer.name}`,
 `• Phone    : ${order.customer.phone}`,
 `• City     : ${order.customer.city}, ${order.customer.state}`,
-`• Total    : ${fmt(order.totals.total)}`,'','• Items:',
-...order.items.map((l,i) => { const p = prodById(l.id); return `  ${i+1}. ${p.name} × ${l.qty}`; }),
-'','⚠️ This Order Is Cancel By Customer','Please Do NOT Ship This Order.'
+`• Total    : ${fmt(order.totals.total)}`,
+'',
+'• Items:',
+...order.items.map((l,i) => {
+const p = prodById(l.id);
+return `  ${i+1}. ${p.name} × ${l.qty}`;
+}),
+'',
+`• Cancelled At: ${new Date().toLocaleString('en-IN')}`,
+'━━━━━━━━━━━━━━━━━━━━━━',
+'',
+'⚠️ This Order Is Cancel By Customer',
+'Please Do NOT Ship This Order.'
 ].join('\n');
 goWA(cancelMsg);
-} else { toast('Cannot cancel after 24 hours','warn'); }
+} else {
+toast('Cannot cancel after 24 hours','warn');
+}
 }
 }
 let adminAuth = false;
@@ -2392,7 +2557,7 @@ $('#trackResult').innerHTML = `
 <div class="border hairline rounded-xl p-4 mb-4" style="background:var(--card);">
 <div class="flex justify-between items-center mb-2">
 <b class="text-sm">${o.id}</b>
-<span class="chip gap-1" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
+<span class="chip gap-1" style="background:${hexToRgba(st.color, 0.15)}; color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
 </div>
 <p class="text-[10px]" style="color:var(--mut);">Placed: ${new Date(o.timestamp).toLocaleString('en-IN')}</p>
 </div>
@@ -2404,6 +2569,18 @@ $('#trackResult').innerHTML = `
 <p class="text-xs mb-3" style="color:var(--mut);">Order not found on this device. Ask us live on WhatsApp:</p>
 <a class="pill btn-ink w-full py-3 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">${ic('chat','w-4 h-4')} Live Status on WhatsApp</a>`;
 }
+const MODAL_HASH = {
+'cartDrawer': '#cart',
+'wishDrawer': '#wishlist',
+'historyModal': '#orders',
+'trackModal': '#track',
+'catPage': '#shop',
+'productModal': '#product',
+'sizeModal': '#size',
+'staffModal': '#admin',
+'mobileMenu': '#menu',
+'searchOverlay': '#search'
+};
 function openModal(id, skipOverflow = false){
 $('#'+id).classList.remove('hidden');
 if (!skipOverflow) document.body.style.overflow = 'hidden';
@@ -2411,11 +2588,13 @@ if (!skipOverflow) document.body.style.overflow = 'hidden';
 function closeModal(id, skipHistory = false){
 $('#'+id).classList.add('hidden');
 document.body.style.overflow = '';
-if (!skipHistory && window.location.hash) history.back();
+if (!skipHistory && window.location.hash) {
+history.back();
+}
 }
 function closeAll(skipHistory = false){
 ['cartDrawer','wishDrawer','productModal','sizeModal','trackModal','catPage','mobileMenu','searchOverlay','historyModal','staffModal'].forEach(id => {
-const el = $('#'+id); if (el) el.classList.add('hidden');
+$('#'+id).classList.add('hidden');
 });
 document.body.style.overflow = '';
 }
@@ -2427,14 +2606,13 @@ else if (hash === '#wishlist') { renderWish(); openModal('wishDrawer', true); }
 else if (hash === '#orders') { renderHistory(); openModal('historyModal', true); }
 else if (hash === '#track') { openModal('trackModal', true); }
 else if (hash === '#shop' || hash.startsWith('#shop/')) {
-const parts = hash.split('/');
-if (parts[1] === 'new' || parts[1] === 'best' || parts[1] === 'under499' || parts[1] === 'under599' || parts[1] === 'under699') {
-openCatPage('', '', parts[1], true);
-} else if (parts[1] && CATMETA[parts[1]]) {
-openCatPage(parts[1], '', '', true);
-} else { openCatPage('', '', '', true); }
+openModal('catPage', true);
+drawCatPage();
 }
-else if (hash.startsWith('#product/')) { openProduct(hash.split('/')[1], true); }
+else if (hash.startsWith('#product/')) {
+const pid = hash.split('/')[1];
+openProduct(pid, true);
+}
 else if (hash === '#size') { openModal('sizeModal', true); }
 else if (hash === '#admin') { openAdmin(true); }
 else if (hash === '#menu') { openModal('mobileMenu', true); }
@@ -2442,18 +2620,22 @@ else if (hash === '#search') { openModal('searchOverlay', true); }
 }
 window.addEventListener('popstate', handleRoute);
 function openRoute(hash, state = {}) {
-if (window.location.hash !== hash) history.pushState(state, '', hash);
+if (window.location.hash !== hash) {
+history.pushState(state, '', hash);
+}
 handleRoute();
 }
 document.addEventListener('click', e => {
-const t = e.target.closest('[data-open-product],[data-add],[data-wish],[data-close],[data-slide-go],[data-catpage],[data-angle],[data-psize],[data-pq],[data-pm-add],[data-pm-buy],[data-pm-wa],[data-cq],[data-cr],[data-bnav],[data-share],[data-sizeopen],[data-cancel-order],[data-track-wa],[data-openhistory]');
-if (!t){ const sd = $('#searchDrop'); if (sd) sd.classList.add('hidden'); return; }
+const t = e.target.closest('[data-open-product],[data-add],[data-wish],[data-close],[data-slide-go],[data-catpage],[data-angle],[data-pcolor],[data-psize],[data-pq],[data-pm-add],[data-pm-buy],[data-pm-wa],[data-cq],[data-cr],[data-type],[data-bnav],[data-share],[data-rc],[data-sizeopen],[data-cancel-order],[data-track-wa],[data-openhistory]');
+if (!t){ $('#searchDrop')?.classList.add('hidden'); return; }
 if (t.hasAttribute('data-close')){ closeModal(t.getAttribute('data-close')); return; }
 if (t.hasAttribute('data-openhistory')){ closeAll(true); openHistory(); return; }
+if (t.hasAttribute('data-rc')){ return; }
 if (t.hasAttribute('data-open-product')){ closeAll(true); openProduct(t.getAttribute('data-open-product')); return; }
 if (t.hasAttribute('data-add')){ addToCart(t.getAttribute('data-add')); closeAll(true); openRoute('#cart'); return; }
 if (t.hasAttribute('data-wish')){ toggleWish(t.getAttribute('data-wish')); return; }
 if (t.hasAttribute('data-slide-go')){ goSlide(+t.getAttribute('data-slide-go')); clearInterval(sTimer); startSlider(); return; }
+if (t.hasAttribute('data-type')){ openCatPage('', t.getAttribute('data-type')); return; }
 if (t.hasAttribute('data-catpage')){
 const v = t.getAttribute('data-catpage');
 if (['new','best','under499','under599','under699'].includes(v)) openCatPage('', '', v);
@@ -2471,7 +2653,6 @@ return;
 }
 if (t.hasAttribute('data-share')){
 const p = prodById(pm.id);
-if (!p) return;
 const txt = `${p.name} — ${fmt(p.price)} on Joseph & James 💛`;
 if (navigator.share){ navigator.share({ title:'Joseph & James', text:txt, url:location.href }).catch(()=>{}); }
 else goWA(txt);
@@ -2484,12 +2665,13 @@ pm.angle = a === -1 ? (pm.angle + n - 1) % n : a === 1 ? (pm.angle + 1) % n : a;
 drawProduct();
 return;
 }
+if (t.hasAttribute('data-pcolor')){ pm.color = +t.getAttribute('data-pcolor'); pm.angle = 0; drawProduct(); return; }
 if (t.hasAttribute('data-psize')){ pm.size = +t.getAttribute('data-psize'); $$('#productBody .sizechip').forEach((s,i) => s.classList.toggle('active', i === pm.size)); return; }
 if (t.hasAttribute('data-pq')){ pm.qty = Math.min(9, Math.max(1, pm.qty + +t.getAttribute('data-pq'))); $('#pmQty').textContent = pm.qty; return; }
 if (t.hasAttribute('data-pm-add')){ const p = prodById(pm.id); addToCart(p.id,p.colors[pm.color][0],p.sizes[pm.size],pm.qty,readExtras(p)); closeAll(true); openRoute('#cart'); return; }
 if (t.hasAttribute('data-pm-buy')){ const p = prodById(pm.id); addToCart(p.id,p.colors[pm.color][0],p.sizes[pm.size],pm.qty,readExtras(p)); closeAll(true); openRoute('#cart'); return; }
 if (t.hasAttribute('data-pm-wa')){ const p = prodById(pm.id); goWA(`Hi Joseph & James! 💛 Question about:\n*${p.name}*\nPrice: ${fmt(p.price)}`); return; }
-if (t.hasAttribute('data-cq')){ const l = cart.find(x => x.key === t.getAttribute('data-cq')); if (l){ l.qty = Math.min(9, Math.max(1, l.qty + +t.getAttribute('data-d'))); store.set('cart', cart); renderCart(); } return; }
+if (t.hasAttribute('data-cq')){ const l = cart.find(x => x.key === t.getAttribute('data-cq')); l.qty = Math.min(9, Math.max(1, l.qty + +t.getAttribute('data-d'))); store.set('cart', cart); renderCart(); return; }
 if (t.hasAttribute('data-cr')){ cart = cart.filter(x => x.key !== t.getAttribute('data-cr')); store.set('cart', cart); renderCart(); return; }
 if (t.hasAttribute('data-cancel-order')){ cancelOrder(t.getAttribute('data-cancel-order')); return; }
 if (t.hasAttribute('data-track-wa')){ goWA(`Hi Joseph & James! 💛 Please update me on my order:\n*${t.getAttribute('data-track-wa')}*`); return; }
@@ -2545,7 +2727,7 @@ res.innerHTML = `
 <div class="border hairline rounded-xl p-4" style="background:var(--card);">
 <div class="flex justify-between items-center mb-2">
 <b class="text-sm">${o.id}</b>
-<span class="chip gap-1" style="background:color-mix(in srgb, ${st.color} 15%, transparent); color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
+<span class="chip gap-1" style="background:${hexToRgba(st.color, 0.15)}; color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
 </div>
 <p class="text-[10px] mb-3" style="color:var(--mut);">${o.customer.name} • ${o.customer.phone}</p>
 <div class="flex gap-2 flex-wrap">
@@ -2579,15 +2761,17 @@ $('#adminSearchId').dispatchEvent(new Event('input'));
 },300));
 $$('details.faq').forEach(faq => {
 faq.addEventListener('toggle', () => {
-if (faq.open){ $$('details.faq').forEach(other => { if (other !== faq) other.open = false; }); }
+if (faq.open){
+$$('details.faq').forEach(other => { if (other !== faq) other.open = false; });
+}
 });
 });
 window.addEventListener('scroll', () => {
 const s = scrollY > 600;
 const t = $('#toTop');
-if (t){ t.style.opacity = s ? 1 : 0; t.style.pointerEvents = s ? 'auto' : 'none'; }
-const h = $('#header');
-if (h) h.style.boxShadow = scrollY > 8 ? '0 10px 30px -18px rgba(0,0,0,.35)' : '';
+t.style.opacity = s ? 1 : 0;
+t.style.pointerEvents = s ? 'auto' : 'none';
+$('#header').style.boxShadow = scrollY > 8 ? '0 10px 30px -18px rgba(0,0,0,.35)' : '';
 }, { passive:true });
 window.addEventListener('keydown', e => {
 if (e.key === 'Escape') { closeAll(); if(window.location.hash) history.back(); }
@@ -2599,14 +2783,44 @@ if (e.key === 'ArrowLeft'){ pm.angle = (pm.angle+n-1) % n; drawProduct(); }
 });
 window.addEventListener('resize', debounce(() => { sizeHero(); },300));
 setInterval(() => { if (document.visibilityState === 'visible') ensureLive(false); }, RATE_REFRESH_MS);
-setInterval(() => {
-if (document.visibilityState === 'visible' && !$('#historyModal').classList.contains('hidden')) renderHistory();
-if (document.visibilityState === 'visible' && !$('#trackModal').classList.contains('hidden') && $('#trackResult').innerHTML) track();
-}, 30000);
 document.addEventListener('visibilitychange', () => {
 if (!document.hidden && (!RATES || Date.now() - RATES_AT > RATE_REFRESH_MS)) ensureLive(false);
 });
 window.addEventListener('online', () => ensureLive(true));
+const LOGO_URI = "images/logo.png";
+const manifest = {
+name:"Joseph & James",
+short_name:"J&J",
+description:"Premium Oversized, Custom & Anime Tees",
+start_url:".",
+display:"standalone",
+background_color:"#0F0D0A",
+theme_color:"#C9A46B",
+orientation:"portrait",
+icons:[
+{ src:LOGO_URI, sizes:"192x192", type:"image/png", purpose:"any maskable" },
+{ src:LOGO_URI, sizes:"512x512", type:"image/png", purpose:"any maskable" }
+]
+};
+const manifestBlob = new Blob([JSON.stringify(manifest)], {type:'application/manifest+json'});
+const manifestURL = URL.createObjectURL(manifestBlob);
+const oldManifest = document.querySelector('link[rel="manifest"]');
+if (oldManifest) oldManifest.remove();
+const newManifest = document.createElement('link');
+newManifest.rel = 'manifest';
+newManifest.href = manifestURL;
+document.head.appendChild(newManifest);
+if ('serviceWorker' in navigator){
+const swCode = `
+self.addEventListener('install', (e) => self.skipWaiting());
+self.addEventListener('activate', (e) => self.clients.claim());
+self.addEventListener('fetch', (e) => {
+e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+});
+`;
+const blob = new Blob([swCode], { type:'application/javascript' });
+navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+}
 (async function init(){
 generateProducts();
 country = tzCountry();
@@ -2624,23 +2838,26 @@ renderCart();
 renderWish();
 reveal();
 startSlider();
-setTimeout(() => $$('img.img-pending').forEach(i => { i.classList.add('ld'); i.classList.remove('img-pending'); }), 3000);
 const heroSec = $('#heroSec');
 let touchStartX = 0;
+let touchEndX = 0;
 if(heroSec) {
 heroSec.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
 heroSec.addEventListener('touchend', e => {
-const diff = touchStartX - e.changedTouches[0].screenX;
+touchEndX = e.changedTouches[0].screenX;
+const diff = touchStartX - touchEndX;
 if (Math.abs(diff) > 50) {
-goSlide(diff > 0 ? sIdx+1 : sIdx-1);
+if (diff > 0) { goSlide(sIdx+1); }
+else { goSlide(sIdx-1); }
 clearInterval(sTimer); startSlider();
 }
 }, {passive: true});
 }
 (async () => {
-try{ await detectCountry(false); }catch(e){}
-try{ const fresh = await ensureLive(false); }catch(e){}
-try{ handleRoute(); }catch(e){}
+const changed = await detectCountry(false);
+const fresh = await ensureLive(false);
+if (changed || fresh) refreshPrices();
+handleRoute(); // Handle initial route on page load/refresh
 })();
 })();
   </script>
