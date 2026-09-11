@@ -8,7 +8,7 @@
   <meta name="description"
     content="Shop oversized graphic, minimalist, custom name/photo, cropped boxy, polo, and anime/gaming tees. New drops, best sellers, under ₹499 to ₹699. Cash on Delivery in India, worldwide shipping. Joseph & James.">
   <meta name="keywords"
-    content="oversized graphic t-shirt, custom photo t-shirt, minimalist text tee, cropped boxy tee women, polo t-shirt, anime gaming tee, under 499 t-shirt, under 599 shirt, under 699 fashion, new drops, best sell, Joseph & James">
+    content="oversized graphic t-shirt, custom photo t-shirt, minimalist text tee, cropped boxy tee women, polo t-shirt, anime gaming tee, under 499 t-shirt, Joseph & James">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0F0D0A">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,13 +31,22 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-theme:{extend:{
-colors:{ gld:'var(--gold)', gld2:'var(--gold2)', bgc:'var(--bg)', bg2:'var(--bg2)', crd:'var(--card)', txt:'var(--text)', mut:'var(--mut)', lne:'var(--line)' },
-fontFamily:{ sans:['Poppins','system-ui','sans-serif'], luxe:['Cinzel','serif'] },
-boxShadow:{ soft:'0 14px 40px -18px rgba(0,0,0,.25)', lift:'0 30px 70px -28px rgba(0,0,0,.45)', bar:'0 -10px 34px -14px rgba(0,0,0,.25)' },
-letterSpacing:{ wide2:'.08em', luxe:'.25em' }
-}}
-};
+theme: {
+extend: {
+colors: {
+gld: 'var(--gold)', gld2: 'var(--gold2)', bgc: 'var(--bg)', bg2: 'var(--bg2)',
+crd: 'var(--card)', txt: 'var(--text)', mut: 'var(--mut)', lne: 'var(--line)'
+},
+fontFamily: { sans: ['Poppins','system-ui','sans-serif'], luxe: ['Cinzel','serif'] },
+boxShadow: {
+soft: '0 14px 40px -18px rgba(0,0,0,.25)',
+lift: '0 30px 70px -28px rgba(0,0,0,.45)',
+bar: '0 -10px 34px -14px rgba(0,0,0,.25)'
+},
+letterSpacing: { wide2: '.08em', luxe: '.25em' }
+}
+}
+}
   </script>
   <style>
     :root {
@@ -50,7 +59,7 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       --gold: #B08D57;
       --gold2: #8C6D3F;
       --on-gold: #FFFFFF;
-      --glass: rgba(255, 255, 255, .88);
+      --glass: rgba(255, 255, 255, .9);
       --hero-ink: #171410;
       --shadow: 0 24px 60px -24px rgba(23, 20, 16, .25);
       --fs-hero: clamp(1.7rem, 1rem + 6vw, 2.6rem);
@@ -70,7 +79,6 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
 
     html,
     body {
-      overflow-x: hidden;
       overflow-x: clip;
       max-width: 100%;
     }
@@ -232,7 +240,7 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
 
     .field:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(176, 141, 87, .25);
+      box-shadow: 0 0 0 3px rgba(176, 141, 87, .2);
     }
 
     .field::placeholder {
@@ -262,7 +270,7 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       .card:hover {
         transform: translateY(-8px);
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .15);
-        border-color: rgba(176, 141, 87, .45);
+        border-color: var(--gold);
       }
 
       .card:hover .cardimg img {
@@ -274,29 +282,11 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
         transform: translateY(0);
         opacity: 1;
       }
-
-      .card:hover .cardimg::after {
-        left: 150%;
-      }
     }
 
     .cardimg {
       position: relative;
       overflow: hidden;
-    }
-
-    .cardimg::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .3), transparent);
-      transform: skewX(-25deg);
-      transition: left .8s ease;
-      pointer-events: none;
-      z-index: 5;
     }
 
     .quickadd {
@@ -312,6 +302,24 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       .quickadd {
         transform: translateY(0);
         opacity: 1;
+      }
+    }
+
+    .card button[data-wish]:hover svg {
+      animation: heartBeat .4s ease-in-out;
+    }
+
+    @keyframes heartBeat {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+
+      100% {
+        transform: scale(1);
       }
     }
 
@@ -366,6 +374,7 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       font-size: 1rem;
       transition: all .25s;
       flex: none;
+      cursor: pointer;
     }
 
     .qtybtn:hover {
@@ -504,8 +513,16 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       animation: fadeLeft .8s both;
     }
 
+    .a-right {
+      animation: fadeRight .8s both;
+    }
+
     .a-zoom {
       animation: zoomIn .7s both;
+    }
+
+    .a-pop {
+      animation: popIn .5s both;
     }
 
     .a-float {
@@ -516,13 +533,21 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       animation: fadeUp .6s cubic-bezier(.2, .7, .2, 1) both;
     }
 
+    .ha-left {
+      animation: fadeLeft .6s cubic-bezier(.2, .7, .2, 1) both;
+    }
+
+    .ha-right {
+      animation: fadeRight .6s cubic-bezier(.2, .7, .2, 1) both;
+    }
+
     .ha-zoom {
       animation: zoomIn .6s cubic-bezier(.2, .7, .2, 1) both;
     }
 
     [data-reveal] {
       opacity: 0;
-      transition: all .9s cubic-bezier(.2, .7, .2, 1);
+      transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1);
     }
 
     [data-reveal="up"] {
@@ -531,6 +556,10 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
 
     [data-reveal="left"] {
       transform: translateX(-46px);
+    }
+
+    [data-reveal="right"] {
+      transform: translateX(46px);
     }
 
     [data-reveal="zoom"] {
@@ -559,24 +588,24 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       align-items: center;
       transition: opacity .6s ease;
       min-height: calc(100vh - 120px);
-      min-height: calc(100dvh - 120px);
+    }
+
+    @supports (min-height: 100dvh) {
+      .hero-slide {
+        min-height: calc(100dvh - 120px);
+      }
     }
 
     #heroSec {
       min-height: calc(100vh - 120px);
-      min-height: calc(100dvh - 120px);
     }
 
-    #historyModal {
-      display: none;
-      flex-direction: column;
+    @supports (min-height: 100dvh) {
+      #heroSec {
+        min-height: calc(100dvh - 120px);
+      }
     }
 
-    #historyModal:not(.hidden) {
-      display: flex;
-    }
-
-    /* ---- LIVE ORDER TIMELINE (no blink, line fills over time) ---- */
     .track-timeline {
       display: flex;
       flex-direction: row;
@@ -585,6 +614,7 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       width: 100%;
       overflow-x: auto;
       scrollbar-width: none;
+      overflow-anchor: none;
     }
 
     .track-timeline::-webkit-scrollbar {
@@ -598,30 +628,27 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       text-align: center;
       position: relative;
       flex: 1;
-      min-width: 86px;
+      min-width: 90px;
     }
 
-    .track-line {
+    .track-step::before {
+      content: '';
       position: absolute;
-      top: 15px;
       left: 50%;
+      top: 15px;
       width: 100%;
       height: 2px;
       background: var(--line);
       z-index: 0;
-      overflow: hidden;
+      transition: background .5s ease;
     }
 
-    .track-fill {
-      display: block;
-      height: 100%;
-      width: 0;
+    .track-step:last-child::before {
+      display: none;
+    }
+
+    .track-step.done::before {
       background: var(--text);
-      transition: width .55s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    .track-timeline.run .track-step.done .track-fill {
-      width: 100%;
     }
 
     .track-icon {
@@ -635,8 +662,8 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       border: 2px solid var(--line);
       color: var(--mut);
       z-index: 2;
+      transition: all .4s cubic-bezier(.4, 0, .2, 1);
       margin-bottom: 8px;
-      transition: background .4s, border-color .4s, color .4s;
     }
 
     .track-step.done .track-icon {
@@ -649,27 +676,7 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
       background: var(--gold);
       border-color: var(--gold);
       color: #fff;
-      box-shadow: 0 0 0 5px rgba(176, 141, 87, .18), 0 4px 12px rgba(176, 141, 87, .3);
-    }
-
-    .track-timeline.run .track-step.done .track-icon {
-      animation: stepPop .45s both;
-    }
-
-    .track-timeline.run .track-step.active .track-icon {
-      animation: stepPop .5s both;
-    }
-
-    @keyframes stepPop {
-      0% {
-        transform: scale(.5);
-        opacity: .3;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      box-shadow: 0 0 0 6px rgba(176, 141, 87, .15);
     }
 
     @media (max-width:767px) {
@@ -689,7 +696,13 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
 
       #productModal .modalcard {
         border-radius: 0;
-        min-height: 100dvh;
+        min-height: 100vh;
+      }
+
+      @supports (min-height: 100dvh) {
+        #productModal .modalcard {
+          min-height: 100dvh;
+        }
       }
 
       .card {
@@ -715,8 +728,12 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
         padding-bottom: 0 !important;
       }
 
-      #heroSec {
-        min-height: calc(100vh - 150px);
+      #mobileMenu {
+        display: none !important;
+      }
+
+      #searchOverlay {
+        display: none !important;
       }
     }
 
@@ -750,58 +767,79 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
     .faqicon {
       transition: transform .3s;
     }
+
+    /* History modal scroll fix - issue 1 */
+    #historyModal {
+      overflow-anchor: none;
+    }
+
+    #historyModal>header {
+      position: sticky;
+      top: 0;
+    }
+
+    #historyList {
+      scroll-behavior: auto;
+    }
   </style>
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"ClothingStore","name":"Joseph & James","telephone":"+917434053550","email":"xyz@gmail.com","sameAs":["https://www.instagram.com/josephandjames","https://wa.me/917434053550"],"paymentAccepted":"Cash on Delivery"}
+    {
+"@context":"https://schema.org",
+"@type":"ClothingStore",
+"name":"Joseph & James",
+"telephone":"+917434053550",
+"email":"xyz@gmail.com",
+"sameAs":["https://www.instagram.com/josephandjames","https://wa.me/917434053550"],
+"paymentAccepted":"Cash on Delivery"
+}
   </script>
 </head>
 
 <body class="antialiased" id="home">
-
   <header id="header" class="sticky top-0 z-50 glassbar border-b hairline transition-shadow w-full">
-    <div class="wrap grid grid-cols-[auto_1fr_auto] items-center gap-4 md:gap-6 py-3 md:py-4">
+    <div class="wrap grid grid-cols-[auto_1fr_auto] items-center gap-3 py-3 md:py-4">
       <div class="flex items-center gap-2 min-w-0">
         <button id="menuOpen" class="md:hidden p-2 -ml-1" aria-label="Menu">
 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h10M4 17h16"/></svg>
 </button>
         <a href="#home" class="flex items-center shrink-0" aria-label="Joseph & James home">
-          <img src="images/logo.png" class="h-10 md:h-12 w-auto object-contain ld" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <span class="h-12 items-center font-luxe text-xl md:text-2xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH &amp; JAMES</span>
+          <img src="images/logo.png" class="h-12 w-auto object-contain ld" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="h-12 items-center font-luxe text-xl md:text-2xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH & JAMES</span>
         </a>
       </div>
-      <div class="relative hidden md:flex justify-center w-full max-w-2xl mx-auto">
-        <div class="flex items-center border hairline rounded-full w-full" style="background:var(--card);">
+      <div class="relative hidden md:flex justify-center w-full">
+        <div class="flex items-center border hairline rounded-full w-full max-w-lg" style="background:var(--card);">
           <input id="searchInput" type="search" maxlength="60" placeholder="Search oversized tees, polos…" class="flex-1 bg-transparent px-5 py-2.5 text-sm min-w-0" style="color:var(--text);" autocomplete="off">
           <button id="searchBtn" class="px-4" style="color:var(--gold);" aria-label="Search">
 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
 </button>
         </div>
         <div id="searchDrop"
-          class="absolute left-1/2 -translate-x-1/2 w-full top-[112%] border hairline rounded-3xl shadow-lift overflow-hidden hidden z-50"
+          class="absolute left-1/2 -translate-x-1/2 w-full max-w-lg top-[112%] border hairline rounded-3xl shadow-lift overflow-hidden hidden z-50"
           style="background:var(--card);"></div>
       </div>
-      <div class="flex items-center gap-1 md:gap-3 justify-end min-w-0">
+      <div class="flex items-center gap-1 md:gap-2 justify-end min-w-0">
         <button id="mSearchOpen" class="md:hidden p-2" aria-label="Search">
 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
 </button>
-        <button id="wishOpen" class="relative flex flex-col items-center justify-center px-2 md:px-3 transition" style="color:var(--text);" aria-label="Wishlist">
-<span class="relative inline-flex">
+        <button id="wishOpen" class="relative flex flex-col items-center px-2 md:px-3 py-1 transition" style="color:var(--text);" aria-label="Wishlist">
+<span class="relative inline-flex items-center justify-center">
 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.7 1.2 4.6 2.6.9-1.4 2.4-2.6 4.6-2.6 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
-<span id="wishCount" class="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full text-white text-[9px] font-extrabold flex items-center justify-center" style="background:var(--gold);">0</span>
+<span id="wishCount" class="absolute -top-2 -right-2 min-w-[16px] h-4 px-1 rounded-full text-white text-[9px] font-extrabold flex items-center justify-center" style="background:var(--gold);">0</span>
 </span>
 <span class="micro mt-1 hidden md:block">Wishlist</span>
 </button>
-        <button id="cartOpen" class="relative flex flex-col items-center justify-center px-2 md:px-3 transition" style="color:var(--text);" aria-label="Cart">
-<span class="relative inline-flex">
+        <button id="cartOpen" class="relative flex flex-col items-center px-2 md:px-3 py-1 transition" style="color:var(--text);" aria-label="Cart">
+<span class="relative inline-flex items-center justify-center">
 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l1.5 13h-15L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
-<span id="cartCount" class="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full text-[9px] font-extrabold flex items-center justify-center" style="background:var(--text); color:var(--bg);">0</span>
+<span id="cartCount" class="absolute -top-2 -right-2 min-w-[16px] h-4 px-1 rounded-full text-[9px] font-extrabold flex items-center justify-center" style="background:var(--text); color:var(--bg);">0</span>
 </span>
 <span class="micro mt-1 hidden md:block">Cart</span>
 </button>
       </div>
     </div>
     <nav class="hidden md:block border-t hairline w-full">
-      <div class="wrap flex items-center justify-center gap-8 py-3 overflow-x-auto no-scrollbar">
+      <div class="wrap flex items-center justify-center gap-7 py-2.5 overflow-x-auto no-scrollbar">
         <a href="#home" class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0"
           style="color:var(--text);">Home</a>
         <button class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0" data-catpage="new">New Drops</button>
@@ -813,7 +851,7 @@ letterSpacing:{ wide2:'.08em', luxe:'.25em' }
         <button class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0" data-openhistory>My Orders</button>
         <a href="#contact"
           class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0">Contact</a>
-        <button id="curChip" class="chip border hairline shrink-0 gap-1.5" style="color:var(--gold);" title="Auto-detected country & live currency">
+        <button id="curChip" class="chip border hairline shrink-0 hover:border-gold gap-1.5" style="color:var(--gold);" title="Auto-detected country & live currency — tap to re-detect">
 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
 Detecting…
 </button>
@@ -824,15 +862,15 @@ Detecting…
   <div id="mobileMenu" class="fixed inset-0 z-[60] hidden w-full">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-md" data-close="mobileMenu"></div>
     <div class="absolute left-0 top-0 h-full w-[88%] max-w-sm overflow-y-auto flex flex-col border-r hairline"
-      style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%); animation:slideL .4s cubic-bezier(0.2,0.8,0.2,1) both;">
+      style="background:var(--bg); animation:slideL .4s cubic-bezier(0.2,0.8,0.2,1) both;">
       <div class="relative p-6 pb-5 border-b hairline overflow-hidden">
-        <div class="absolute -top-12 -right-12 w-44 h-44 rounded-full opacity-25 blur-3xl pointer-events-none"
-          style="background:var(--gold);"></div>
-        <div class="flex items-center relative">
-          <img src="images/logo.png" class="h-12 w-auto object-contain" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <span class="h-12 items-center font-luxe text-xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH &amp; JAMES</span>
+        <div class="flex items-center justify-between relative">
+          <div class="flex items-center">
+            <img src="images/logo.png" class="h-12 w-auto object-contain" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="h-12 items-center font-luxe text-xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH & JAMES</span>
+          </div>
+          <button data-close="mobileMenu" class="w-10 h-10 rounded-full border hairline flex items-center justify-center transition hover:border-[var(--gold)]" aria-label="Close">✕</button>
         </div>
-        <p class="micro mt-2 relative" style="color:var(--mut);">Premium Tees • COD • Worldwide</p>
       </div>
       <nav class="flex-1 p-4 space-y-2.5" id="mobileNav"></nav>
       <div class="p-5 border-t hairline text-center">
@@ -867,12 +905,12 @@ Detecting…
         id="heroDots"></div>
     </section>
 
-    <section class="py-10 md:py-16 w-full" style="background:var(--bg2);" id="shopCatSec">
+    <section class="py-10 md:py-16 w-full" style="background:var(--bg2);" id="circleCatsSec">
       <div class="wrap text-center mb-8" data-reveal="up">
         <p class="micro micro-gold mb-2">Shop by Category</p>
         <h2 class="disp font-semibold" style="font-size:var(--fs-h2);">Find Your Style</h2>
       </div>
-      <div class="wrap grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6" id="shopCats" data-reveal="up"
+      <div class="wrap grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6" id="circleCats" data-reveal="up"
         data-delay="100"></div>
     </section>
 
@@ -880,7 +918,7 @@ Detecting…
       <div class="wrap grid grid-cols-2 text-center">
         <div class="py-5 px-2 border-r hairline" data-reveal="up">
           <p class="micro micro-gold">Free Shipping (IN)</p>
-          <p class="text-[11px] mt-1" style="color:var(--mut);">Last total ₹1499+ → FREE</p>
+          <p class="text-[11px] mt-1" style="color:var(--mut);">Orders ₹1499+ → FREE</p>
         </div>
         <div class="py-5 px-2" data-reveal="up" data-delay="80">
           <p class="micro micro-gold">Cash on Delivery</p>
@@ -889,9 +927,19 @@ Detecting…
       </div>
     </section>
 
-    <div id="homeCats" class="py-10 md:py-16 w-full" style="background:var(--bg);"></div>
+    <section class="py-10 md:py-16 w-full" style="background:var(--bg);" id="sec-featured">
+      <div class="wrap flex items-end justify-between mb-6 md:mb-8" data-reveal="up">
+        <div>
+          <p class="micro micro-gold mb-2">Joseph & James</p>
+          <h2 class="disp font-semibold" style="font-size:var(--fs-h2);">Featured Collection</h2>
+        </div>
+        <button class="micro micro-gold transition shrink-0" data-catpage="">View All →</button>
+      </div>
+      <div class="wrap grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6" id="featuredGrid" data-reveal="up"
+        data-delay="100"></div>
+    </section>
 
-    <section class="wrap pb-10 md:pb-16 w-full">
+    <section class="wrap py-10 md:py-16 w-full">
       <div class="grid md:grid-cols-2 gap-4 md:gap-6">
         <div class="card p-7 text-center" data-reveal="zoom">
           <span class="text-3xl text-[var(--gold)] flex justify-center mb-2"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.1-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5.5-4.5-9-10-9z"/></svg></span>
@@ -917,9 +965,8 @@ Detecting…
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">Where to buy premium oversized
             graphic t-shirts online?<span class="faqicon text-gld text-lg">+</span></summary>
-          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Joseph &amp; James offers a curated
-            collection of heavyweight oversized graphic tees with streetwear and retro aesthetics. COD available across
-            India.</p>
+          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Joseph & James offers a curated collection
+            of heavyweight oversized graphic tees with streetwear and retro aesthetics. COD available across India.</p>
         </details>
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">How do I order custom name or photo
@@ -944,26 +991,26 @@ Detecting…
           <summary class="flex justify-between items-center font-semibold text-sm">Do you sell premium polo
             t-shirts?<span class="faqicon text-gld text-lg">+</span></summary>
           <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Yes, we offer premium polo tees with
-            structured collars and breathable fabrics, ideal for smart-casual looks.</p>
+            structured collars and breathable fabrics, ideal for smart-casual and semi-formal looks.</p>
         </details>
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">Where to buy anime and gaming tees in
             India?<span class="faqicon text-gld text-lg">+</span></summary>
-          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Our Anime &amp; Gaming category features
+          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Our Anime & Gaming category features
             officially inspired streetwear graphics, manga panels, and pixel art tees for true fans.</p>
         </details>
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">What is the delivery time and
             tracking process?<span class="faqicon text-gld text-lg">+</span></summary>
           <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Orders are processed within 24 hours and
-            delivered within 48 hours. Expected delivery time is between 9:00 AM and 7:00 PM. Track live via My Orders.
-          </p>
+            delivered within 48 hours. Expected delivery time is between 9:00 AM and 7:00 PM. Track live via the My
+            Orders section.</p>
         </details>
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">What are your shipping and delivery
             charges?<span class="faqicon text-gld text-lg">+</span></summary>
-          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Below ₹999 → ₹99 fee. ₹999–₹1499 → ₹49 fee.
-            Above ₹1499 → FREE delivery across India.</p>
+          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Orders below ₹999 incur a ₹99 fee. Orders
+            between ₹999 and ₹1499 incur a ₹49 fee. Orders above ₹1499 get FREE delivery across India.</p>
         </details>
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">Do you offer Cash on Delivery
@@ -974,8 +1021,8 @@ Detecting…
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">Is there a return or exchange
             policy?<span class="faqicon text-gld text-lg">+</span></summary>
-          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">We operate a strict No Return / No Exchange
-            policy. Please check the size guide before ordering.</p>
+          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Due to hygiene and customisation options, we
+            operate a strict No Return / No Exchange policy. Please check the size guide before ordering.</p>
         </details>
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">Do you ship
@@ -984,10 +1031,10 @@ Detecting…
             are confirmed and invoiced via WhatsApp with live currency conversion.</p>
         </details>
         <details class="faq card p-5">
-          <summary class="flex justify-between items-center font-semibold text-sm">How do I track my Joseph &amp; James
+          <summary class="flex justify-between items-center font-semibold text-sm">How do I track my Joseph & James
             order?<span class="faqicon text-gld text-lg">+</span></summary>
-          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Use the My Orders or Track button in the
-            menu. See real-time stages from Order Placed to Out for Delivery.</p>
+          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Use the "My Orders" or "Track" button in the
+            menu. You can see real-time stages from Order Placed to Out for Delivery.</p>
         </details>
       </div>
     </section>
@@ -1019,10 +1066,10 @@ Detecting…
       <div data-reveal="left">
         <a href="#home" class="inline-block" aria-label="Back to top">
           <img src="images/logo.png" class="h-12 w-auto object-contain mb-5" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <span class="h-12 items-center font-luxe text-xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH &amp; JAMES</span>
+          <span class="h-12 items-center font-luxe text-xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH & JAMES</span>
         </a>
-        <p class="text-sm leading-relaxed" style="color:var(--mut);">Premium Oversized, Custom &amp; Anime Tees, curated
-          for the world.</p>
+        <p class="text-sm leading-relaxed" style="color:var(--mut);">Premium Oversized, Custom & Anime Tees, curated for
+          the world.</p>
         <div class="flex gap-3 mt-6">
           <a href="https://www.instagram.com/josephandjames" target="_blank" rel="noopener" aria-label="Instagram"
             class="w-10 h-10 rounded-full border hairline flex items-center justify-center transition hover:border-[var(--gold)] hover:text-gld">
@@ -1073,11 +1120,17 @@ Detecting…
     <div class="border-t hairline w-full">
       <div class="wrap py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px]"
         style="color:var(--mut);">
-        <p>© 2026 Joseph &amp; James. All rights reserved.</p>
+        <p>© 2026 Joseph & James. All rights reserved.</p>
         <p class="flex gap-4 items-center font-extrabold" style="color:var(--text);">
-          <span>COD India</span>•<span>Worldwide</span>•<span>⟲ No Return</span></p>
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> COD India</span>
+          •
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Worldwide</span>
+          •
+          <span>⟲ No Return</span>
+        </p>
         <p class="flex gap-3 font-extrabold" style="color:var(--text);">
-          <span>VISA</span><span>MC</span><span>UPI</span><span>GPay</span><span>COD</span></p>
+          <span>VISA</span><span>MC</span><span>UPI</span><span>GPay</span><span>COD</span>
+        </p>
       </div>
     </div>
   </footer>
@@ -1134,13 +1187,23 @@ Detecting…
             <div class="flex justify-between text-sm"><span style="color:var(--mut);">Delivery</span><b id="sumDel"></b>
             </div>
             <div class="flex justify-between disp text-lg font-semibold border-t hairline pt-3">
-              <span>Total (COD)</span><b id="sumTotal"></b></div>
+              <span>Total (COD)</span><b id="sumTotal"></b>
+            </div>
           </div>
           <div class="p-4 md:p-5 space-y-3 w-full">
-            <p class="micro micro-gold">Delivery Details — Cash on Delivery</p>
+            <p class="micro micro-gold flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg> Delivery Details — Cash on Delivery</p>
             <div class="flex items-center justify-between gap-2 border hairline rounded-full px-4 py-2"
               style="background:var(--bg2);">
-              <p class="text-[11px] font-bold" style="color:var(--text);"><span id="coCountryTxt">Detecting…</span></p>
+              <p class="text-[11px] font-bold flex items-center gap-1.5" style="color:var(--text);"><svg
+                  class="w-3.5 h-3.5 text-[var(--gold)]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg> <span id="coCountryTxt">Detecting…</span></p>
               <button id="coDetect" class="pill btn-line px-3 py-1.5 text-[10px]">Re-detect</button>
             </div>
             <input id="coName" maxlength="60" class="field" placeholder="Full name *">
@@ -1153,9 +1216,17 @@ Detecting…
             <input id="coPin" maxlength="10" class="field" placeholder="PIN / ZIP *">
             <input type="text" name="website" id="coHoney" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
             <p id="coErr" class="text-[11px] hidden" style="color:#DC2626;"></p>
-            <button id="placeOrder" class="pill btn-gold w-full py-4 text-xs tracking-wide2 uppercase">Place Order on WhatsApp — COD</button>
-            <p class="text-[10px] text-center" style="color:var(--mut);">No Return / No Exchange • Deep professional
-              bill opens in WhatsApp.</p>
+            <button id="placeOrder" class="pill btn-gold w-full py-4 text-xs tracking-wide2 uppercase flex items-center justify-center gap-2">
+<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Place Order on WhatsApp — COD
+</button>
+            <p class="text-[10px] text-center flex items-center justify-center gap-1" style="color:var(--mut);"><svg
+                class="w-3.5 h-3.5 text-[#DC2626]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg> No Return / No Exchange • Deep professional bill opens in WhatsApp.</p>
           </div>
         </div>
     </aside>
@@ -1199,14 +1270,14 @@ Detecting…
     </div>
   </div>
 
-  <div id="historyModal" class="fixed inset-0 z-[85] hidden w-full" style="background:var(--bg); color:var(--text);">
-    <header class="shrink-0 glassbar border-b hairline w-full">
+  <div id="historyModal" class="fixed inset-0 z-[85] hidden overflow-y-auto w-full" style="background:var(--bg);">
+    <header class="sticky top-0 z-10 glassbar border-b hairline w-full">
       <div class="wrap flex items-center gap-3 py-3">
         <button data-close="historyModal" class="w-10 h-10 rounded-full border hairline transition" aria-label="Back">←</button>
         <h3 class="disp text-lg md:text-xl flex-1 truncate font-semibold">My Orders</h3>
       </div>
     </header>
-    <div id="historyList" class="flex-1 overflow-y-auto overflow-x-hidden wrap py-6 space-y-4 w-full"></div>
+    <div id="historyList" class="wrap py-6 space-y-4 w-full"></div>
   </div>
 
   <div id="staffModal" class="fixed inset-0 z-[95] hidden flex items-center justify-center px-4 w-full">
@@ -1218,13 +1289,29 @@ Detecting…
         <button data-close="staffModal" class="w-9 h-9 rounded-full border hairline" aria-label="Close">✕</button>
       </div>
       <div class="border hairline rounded-2xl p-5 mb-6" style="background:var(--bg2);">
-        <h4 class="font-bold text-sm mb-3" style="color:var(--gold);">Delivery Agent: Verify &amp; Deliver</h4>
+        <h4 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:var(--gold);">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" />
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+            <circle cx="5.5" cy="18.5" r="2.5" />
+            <circle cx="18.5" cy="18.5" r="2.5" />
+          </svg>
+          Delivery Agent: Verify &amp; Deliver
+        </h4>
         <input id="delOrderId" maxlength="10" class="field mb-2 uppercase" placeholder="Order ID (e.g. JJ123456)">
         <input id="delOtp" maxlength="4" class="field mb-3" placeholder="4-Digit Customer OTP">
         <button id="delVerify" class="pill btn-gold w-full py-3 text-xs tracking-wide2 uppercase">Verify OTP &amp; Mark Delivered</button>
       </div>
       <div class="border hairline rounded-2xl p-5" style="background:var(--bg2);">
-        <h4 class="font-bold text-sm mb-3" style="color:var(--gold);">Admin Control Panel</h4>
+        <h4 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:var(--gold);">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          Admin Control Panel
+        </h4>
         <div id="adminLoginBox">
           <input id="adminPass" type="password" class="field mb-3" placeholder="Enter Admin Passcode">
           <button id="adminLoginBtn" class="pill btn-ink w-full py-3 text-xs tracking-wide2 uppercase">Unlock Admin Panel</button>
@@ -1287,12 +1374,10 @@ Detecting…
       </div>
     </header>
     <div id="catPageGrid"
-      class="wrap py-6 md:py-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-5 w-full">
-    </div>
+      class="wrap py-6 md:py-8 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 w-full"></div>
   </div>
 
   <div id="toasts" class="fixed top-20 right-3 md:right-5 z-[99] space-y-3 w-[19rem] max-w-[92vw]"></div>
-
   <a id="waFloat" href="https://wa.me/917434053550?text=Hi%20Joseph%20%26%20James!" target="_blank" rel="noopener"
     aria-label="WhatsApp"
     class="wa-float fixed bottom-6 right-6 z-[65] w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lift transition hover:scale-110">
@@ -1306,12 +1391,12 @@ Detecting…
   <script>
     'use strict';
 const $ = (s,r=document) => r.querySelector(s);
-const $$ = (s,r=document) => Array.from(r.querySelectorAll(s));
+const $$ = (s,r=document) => [...r.querySelectorAll(s)];
 const esc = (s='') => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const debounce = (fn, ms=250) => { let t; return function(){ const a = arguments; clearTimeout(t); t = setTimeout(function(){ fn.apply(null,a); }, ms); }; };
+const debounce = (fn, ms=250) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
 const WA = '917434053550';
 const store = {
-get(k,d){ try{ const v = JSON.parse(localStorage.getItem('jj_'+k)); return v === null || v === undefined ? d : v; }catch(e){ return d; } },
+get(k,d){ try{ return JSON.parse(localStorage.getItem('jj_'+k)) ?? d; }catch(e){ return d; } },
 set(k,v){ try{ localStorage.setItem('jj_'+k, JSON.stringify(v)); }catch(e){} }
 };
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1323,44 +1408,48 @@ const f = c => Math.round((a-c)*q + c);
 return '#' + [f(r),f(g),f(b)].map(c => c.toString(16).padStart(2,'0')).join('');
 }
 const ICONS = {
-palette:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.1-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5.5-4.5-9-10-9z"/></svg>',
-cash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>',
-tshirt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>',
-shirt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/><path d="M12 6v2"/></svg>',
-sparkle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L19.7 10.7l-5.8 1.9L12 18.4l-1.9-5.8L4.3 10.7l5.8-1.9L12 3z"/></svg>',
-fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
-bag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
-box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>',
-cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
-party:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3L2 22l10.7-3.8"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="M22 2l-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/></svg>',
-lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
-pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
-gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
-truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
-check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
-heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-cross:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
-warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
-globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
-ruler:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"/><path d="M12 12v.01"/><path d="M16 16v.01"/><path d="M21 3l-9 9"/><path d="M21 3h-5"/><path d="M21 3v5"/></svg>',
-share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>',
-camera:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
-chat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>'
+phone:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+mail:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+palette:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.1-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5.5-4.5-9-10-9z"/></svg>`,
+cash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`,
+tshirt:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>`,
+shirt:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/><path d="M12 6v2"/></svg>`,
+sparkle:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L19.7 10.7l-5.8 1.9L12 18.4l-1.9-5.8L4.3 10.7l5.8-1.9L12 3z"/></svg>`,
+fire:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
+bag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+box:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+cart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`,
+party:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3L2 22l10.7-3.8"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="M22 2l-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/></svg>`,
+lock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+pin:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+gear:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
+truck:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+heart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+cross:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+warn:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+globe:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+ruler:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"/><path d="M12 12v.01"/><path d="M16 16v.01"/><path d="M21 3l-9 9"/><path d="M21 3h-5"/><path d="M21 3v5"/></svg>`,
+share:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+camera:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+tag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`,
+home:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>`,
+'arrow-right':`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`
 };
-function ic(n,c){ c = c || 'w-4 h-4'; return '<span class="inline-flex items-center justify-center ' + c + '">' + (ICONS[n]||'') + '</span>'; }
+function ic(n,c='w-4 h-4'){ return `<span class="inline-flex items-center justify-center ${c}">${ICONS[n]||''}</span>`; }
 const SC = {};
 function studio(cat, hex, a){
 const key = cat+'|'+hex+'|'+a;
 if (SC[key]) return SC[key];
 const L = shade(hex,34), D = shade(hex,-26), HL = shade(hex,60), G = '#B08D57', GD = '#8C6D3F';
 const print = a === 0
-? "<path d='M262 300 q38 -46 76 0 q-38 46 -76 0Z' fill='" + HL + "' opacity='.9'/><circle cx='300' cy='300' r='7' fill='" + D + "'/><path d='M262 380 h76' stroke='" + D + "' stroke-width='7'/>"
-: "<circle cx='300' cy='270' r='16' fill='none' stroke='" + HL + "' stroke-width='5'/><path d='M284 320 h32' stroke='" + HL + "' stroke-width='6'/>";
-const motif = "<path d='M300 120 L225 145 L170 240 L232 278 L232 600 L368 600 L368 278 L430 240 L375 145 Z' fill='url(#fab)'/><path d='M262 132 a38 26 0 0 0 76 0' fill='" + D + "'/>" + print + "<path d='M250 470 h100' stroke='" + D + "' stroke-width='4' opacity='.35'/>";
-const T = a === 1 ? "translate(600 0) scale(-1 1)" : '';
+? `<path d='M262 300 q38 -46 76 0 q-38 46 -76 0Z' fill='${HL}' opacity='.9'/><circle cx='300' cy='300' r='7' fill='${D}'/><path d='M262 380 h76' stroke='${D}' stroke-width='7'/>`
+: `<circle cx='300' cy='270' r='16' fill='none' stroke='${HL}' stroke-width='5'/><path d='M284 320 h32' stroke='${HL}' stroke-width='6'/>`;
+const motif = `<path d='M300 120 L225 145 L170 240 L232 278 L232 600 L368 600 L368 278 L430 240 L375 145 Z' fill='url(#fab)'/><path d='M262 132 a38 26 0 0 0 76 0' fill='${D}'/>${print}<path d='M250 470 h100' stroke='${D}' stroke-width='4' opacity='.35'/>`;
+const T = a === 1 ? 'translate(600 0) scale(-1 1)' : '';
 const lbl = a === 1 ? 'Back' : 'Front';
-const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 750'><defs><linearGradient id='bg' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#fdfcf8'/><stop offset='1' stop-color='#ede4d6'/></linearGradient><linearGradient id='fab' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='" + L + "'/><stop offset='.55' stop-color='" + hex + "'/><stop offset='1' stop-color='" + D + "'/></linearGradient></defs><rect width='600' height='750' fill='url(#bg)'/><ellipse cx='300' cy='668' rx='200' ry='26' fill='#141210' opacity='.08'/><g transform='" + T + "'>" + motif + "</g><rect x='22' y='22' width='556' height='706' rx='24' fill='none' stroke='" + G + "' opacity='.55'/><text x='300' y='712' font-size='20' text-anchor='middle' fill='" + GD + "' font-family='Arial' letter-spacing='6'>J&amp;J</text><rect x='210' y='40' width='180' height='36' rx='18' fill='#141210' opacity='.88'/><text x='300' y='64' font-size='16' text-anchor='middle' fill='#E4C98F' font-family='Arial'>" + lbl + "</text></svg>";
+const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 750'><defs><linearGradient id='bg' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#fdfcf8'/><stop offset='1' stop-color='#ede4d6'/></linearGradient><linearGradient id='fab' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${L}'/><stop offset='.55' stop-color='${hex}'/><stop offset='1' stop-color='${D}'/></linearGradient></defs><rect width='600' height='750' fill='url(#bg)'/><ellipse cx='300' cy='668' rx='200' ry='26' fill='#141210' opacity='.08'/><g transform='${T}'>${motif}</g><rect x='22' y='22' width='556' height='706' rx='24' fill='none' stroke='${G}' opacity='.55'/><text x='300' y='712' font-size='20' text-anchor='middle' fill='${GD}' font-family='Arial' letter-spacing='6'>J&amp;J</text><rect x='210' y='40' width='180' height='36' rx='18' fill='#141210' opacity='.88'/><text x='300' y='64' font-size='16' text-anchor='middle' fill='#E4C98F' font-family='Arial'>${lbl}</text></svg>`;
 const uri = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 SC[key] = uri;
 return uri;
@@ -1378,11 +1467,10 @@ const COUNTRY_NAME = { IN:'India',US:'United States',GB:'United Kingdom',AE:'UAE
 const TZC = { 'Asia/Kolkata':'IN','Asia/Calcutta':'IN','Asia/Dubai':'AE','Asia/Riyadh':'SA','Asia/Qatar':'QA','Asia/Kuwait':'KW','Asia/Bahrain':'BH','Asia/Muscat':'OM','Asia/Amman':'JO','Africa/Cairo':'EG','Africa/Johannesburg':'ZA','Africa/Lagos':'NG','Africa/Nairobi':'KE','Africa/Accra':'GH','Africa/Casablanca':'MA','Europe/Istanbul':'TR','Australia/Sydney':'AU','Australia/Perth':'AU','Pacific/Auckland':'NZ','America/Toronto':'CA','America/Vancouver':'CA','America/New_York':'US','America/Chicago':'US','America/Denver':'US','America/Los_Angeles':'US','America/Phoenix':'US','Asia/Singapore':'SG','Asia/Kuala_Lumpur':'MY','Asia/Bangkok':'TH','Asia/Jakarta':'ID','Asia/Manila':'PH','Asia/Ho_Chi_Minh':'VN','Asia/Seoul':'KR','Asia/Tokyo':'JP','Asia/Shanghai':'CN','Asia/Hong_Kong':'HK','Asia/Dhaka':'BD','Asia/Karachi':'PK','Asia/Colombo':'LK','Asia/Kathmandu':'NP','Europe/Zurich':'CH','Europe/Stockholm':'SE','Europe/Oslo':'NO','Europe/Copenhagen':'DK','Europe/Warsaw':'PL','Europe/Moscow':'RU','Europe/Kyiv':'UA','America/Mexico_City':'MX','America/Sao_Paulo':'BR','America/Argentina/Buenos_Aires':'AR','America/Santiago':'CL','America/Bogota':'CO','America/Lima':'PE','Africa/Algiers':'DZ','Africa/Tunis':'TN','Asia/Jerusalem':'IL','Europe/Berlin':'DE','Europe/Paris':'FR','Europe/Rome':'IT','Europe/Madrid':'ES','Europe/Amsterdam':'NL','Europe/Brussels':'BE','Europe/Lisbon':'PT','Europe/Dublin':'IE','Europe/Vienna':'AT','Europe/Helsinki':'FI','Europe/Athens':'GR','Europe/London':'GB' };
 const RATE_REFRESH_MS = 60 * 60 * 1000;
 const RATE_CACHE_MAX_MS = 6 * 60 * 60 * 1000;
-let RATES = null, RATES_AT = 0, RATES_SRC = '', fxStatus = 'connecting';
-async function fetchJSON(url, ms){
-ms = ms || 8000;
+let RATES = null, RATES_AT = 0, RATES_SRC = '', fxStatus = 'connecting', fxRetry = 0;
+async function fetchJSON(url, ms=8000){
 const ctl = new AbortController();
-const t = setTimeout(function(){ ctl.abort(); }, ms);
+const t = setTimeout(() => ctl.abort(), ms);
 try{
 const r = await fetch(url, { signal: ctl.signal, cache: 'no-store' });
 if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -1390,25 +1478,15 @@ return await r.json();
 } finally { clearTimeout(t); }
 }
 const RATE_SOURCES = [
-{ name:'open.er-api.com', get: async function(){
+{ name:'open.er-api.com', get:async () => {
 const j = await fetchJSON('https://open.er-api.com/v6/latest/INR');
 return (j && j.result === 'success' && j.rates) ? j.rates : null;
-}},
-{ name:'currency-api CDN', get: async function(){
-const j = await fetchJSON('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/inr.json');
-if (!j || !j.inr) return null;
-const up = {}; for (const k in j.inr) up[k.toUpperCase()] = j.inr[k];
-return up;
-}},
-{ name:'frankfurter.app', get: async function(){
-const j = await fetchJSON('https://api.frankfurter.app/latest?from=INR');
-return (j && j.rates) ? j.rates : null;
 }}
 ];
 function ratesSane(next){
 if (!next || typeof next !== 'object') return false;
 const majors = ['USD','EUR','GBP'];
-for (const k of majors){ if (!(Number(next[k]) > 0)) return false; }
+for (const k of majors){ const v = Number(next[k]); if (!(v > 0)) return false; }
 return true;
 }
 function loadCachedRates(){
@@ -1417,6 +1495,7 @@ if (c && c.rates && c.at && (Date.now() - c.at) < RATE_CACHE_MAX_MS && ratesSane
 RATES = c.rates; RATES_AT = c.at; RATES_SRC = c.src || 'cached-live';
 return true;
 }
+store.set('fx', null);
 return false;
 }
 async function loadLiveRates(){
@@ -1436,14 +1515,15 @@ async function ensureLive(note){
 const ok = await loadLiveRates();
 if (ok){
 const wasDown = fxStatus !== 'live';
-fxStatus = 'live';
+fxStatus = 'live'; fxRetry = 0;
 updateCountryUI(); refreshPrices();
 if (note || wasDown) toast('Live exchange rates connected','globe');
 return true;
 }
 fxStatus = 'retry';
 updateCountryUI();
-setTimeout(function(){ ensureLive(false); }, 20000);
+fxRetry = Math.min(300000, fxRetry ? fxRetry * 2 : 15000);
+setTimeout(() => ensureLive(false), fxRetry);
 return false;
 }
 let country = 'IN';
@@ -1451,16 +1531,23 @@ function tzCountry(){
 try{
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
 if (TZC[tz]) return TZC[tz];
+const city = (tz.split('/')[1] || '').replace(/_/g,' ');
+for (const k in TZC){ if ((k.split('/')[1] || '').replace(/_/g,' ') === city) return TZC[k]; }
 }catch(e){}
 return 'IN';
 }
 async function ipCountry(){
 try{
-const j = await fetchJSON('https://ipapi.co/json/', 7000);
+const ctl = new AbortController();
+const to = setTimeout(() => ctl.abort(), 7000);
+const r = await fetch('https://ipapi.co/json/', { signal: ctl.signal });
+clearTimeout(to);
+const j = await r.json();
 if (j && j.country_code) return j.country_code;
 }catch(e){}
 try{
-const j2 = await fetchJSON('https://ipwho.is/', 7000);
+const r2 = await fetch('https://ipwho.is/');
+const j2 = await r2.json();
 if (j2 && j2.country_code) return j2.country_code;
 }catch(e){}
 return null;
@@ -1478,11 +1565,14 @@ function updateCountryUI(){
 const c = curCode();
 const chip = $('#curChip');
 if (chip){
-const dot = fxStatus === 'live' ? '🟢' : (fxStatus === 'retry' ? '🔴' : '🟡');
-chip.textContent = dot + ' ' + country + ' · ' + c;
+const dot = fxStatus === 'live' ? '🟢' : fxStatus === 'retry' ? '🔴' : '🟡';
+chip.innerHTML = `${dot} ${country} · ${c}`;
+chip.title = fxStatus === 'live'
+? `LIVE rates via ${RATES_SRC} • updated ${new Date(RATES_AT).toLocaleTimeString()}`
+: 'Connecting to live exchange rates…';
 }
 const ct = $('#coCountryTxt');
-if (ct) ct.textContent = (COUNTRY_NAME[country] || country) + ' (' + c + ')';
+if (ct) ct.textContent = `${COUNTRY_NAME[country] || country} (${c})`;
 }
 const curCode = () => COUNTRY_CUR[country] || 'USD';
 function fmt(inr){
@@ -1493,134 +1583,130 @@ const v = inr * MARKUP * RATES[c];
 try{ return new Intl.NumberFormat(undefined, { style:'currency', currency:c, minimumFractionDigits:0, maximumFractionDigits:2 }).format(v); }
 catch(e){ return c + ' ' + Math.round(v); }
 }
-return c + ' …';
+return '…';
 }
 function refreshPrices(){
-renderHomeCats();
+renderFeatured();
 updateHeroPrices();
 renderCart();
 if (!$('#catPage').classList.contains('hidden')) drawCatPage();
 if (!$('#productModal').classList.contains('hidden')) drawProduct();
 }
 const CATMETA = {
-'graphic-tee': { name:'Oversized Graphic T-Shirts', views:2 },
-'minimal-tee': { name:'Minimalist Text T-Shirts', views:2 },
-'custom-tee': { name:'Custom Name/Photo T-Shirts', views:2 },
-'cropped-tee': { name:'Cropped Boxy T-Shirts', views:2 },
-'polo-tee': { name:'Polo T-Shirts', views:2 },
-'anime-tee': { name:'Anime/Gaming Tees', views:2 }
+'graphic-tee': { name:'Oversized Graphic T-Shirts', main:'T-Shirt', type:'clothing', views:2 },
+'minimal-tee': { name:'Minimalist Text T-Shirts', main:'T-Shirt', type:'clothing', views:2 },
+'custom-tee': { name:'Custom Name/Photo T-Shirts', main:'T-Shirt', type:'clothing', views:2 },
+'cropped-tee': { name:'Cropped Boxy T-Shirts', main:'T-Shirt', type:'clothing', views:2 },
+'polo-tee': { name:'Polo T-Shirts', main:'T-Shirt', type:'clothing', views:2 },
+'anime-tee': { name:'Anime/Gaming Tees', main:'T-Shirt', type:'clothing', views:2 }
 };
 const PRODUCTS = [];
-function generateProducts(){
-const names = {
-'graphic-tee': ['Urban Street Graphic','Retro Wave Print','Abstract Art Tee','Graffiti Soul','Cosmic Dream','Wild Tiger Graphic','Sunset Vibes','Neon Nights','Acid Wash Graphic','Bootleg Vintage'],
-'minimal-tee': ['Micro Dot Minimal','Line Art Tee','Pocket Hit','Typography Tee','Chest Logo','Blank Canvas','Subtle Stripe','Tone-on-Tone','Small Crest','Essential Minimal'],
-'custom-tee': ['Custom Name Tee','Photo Print Tee','Couple Custom Tee','Pet Photo Tee','Custom Quote Tee','Logo Custom Tee','Signature Tee','Memory Print Tee','Custom Graphic Tee','Initials Tee'],
-'cropped-tee': ['Boxy Crop White','Black Boxy Crop','Olive Crop Tee','Pastel Pink Crop','Grey Wash Crop','Ribbed Crop Tee','Drop Shoulder Crop','Raw Hem Crop','Faded Black Crop','Beige Boxy Crop'],
-'polo-tee': ['Classic White Polo','Black Premium Polo','Navy Blue Polo','Olive Green Polo','Grey Melange Polo','Burgundy Polo','Pastel Blue Polo','Striped Polo','Contrast Collar Polo','Textured Polo'],
-'anime-tee': ['Ninja Scroll Tee','Pirate King Tee','Mecha Anime Tee','Demon Slayer Tee','Cyberpunk Anime','Retro Anime Tee','Manga Panel Tee','Spirit Animal Tee','Gaming Logo Tee','Pixel Art Tee']
-};
-let pid = 1;
-for (const cat in names){
-names[cat].forEach(function(name, i){
-const price = [499,549,599,649,699][i % 5];
-PRODUCTS.push({
-id: 'p' + (pid++), cat: cat, name: name, price: price, mrp: price + 500,
-rating: +(4.5 + Math.random()*0.5).toFixed(1),
-reviews: Math.floor(50 + Math.random()*150),
-tags: i < 2 ? 'new' : (i < 4 ? 'best' : (i < 5 ? 'hot' : '')),
-sizes: ['Free Size'],
-desc: 'Premium quality ' + CATMETA[cat].name + '. Customisable and comfortable.',
-colors: [['Default', '#171410']], hasColors: false
-});
-});
+
+function generateProducts() {
+  const names = {
+    'graphic-tee': ['Urban Street Graphic', 'Retro Wave Print', 'Abstract Art Tee', 'Graffiti Soul', 'Cosmic Dream', 'Wild Tiger Graphic', 'Sunset Vibes', 'Neon Nights', 'Acid Wash Graphic', 'Bootleg Vintage'],
+    'minimal-tee': ['Micro Dot Minimal', 'Line Art Tee', 'Pocket Hit', 'Typography Tee', 'Chest Logo', 'Blank Canvas', 'Subtle Stripe', 'Tone-on-Tone', 'Small Crest', 'Essential Minimal'],
+    'custom-tee': ['Custom Name Tee', 'Photo Print Tee', 'Couple Custom Tee', 'Pet Photo Tee', 'Custom Quote Tee', 'Logo Custom Tee', 'Signature Tee', 'Memory Print Tee', 'Custom Graphic Tee', 'Initials Tee'],
+    'cropped-tee': ['Boxy Crop White', 'Black Boxy Crop', 'Olive Crop Tee', 'Pastel Pink Crop', 'Grey Wash Crop', 'Ribbed Crop Tee', 'Drop Shoulder Crop', 'Raw Hem Crop', 'Faded Black Crop', 'Beige Boxy Crop'],
+    'polo-tee': ['Classic White Polo', 'Black Premium Polo', 'Navy Blue Polo', 'Olive Green Polo', 'Grey Melange Polo', 'Burgundy Polo', 'Pastel Blue Polo', 'Striped Polo', 'Contrast Collar Polo', 'Textured Polo'],
+    'anime-tee': ['Ninja Scroll Tee', 'Pirate King Tee', 'Mecha Anime Tee', 'Demon Slayer Tee', 'Cyberpunk Anime', 'Retro Anime Tee', 'Manga Panel Tee', 'Spirit Animal Tee', 'Gaming Logo Tee', 'Pixel Art Tee']
+  };
+  let pid = 1;
+  let globalIdx = 0;
+  for (const cat in names) {
+    names[cat].forEach((name, i) => {
+      const price = [499, 549, 599, 649, 699][i % 5];
+      const imgNum = (globalIdx % 20) + 1;
+      PRODUCTS.push({
+        id: `p${pid++}`,
+        imgNum,
+        cat,
+        name,
+        price,
+        mrp: price + 500,
+        rating: +(4.5 + Math.random() * 0.5).toFixed(1),
+        reviews: Math.floor(50 + Math.random() * 150),
+        tags: i < 2 ? 'new' : (i < 4 ? 'best' : (i < 5 ? 'hot' : '')),
+        sizes: ['Free Size'],
+        desc: `Premium quality ${CATMETA[cat].name}. Customisable and comfortable.`,
+        colors: [['Default', '#171410']],
+        hasColors: false
+      });
+      globalIdx++;
+    });
+  }
 }
-}
+
 const prodById = id => PRODUCTS.find(p => p.id === id);
 const offPct = p => Math.round((1 - p.price / p.mrp) * 100);
 const stars = r => { const f = Math.round(r); return '<span style="color:var(--gold);font-size:11px;">' + '★'.repeat(f) + '☆'.repeat(5-f) + '</span>'; };
 const viewsOf = p => CATMETA[p.cat].views;
 function imgURLs(p){
-const pidNum = parseInt(p.id.slice(1), 10);
-const idx = ((pidNum - 1) % 20) + 1;
-const base = 'images/t' + idx + '-';
-return Array.from({ length: viewsOf(p) }, function(_, i){ return base + (i+1) + '.jpeg'; });
+const n = p.imgNum;
+return ['images/t' + n + '-1.jpeg', 'images/t' + n + '-2.jpeg'];
 }
-const hexOf = (p,c) => (p.colors.find(x => x[0] === c) || p.colors[0])[1];
-function imgTag(p,color,a,cls,extra,eager){
-const h = hexOf(p,color);
-return '<img ' + (extra||'') + ' class="' + cls + '" onerror="__imgfb(this)" onload="__imgld(this)" data-fbcat="' + p.cat + '" data-fbhex="' + h + '" data-fba="' + a + '" src="' + imgURLs(p)[a] + '" alt="' + esc(p.name) + ' ' + (['Front','Back'][a]||'') + '" loading="' + (eager?'eager':'lazy') + '" decoding="async" style="height:100%; width:100%; object-fit:cover;">';
+const hexOf = p => p.colors[0][1];
+function imgTag(p,a,cls,extra,eager){
+const h = hexOf(p);
+return `<img ${extra||''} class="${cls}" onerror="__imgfb(this)" onload="__imgld(this)" data-fbcat="${p.cat}" data-fbhex="${h}" data-fba="${a}" src="${imgURLs(p)[a]}" alt="${esc(p.name)} ${['Front','Back'][a]||''}" loading="${eager?'eager':'lazy'}" decoding="async" style="height:100%; width:100%; object-fit:cover;">`;
 }
-function heroImg(p,color){
-const h = hexOf(p,color);
+function heroImg(p){
+const h = hexOf(p);
 const svg = studio(p.cat,h,0);
 const real = imgURLs(p)[0];
-return '<img class="w-full h-full object-cover ld hero-img" src="' + svg + '" data-upgrade="' + real + '" alt="' + esc(p.name) + '" fetchpriority="high" decoding="async" style="height:100%;width:100%;object-fit:cover;">';
+return `<img class="w-full h-full object-cover ld hero-img" src="${svg}" data-upgrade="${real}" alt="${esc(p.name)}" fetchpriority="high" decoding="async" style="height:100%;width:100%;object-fit:cover;">`;
 }
 function upgradeHeroImgs(){
-$$('.hero-img').forEach(function(img){
+$$('.hero-img').forEach(img => {
 const real = img.dataset.upgrade;
 if (!real || img.dataset.tried) return;
 img.dataset.tried = '1';
 const probe = new Image();
-probe.onload = function(){ if (img.src !== real) img.src = real; };
+probe.onload = () => { if (img.src !== real) img.src = real; };
+probe.onerror = () => {};
 probe.src = real;
 });
 }
-let cart = store.get('cart', []);
-let wish = store.get('wish', []);
-function card(p, anim, delay){
-anim = anim || 'a-up'; delay = delay || 0;
+function card(p, anim='a-up', delay=0){
 const wished = wish.includes(p.id);
 const tag = p.tags.includes('new') ? ['NEW','background:#059669;color:#fff;'] : p.tags.includes('hot') ? ['HOT','background:#DC2626;color:#fff;'] : p.tags.includes('best') ? ['BEST','background:var(--text);color:var(--bg);'] : null;
 const multi = viewsOf(p) > 1;
-return '<article class="card relative ' + anim + '" style="animation-delay:' + delay + 'ms;">' +
-(tag ? '<span class="absolute top-3 left-3 z-10 chip" style="' + tag[1] + '">' + tag[0] + '</span>' : '') +
-'<button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full flex items-center justify-center transition border hairline" style="background:var(--card);" data-wish="' + p.id + '" aria-label="Wishlist">' +
-'<svg class="w-4 h-4" style="' + (wished ? 'color:#EF4444;' : 'color:var(--mut);') + '" viewBox="0 0 24 24" fill="' + (wished ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.7 1.2 4.6 2.6.9-1.4 2.4-2.6 4.6-2.6 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg></button>' +
-'<div class="cardimg relative aspect-[4/5] overflow-hidden cursor-pointer" style="background:var(--bg2);" data-open-product="' + p.id + '">' +
-(multi
-? imgTag(p,p.colors[0][0],0,'swap front','data-main') + imgTag(p,p.colors[0][0],1,'swap back','',true)
-: imgTag(p,p.colors[0][0],0,'w-full h-full object-cover','data-main')) +
-'<span class="absolute inset-x-0 bottom-0 quickadd text-center micro py-3">' + (multi ? 'Front ⇄ Back' : 'Quick View') + '</span></div>' +
-'<div class="p-3 md:p-4">' +
-'<p class="micro hidden md:block">' + esc(CATMETA[p.cat].name) + '</p>' +
-'<h3 class="disp text-[13px] md:text-[15px] leading-snug mt-0.5 md:mt-1 truncate cursor-pointer font-semibold" data-open-product="' + p.id + '">' + esc(p.name) + '</h3>' +
-'<div class="flex items-center gap-2 mt-1">' + stars(p.rating) + '<span class="text-[10px]" style="color:var(--mut);">(' + p.reviews + ')</span></div>' +
-'<div class="flex items-baseline gap-2 mt-1.5 md:mt-2 flex-wrap"><b class="disp text-base md:text-lg font-semibold">' + fmt(p.price) + '</b>' +
-'<s class="text-[10px] md:text-[11px]" style="color:var(--mut);">' + fmt(p.mrp) + '</s>' +
-'<span class="chip" style="background:rgba(16,185,129,.1); color:#059669;">' + offPct(p) + '%</span></div>' +
-'<button class="pill btn-ink w-full mt-2 md:mt-3 py-2.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-add="' + p.id + '">' + ic('cart','w-3.5 h-3.5') + ' Add to Cart</button>' +
-'</div></article>';
+return `
+<article class="card relative ${anim}" style="animation-delay:${delay}ms;">
+${tag ? `<span class="absolute top-3 left-3 z-10 chip" style="${tag[1]}">${tag[0]}</span>` : ''}
+<button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full flex items-center justify-center transition border hairline" style="background:var(--card);" data-wish="${p.id}" aria-label="Wishlist">
+<svg class="w-4 h-4" style="${wished ? 'color:#ef4444;' : 'color:var(--mut);'}" viewBox="0 0 24 24" fill="${wished ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.7 1.2 4.6 2.6.9-1.4 2.4-2.6 4.6-2.6 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
+</button>
+<div class="cardimg relative aspect-[4/5] overflow-hidden cursor-pointer" style="background:var(--bg2);" data-open-product="${p.id}">
+${multi
+? imgTag(p,0,'swap front','data-main') + imgTag(p,1,'swap back','',true)
+: imgTag(p,0,'w-full h-full object-cover','data-main')}
+<span class="absolute inset-x-0 bottom-0 quickadd text-center micro py-3">${multi ? 'Front ⇄ Back' : 'Quick View'}</span>
+</div>
+<div class="p-3 md:p-4">
+<p class="micro hidden md:block">${esc(CATMETA[p.cat].name)}</p>
+<h3 class="disp text-[13px] md:text-[15px] leading-snug mt-0.5 md:mt-1 truncate cursor-pointer font-semibold" data-open-product="${p.id}">${esc(p.name)}</h3>
+<div class="flex items-center gap-2 mt-1">${stars(p.rating)}<span class="text-[10px]" style="color:var(--mut);">(${p.reviews})</span></div>
+<div class="flex items-baseline gap-2 mt-1.5 md:mt-2 flex-wrap">
+<b class="disp text-base md:text-lg font-semibold">${fmt(p.price)}</b>
+<s class="text-[10px] md:text-[11px]" style="color:var(--mut);">${fmt(p.mrp)}</s>
+<span class="chip" style="background:rgba(16,185,129,.1); color:#059669;">${offPct(p)}%</span>
+</div>
+<button class="pill btn-ink w-full mt-2 md:mt-3 py-2.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-add="${p.id}">${ic('cart','w-3.5 h-3.5')} Add to Cart</button>
+</div>
+</article>`;
 }
-/* HOME: 6 categories × 5 products each */
-function renderHomeCats(){
-$('#homeCats').innerHTML = Object.keys(CATMETA).map(function(c, ci){
-const list = PRODUCTS.filter(p => p.cat === c).slice(0,5);
-return '<section class="mb-10 md:mb-14">' +
-'<div class="wrap flex items-end justify-between mb-4 md:mb-6" data-reveal="up">' +
-'<div><p class="micro micro-gold mb-1">Collection ' + (ci+1) + ' / 6</p>' +
-'<h2 class="disp font-semibold" style="font-size:var(--fs-h2);">' + CATMETA[c].name + '</h2></div>' +
-'<button class="micro micro-gold transition shrink-0" data-catpage="' + c + '">View All →</button></div>' +
-'<div class="wrap grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5">' +
-list.map(function(p,i){ return card(p,'a-up',i*45); }).join('') +
-'</div></section>';
-}).join('') +
-'<div class="wrap text-center mt-2"><button class="pill btn-gold px-10 py-4 text-xs tracking-wide2 uppercase" data-catpage="">View All 60 Products →</button></div>';
+let cart = store.get('cart', []);
+let wish = store.get('wish', []);
+
+function renderFeatured(){
+const mixed = [...PRODUCTS].sort(() => Math.random() - 0.5).slice(0, 20);
+$('#featuredGrid').innerHTML = mixed.map((p, i) => `<div>${card(p, 'a-up', i * 50)}</div>`).join('');
 }
-/* Category grid under hero: PHOTO cards, no icons */
-function renderShopCats(){
-$('#shopCats').innerHTML = Object.keys(CATMETA).map(function(c){
-const prod = PRODUCTS.find(p => p.cat === c);
-return '<button class="group flex flex-col items-center gap-3 text-center" data-catpage="' + c + '">' +
-'<div class="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden border hairline shadow-soft transition group-hover:shadow-lift group-hover:-translate-y-1.5" style="background:var(--card);">' +
-(prod ? imgTag(prod, prod.colors[0][0], 0, 'w-full h-full object-cover transition duration-700 group-hover:scale-110') : '') +
-'<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div></div>' +
-'<span class="text-[11px] md:text-sm font-semibold leading-tight" style="color:var(--text);">' + CATMETA[c].name + '</span></button>';
-}).join('');
-}
+
 function renderMobileNav(){
-const top = [
+const items = [
+{ l:'Home', a:'href="#home" data-close="mobileMenu"', i:ic('home') },
 { l:'New Drops', a:'data-catpage="new"', i:ic('sparkle') },
 { l:'Best Sell', a:'data-catpage="best"', i:ic('fire') },
 { l:'Under ₹499', a:'data-catpage="under499"', i:ic('tag') },
@@ -1630,74 +1716,99 @@ const top = [
 { l:'My Orders', a:'data-openhistory', i:ic('box') },
 { l:'Contact', a:'href="#contact" data-close="mobileMenu"', i:ic('chat') }
 ];
-$('#mobileNav').innerHTML = top.map(function(it, idx){
-return '<button class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl border hairline transition active:scale-[0.98] text-left" style="background:rgba(255,255,255,.55); animation:fadeUp .5s both; animation-delay:' + (idx*40) + 'ms;" ' + it.a + '>' +
-'<span class="flex items-center gap-3 min-w-0">' +
-'<span class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 text-[var(--gold)]" style="background:rgba(176,141,87,.14);">' + it.i + '</span>' +
-'<span class="disp text-[15px] font-medium truncate">' + esc(it.l) + '</span></span>' +
-'<span class="micro micro-gold shrink-0">→</span></button>';
-}).join('');
-$('#footCats').innerHTML = Object.keys(CATMETA).map(function(c){
-return '<li><button class="hover:text-gld transition" data-catpage="' + c + '">' + esc(CATMETA[c].name) + '</button></li>';
-}).join('');
+$('#mobileNav').innerHTML = items.map((it,idx) => `
+<a class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl border hairline transition active:scale-[0.98] text-left cursor-pointer" style="background:var(--card); animation:fadeUp .5s both; animation-delay:${idx*40}ms;" ${it.a}>
+<span class="flex items-center gap-3 min-w-0">
+<span class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 text-[var(--gold)]" style="background:rgba(176,141,87,.14);">${it.i}</span>
+<span class="disp text-[15px] font-medium truncate">${esc(it.l)}</span>
+</span>
+<span class="micro micro-gold shrink-0">→</span>
+</a>`).join('');
+$('#footCats').innerHTML = Object.keys(CATMETA).map(c => `<li><button class="hover:text-[#E2C08D] transition" data-catpage="${c}">${esc(CATMETA[c].name)}</button></li>`).join('');
 }
+
+function renderCircleCats() {
+  const cats = Object.keys(CATMETA);
+  $('#circleCats').innerHTML = cats.map(c => {
+    const p = PRODUCTS.find(x => x.cat === c);
+    if (!p) return '';
+    return `
+    <button class="flex flex-col items-center gap-2 md:gap-3 group" data-catpage="${c}">
+      <div class="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 transition group-hover:shadow-lift" style="border-color:var(--line); background:var(--bg2);">
+        ${imgTag(p,0,'w-full h-full object-cover transition duration-500 group-hover:scale-110')}
+      </div>
+      <span class="text-[10px] md:text-xs font-semibold text-center leading-tight px-1" style="color:var(--text);">${CATMETA[c].name}</span>
+    </button>
+  `;
+  }).join('');
+}
+
 function renderInsta(){
-const ids = PRODUCTS.slice(0,6).map(p => p.id);
-$('#instaRow').innerHTML = ids.map(function(id,i){
+const ids = PRODUCTS.slice(0, 6).map(p => p.id);
+$('#instaRow').innerHTML = ids.map((id,i) => {
 const p = prodById(id);
-return '<a href="https://www.instagram.com/josephandjames" target="_blank" rel="noopener" class="relative rounded-xl md:rounded-2xl overflow-hidden group aspect-square" data-reveal="zoom" data-delay="' + (i*60) + '">' +
-imgTag(p,p.colors[0][0],0,'w-full h-full object-cover group-hover:scale-110') +
-'<span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">' + ic('camera','w-6 h-6') + '</span></a>';
+return `<a href="https://www.instagram.com/josephandjames" target="_blank" rel="noopener" class="relative rounded-xl md:rounded-2xl overflow-hidden group aspect-square" data-reveal="zoom" data-delay="${i*60}">${imgTag(p,0,'w-full h-full object-cover transition duration-500 group-hover:scale-110')}<span class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">${ic('camera','w-6 h-6')}</span></a>`;
 }).join('');
 }
 let sIdx = 0, sTimer;
 function buildSlides(){
 const S = [];
-Object.keys(CATMETA).forEach(function(c){
-const prods = PRODUCTS.filter(p => p.cat === c);
-if (prods.length >= 1) S.push({ c:c, rep: prods[0] });
-if (prods.length >= 2) S.push({ c:c, rep: prods[1] });
+Object.keys(CATMETA).forEach(c => {
+  const prods = PRODUCTS.filter(p => p.cat === c);
+  if(prods.length >= 1) S.push({ c, rep: prods[0] });
+  if(prods.length >= 2) S.push({ c, rep: prods[1] });
 });
 return S;
 }
 function renderHero(){
 const S = buildSlides();
-$('#heroSlides').innerHTML = S.map(function(s,i){
+$('#heroSlides').innerHTML = S.map((s,i) => {
 const p = s.rep;
 const meta = CATMETA[s.c];
-return '<div class="hero-slide w-full ' + (i ? 'hidden' : '') + '" data-slide="' + i + '">' +
-'<div class="wrap grid md:grid-cols-2 gap-6 md:gap-12 items-center py-8 md:py-16 w-full">' +
-'<div class="text-center md:text-left space-y-4 md:space-y-5 order-2 md:order-1 min-w-0">' +
-'<span class="ha-up chip border hairline" style="background:var(--card); color:var(--gold);">● ' + esc(meta.name) + '</span>' +
-'<h1 class="ha-up disp font-bold leading-[1.05]" style="font-size:var(--fs-hero); color:var(--hero-ink); animation-delay:.05s;">' + esc(p.name) + '</h1>' +
-'<div class="ha-up flex items-center gap-3 justify-center md:justify-start flex-wrap" style="animation-delay:.1s;">' +
-'<b class="disp text-3xl md:text-4xl hero-price" style="color:var(--gold);">' + fmt(p.price) + '</b>' +
-'<s class="text-base hero-mrp" style="color:var(--mut);">' + fmt(p.mrp) + '</s>' +
-'<span class="chip hero-off" style="background:rgba(16,185,129,.12); color:#059669;">' + offPct(p) + '% OFF</span></div>' +
-'<p class="ha-up text-sm md:text-base max-w-md mx-auto md:mx-0" style="color:var(--mut); animation-delay:.15s;">' + esc(p.desc) + '</p>' +
-'<div class="ha-up flex flex-wrap gap-2 justify-center md:justify-start" style="animation-delay:.2s;">' +
-'<span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">' + ic('cash','w-3 h-3') + ' COD</span>' +
-'<span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">' + ic('ruler','w-3 h-3') + ' Free Size</span>' +
-'<span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">' + ic('globe','w-3 h-3') + ' Worldwide</span></div>' +
-'<div class="ha-up flex gap-3 justify-center md:justify-start flex-wrap pt-1" style="animation-delay:.25s;">' +
-'<button class="pill btn-gold px-8 py-4 text-xs tracking-wide2 uppercase" data-open-product="' + p.id + '">Shop This</button>' +
-'<button class="pill btn-line px-8 py-4 text-xs tracking-wide2 uppercase" data-catpage="' + s.c + '">View All</button></div></div>' +
-'<div class="order-1 md:order-2 flex justify-center">' +
-'<div class="ha-zoom relative w-full max-w-[280px] md:max-w-[400px]">' +
-'<div class="absolute -inset-4 rounded-[40px] opacity-40 blur-2xl pointer-events-none" style="background:radial-gradient(circle at 30% 30%, var(--gold), transparent 70%);"></div>' +
-'<div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-lift border hairline" style="background:var(--card); transform:rotate(1.5deg);">' + heroImg(p,p.colors[0][0]) + '</div>' +
-'<span class="absolute -top-3 -right-3 chip py-2 px-4 shadow-lift hero-off-badge" style="background:var(--gold); color:var(--on-gold);">✦ ' + offPct(p) + '% OFF</span>' +
-'<span class="absolute -bottom-3 left-1/2 -translate-x-1/2 chip py-2 px-4 whitespace-nowrap border hairline shadow-soft gap-1.5" style="background:var(--card); color:var(--text);">' + ic('palette','w-3 h-3') + ' Customisable</span>' +
-'</div></div></div></div>';
+return `
+<div class="hero-slide w-full ${i ? 'hidden' : ''}" data-slide="${i}">
+<div class="wrap grid md:grid-cols-2 gap-6 md:gap-12 items-center py-8 md:py-16 w-full">
+<div class="text-center md:text-left space-y-4 md:space-y-5 order-2 md:order-1 min-w-0">
+<span class="ha-up chip border hairline" style="background:var(--card); color:var(--gold);"><span class="w-1.5 h-1.5 rounded-full inline-block" style="background:var(--gold);"></span>&nbsp;${esc(meta.name)}</span>
+<h1 class="ha-up disp font-bold leading-[1.05]" style="font-size:var(--fs-hero); color:var(--hero-ink); animation-delay:.05s;">${esc(p.name)}</h1>
+<div class="ha-up flex items-center gap-3 justify-center md:justify-start flex-wrap" style="animation-delay:.1s;">
+<b class="disp text-3xl md:text-4xl hero-price" style="color:var(--gold);">${fmt(p.price)}</b>
+<s class="text-base hero-mrp" style="color:var(--mut);">${fmt(p.mrp)}</s>
+<span class="chip hero-off" style="background:rgba(16,185,129,.12); color:#059669;">${offPct(p)}% OFF</span>
+</div>
+<p class="ha-up text-sm md:text-base max-w-md mx-auto md:mx-0" style="color:var(--mut); animation-delay:.15s;">${esc(p.desc)}</p>
+<div class="ha-up flex flex-wrap gap-2 justify-center md:justify-start" style="animation-delay:.2s;">
+<span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">${ic('cash','w-3 h-3')} COD</span>
+<span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">${ic('ruler','w-3 h-3') + ' Free Size'}</span>
+<span class="chip border hairline gap-1.5" style="background:var(--card); color:var(--text);">${ic('globe','w-3 h-3')} Worldwide</span>
+</div>
+<div class="ha-up flex gap-3 justify-center md:justify-start flex-wrap pt-1" style="animation-delay:.25s;">
+<button class="pill btn-gold px-8 py-4 text-xs tracking-wide2 uppercase" data-open-product="${p.id}">Shop This</button>
+<button class="pill btn-line px-8 py-4 text-xs tracking-wide2 uppercase" data-catpage="${s.c}">View All</button>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center">
+<div class="ha-zoom relative w-full max-w-[280px] md:max-w-[400px]">
+<div class="absolute -inset-4 rounded-[40px] opacity-40 blur-2xl pointer-events-none" style="background:radial-gradient(circle at 30% 30%, var(--gold), transparent 70%);"></div>
+<div class="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-lift border hairline" style="background:var(--card);">
+${heroImg(p)}
+</div>
+<span class="absolute -top-3 -right-3 chip py-2 px-4 shadow-lift hero-off-badge" style="background:var(--gold); color:var(--on-gold);">✦ ${offPct(p)}% OFF</span>
+<span class="absolute -bottom-3 left-1/2 -translate-x-1/2 chip py-2 px-4 whitespace-nowrap border hairline shadow-soft gap-1.5" style="background:var(--card); color:var(--text);">${ic('palette','w-3 h-3') + ' Customisable'}</span>
+</div>
+</div>
+</div>
+</div>`;
 }).join('');
 renderDots();
 }
 function updateHeroPrices(){
-buildSlides().forEach(function(s,i){
-const slide = document.querySelector('[data-slide="' + i + '"]');
+const S = buildSlides();
+S.forEach((s,i) => {
+const slide = document.querySelector(`[data-slide="${i}"]`);
 if (!slide) return;
 const p = s.rep;
-const set = function(sel,val){ const el = slide.querySelector(sel); if (el) el.textContent = val; };
+const set = (sel,val) => { const el = slide.querySelector(sel); if (el) el.textContent = val; };
 set('.hero-price', fmt(p.price));
 set('.hero-mrp', fmt(p.mrp));
 set('.hero-off', offPct(p) + '% OFF');
@@ -1706,115 +1817,113 @@ set('.hero-off-badge', '✦ ' + offPct(p) + '% OFF');
 }
 function renderDots(){
 const total = buildSlides().length;
-$('#heroDots').innerHTML = Array.from({ length: total }, function(_,i){
-return '<button class="h-[3px] rounded-full transition-all" style="background:' + (i===sIdx ? 'var(--gold)' : 'rgba(23,20,16,.25)') + '; width:' + (i===sIdx ? '2rem' : '0.9rem') + ';" data-slide-go="' + i + '" aria-label="Slide ' + (i+1) + '"></button>';
-}).join('');
+$('#heroDots').innerHTML = Array.from({ length: total }, (_,i) => `<button class="h-[3px] rounded-full transition-all" style="background:${i===sIdx ? 'var(--gold)' : 'rgba(23,20,16,.25)'}; width:${i===sIdx ? '2rem' : '0.9rem'};" data-slide-go="${i}" aria-label="Slide ${i+1}"></button>`).join('');
 }
 function replayAnims(slide){
-slide.querySelectorAll('[class*="ha-"]').forEach(function(el){ el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
+slide.querySelectorAll('[class*="ha-"]').forEach(el => { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
 }
 function goSlide(n){
 const total = buildSlides().length;
 sIdx = (n + total) % total;
-$$('[data-slide]').forEach(function(el,i){
-el.classList.toggle('hidden', i !== sIdx);
-if (i === sIdx) replayAnims(el);
-});
+$$('[data-slide]').forEach((el,i) => { el.classList.toggle('hidden', i !== sIdx); if (i === sIdx) replayAnims(el); });
 renderDots();
 }
 function startSlider(){
 if (reduceMotion) return;
 clearInterval(sTimer);
-sTimer = setInterval(function(){ goSlide(sIdx+1); }, 3000);
+sTimer = setInterval(() => goSlide(sIdx+1), 5000);
 }
 function sizeHero(){
 const hh = $('#header') ? $('#header').offsetHeight : 0;
 const avail = Math.max(320, window.innerHeight - hh);
 const sec = $('#heroSec');
 if (sec) sec.style.minHeight = avail + 'px';
-$$('.hero-slide').forEach(function(s){ s.style.minHeight = avail + 'px'; });
+$$('.hero-slide').forEach(s => { s.style.minHeight = avail + 'px'; });
 }
 function reveal(){
-try{
-const io = new IntersectionObserver(function(es){
-es.forEach(function(e){
-if (e.isIntersecting){
-const el = e.target;
-setTimeout(function(){ el.classList.add('revealed'); }, +el.dataset.delay || 0);
-io.unobserve(el);
+const io = new IntersectionObserver(es => es.forEach(e => {
+if (e.isIntersecting){ const el = e.target; setTimeout(() => el.classList.add('revealed'), +el.dataset.delay || 0); io.unobserve(el); }
+}), { threshold:.05, rootMargin: '0px 0px -30px 0px' });
+$$('[data-reveal]').forEach(el => io.observe(el));
+// Fallback — reveal anything still hidden after 2.5s
+setTimeout(() => $$('[data-reveal]:not(.revealed)').forEach(el => {
+  const r = el.getBoundingClientRect();
+  if (r.top < window.innerHeight) el.classList.add('revealed');
+}), 2500);
 }
-});
-}, { threshold:.1 });
-$$('[data-reveal]').forEach(function(el){ io.observe(el); });
-}catch(e){ forceReveal(); }
-setTimeout(forceReveal, 2500);
-}
-function forceReveal(){ $$('[data-reveal]:not(.revealed)').forEach(function(el){ el.classList.add('revealed'); }); }
 function toast(msg, iconName){
 const t = document.createElement('div');
 t.className = 'toast pill px-5 py-3.5 shadow-lift gap-2';
 t.style.cssText = 'background:var(--text); color:var(--bg); font-size:12px; font-weight:700;';
-t.innerHTML = '<span style="color:var(--gold);">' + ic(iconName,'w-4 h-4') + '</span><span>' + esc(msg) + '</span>';
+t.innerHTML = `<span style="color:var(--gold);">${ic(iconName,'w-4 h-4')}</span><span>${esc(msg)}</span>`;
 $('#toasts').appendChild(t);
-setTimeout(function(){ t.style.transition = 'all .4s'; t.style.opacity = '0'; t.style.transform = 'translateX(30px)'; setTimeout(function(){ t.remove(); }, 400); }, 2400);
+setTimeout(() => { t.style.transition = 'all .4s'; t.style.opacity = 0; t.style.transform = 'translateX(30px)'; setTimeout(() => t.remove(), 400); }, 2400);
 }
-const key = (id,c,s,ex) => id + '|' + c + '|' + s + '|' + (ex ? ((ex.custom ? ex.custom.note + '|' + ex.custom.pos : '') + '|' + (ex.colorChoice||'')) : '');
-function addToCart(id,color,size,qty,ex){
-qty = qty || 1;
+const key = (id,c,s,ex) => `${id}|${c}|${s}|${ex ? (ex.custom ? ex.custom.note+'|'+ex.custom.pos : '') + '|' + (ex.colorChoice||'') : ''}`;
+function addToCart(id,color,size,qty=1,ex=null){
 const p = prodById(id);
 color = color || p.colors[0][0];
 size = size || p.sizes[0];
 const k = key(id,color,size,ex);
 const line = cart.find(l => l.key === k);
 if (line) line.qty = Math.min(9, line.qty + qty);
-else cart.push({ key:k, id:id, color:color, size:size, qty:qty, custom: ex ? ex.custom : null, colorChoice: ex ? ex.colorChoice : '' });
+else cart.push({ key:k, id, color, size, qty, custom: ex ? ex.custom : null, colorChoice: ex ? ex.colorChoice : '' });
 store.set('cart', cart);
 renderCart();
-toast(p.name + ' — added to cart', 'cart');
+toast(`${p.name} — added to cart`, 'cart');
 }
 function totals(){
-const sub = cart.reduce(function(a,l){ return a + prodById(l.id).price * l.qty; }, 0);
+const sub = cart.reduce((a,l) => a + prodById(l.id).price * l.qty, 0);
+const last = sub;
 let del = 0;
-if (cart.length > 0){
-if (sub >= 1499) del = 0;
-else if (sub >= 999) del = 49;
-else del = 99;
+if (cart.length > 0) {
+  if (last >= 1499) del = 0;
+  else if (last >= 999) del = 49;
+  else del = 99;
 }
-return { sub:sub, del:del, total:sub + del };
+return { sub, disc:0, del, total:last + del, last };
 }
 function renderCart(){
-const n = cart.reduce(function(a,l){ return a + l.qty; }, 0);
+const n = cart.reduce((a,l) => a + l.qty, 0);
 $('#cartCount').textContent = n;
-$('#cartN').textContent = n ? '(' + n + ')' : '';
+$('#cartN').textContent = n ? `(${n})` : '';
 const t = totals();
 if (!cart.length){
-$('#shipMsg').innerHTML = ic('party','w-4 h-4') + ' <b>FREE delivery</b> on orders above ₹1499!';
-$('#shipBar').style.width = '0%';
-} else if (t.sub >= 1499){
-$('#shipMsg').innerHTML = ic('party','w-4 h-4') + ' <b>FREE delivery</b> unlocked!';
-$('#shipBar').style.width = '100%';
-} else if (t.sub >= 999){
-$('#shipMsg').innerHTML = 'Add <b>' + fmt(1499 - t.sub) + '</b> more for <b>FREE delivery</b> (Current fee: ₹49)';
-$('#shipBar').style.width = (t.sub/1499*100) + '%';
+  $('#shipMsg').innerHTML = `${ic('party','w-4 h-4 text-[#059669]')} <b>FREE delivery</b> on orders above ₹1499!`;
+  $('#shipBar').style.width = '0%';
+} else if (t.last >= 1499) {
+  $('#shipMsg').innerHTML = `${ic('party','w-4 h-4 text-[#059669]')} <b>FREE delivery</b> unlocked!`;
+  $('#shipBar').style.width = '100%';
+} else if (t.last >= 999) {
+  $('#shipMsg').innerHTML = `Add <b>${fmt(1499 - t.last)}</b> more for <b>FREE delivery</b> (Current fee: ₹49)`;
+  $('#shipBar').style.width = (t.last/1499)*100 + '%';
 } else {
-$('#shipMsg').innerHTML = 'Add <b>' + fmt(999 - t.sub) + '</b> more to reduce delivery fee to ₹49';
-$('#shipBar').style.width = (t.sub/1499*100) + '%';
+  $('#shipMsg').innerHTML = `Add <b>${fmt(999 - t.last)}</b> more to reduce delivery fee to ₹49`;
+  $('#shipBar').style.width = (t.last/1499)*100 + '%';
 }
 const box = $('#cartItems');
 if (!cart.length){
-box.innerHTML = '<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 a-float text-[var(--gold)]">' + ic('bag','w-16 h-16') + '</span><p class="text-base font-bold">Your cart is empty</p><button class="pill btn-ink px-6 py-3 mt-5 text-xs tracking-wide2 uppercase" data-close="cartDrawer" data-catpage="">Start Shopping</button></div>';
+box.innerHTML = `<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 text-[var(--gold)]">${ic('bag','w-16 h-16')}</span><p class="text-base font-bold">Your cart is empty</p><button class="pill btn-ink px-6 py-3 mt-5 text-xs tracking-wide2 uppercase" data-close="cartDrawer" data-catpage="">Start Shopping</button></div>`;
 } else {
-box.innerHTML = cart.map(function(l){
+box.innerHTML = cart.map(l => {
 const p = prodById(l.id);
-return '<div class="flex gap-3 border hairline rounded-3xl p-3 a-up w-full" style="background:var(--card);">' +
-'<div class="w-20 h-24 rounded-2xl overflow-hidden shrink-0 cursor-pointer" style="background:var(--bg2);" data-open-product="' + p.id + '">' + imgTag(p,l.color,0,'w-full h-full object-cover') + '</div>' +
-'<div class="flex-1 min-w-0"><h4 class="text-xs font-extrabold truncate">' + esc(p.name) + '</h4>' +
-'<p class="text-[10px] mt-0.5" style="color:var(--mut);">Size: ' + esc(l.size) + (l.custom ? ' • 🎨 Custom' : '') + (l.colorChoice ? ' • 🎨 Colour: ' + esc(l.colorChoice) : '') + '</p>' +
-'<div class="flex items-center justify-between mt-2"><div class="flex items-center gap-2">' +
-'<button class="qtybtn" data-cq="' + l.key + '" data-d="-1">−</button><b class="text-xs w-4 text-center">' + l.qty + '</b>' +
-'<button class="qtybtn" data-cq="' + l.key + '" data-d="1">+</button></div>' +
-'<b class="disp">' + fmt(p.price * l.qty) + '</b></div></div>' +
-'<button class="self-start transition" style="color:var(--mut);" data-cr="' + l.key + '" aria-label="Remove">✕</button></div>';
+return `
+<div class="flex gap-3 border hairline rounded-3xl p-3 w-full" style="background:var(--card);">
+<div class="w-20 h-24 rounded-2xl overflow-hidden shrink-0 cursor-pointer" style="background:var(--bg2);" data-open-product="${p.id}">${imgTag(p,0,'w-full h-full object-cover')}</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-xs font-extrabold truncate">${esc(p.name)}</h4>
+<p class="text-[10px] mt-0.5 flex items-center gap-1" style="color:var(--mut);">Size: ${esc(l.size)}${l.custom ? ' • Custom' : ''}${l.colorChoice ? ' • Colour: ' + esc(l.colorChoice) : ''}</p>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2">
+<button class="qtybtn" data-cq="${l.key}" data-d="-1">−</button>
+<b class="text-xs w-4 text-center">${l.qty}</b>
+<button class="qtybtn" data-cq="${l.key}" data-d="1">+</button>
+</div>
+<b class="disp">${fmt(p.price * l.qty)}</b>
+</div>
+</div>
+<button class="self-start transition" style="color:var(--mut);" data-cr="${l.key}" aria-label="Remove">✕</button>
+</div>`;
 }).join('');
 }
 $('#sumSub').textContent = fmt(t.sub);
@@ -1826,142 +1935,157 @@ const i = wish.indexOf(id);
 if (i > -1) wish.splice(i,1); else wish.push(id);
 store.set('wish', wish);
 renderWish();
+renderFeatured();
+if (!$('#catPage').classList.contains('hidden')) drawCatPage();
 }
 function renderWish(){
 $('#wishCount').textContent = wish.length;
 const box = $('#wishItems');
-if (!wish.length){
-box.innerHTML = '<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 a-float">' + ic('heart','w-16 h-16') + '</span><p class="text-base font-bold">Nothing saved yet</p></div>';
-return;
-}
-box.innerHTML = wish.map(function(id){
+if (!wish.length){ box.innerHTML = `<div class="text-center py-16 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 text-[var(--mut)]">${ic('heart','w-16 h-16')}</span><p class="text-base font-bold">Nothing saved yet</p></div>`; return; }
+box.innerHTML = wish.map(id => {
 const p = prodById(id);
 if (!p) return '';
-return '<div class="flex gap-3 border hairline rounded-3xl p-3 a-left w-full" style="background:var(--card);">' +
-'<div class="w-20 h-24 rounded-2xl overflow-hidden cursor-pointer" style="background:var(--bg2);" data-open-product="' + p.id + '">' + imgTag(p,p.colors[0][0],0,'w-full h-full object-cover') + '</div>' +
-'<div class="flex-1 min-w-0"><h4 class="text-xs font-extrabold truncate">' + esc(p.name) + '</h4>' +
-'<b class="disp text-sm">' + fmt(p.price) + '</b> <s class="text-[10px]" style="color:var(--mut);">' + fmt(p.mrp) + '</s>' +
-'<div class="flex gap-2 mt-2">' +
-'<button class="pill btn-ink px-4 py-2 text-[10px] tracking-wide2 uppercase flex items-center gap-1" data-add="' + p.id + '">' + ic('cart','w-3 h-3') + ' Add</button>' +
-'<button class="pill btn-line px-4 py-2 text-[10px]" data-wish="' + p.id + '">Remove</button></div></div></div>';
+return `
+<div class="flex gap-3 border hairline rounded-3xl p-3 w-full" style="background:var(--card);">
+<div class="w-20 h-24 rounded-2xl overflow-hidden cursor-pointer" style="background:var(--bg2);" data-open-product="${p.id}">${imgTag(p,0,'w-full h-full object-cover')}</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-xs font-extrabold truncate">${esc(p.name)}</h4>
+<b class="disp text-sm">${fmt(p.price)}</b> <s class="text-[10px]" style="color:var(--mut);">${fmt(p.mrp)}</s>
+<div class="flex gap-2 mt-2">
+<button class="pill btn-ink px-4 py-2 text-[10px] tracking-wide2 uppercase flex items-center gap-1" data-add="${p.id}">${ic('cart','w-3 h-3')} Add</button>
+<button class="pill btn-line px-4 py-2 text-[10px]" data-wish="${p.id}">Remove</button>
+</div>
+</div>
+</div>`;
 }).join('');
 }
-let pm = { id:null, color:0, size:0, qty:1, angle:0, customOn:false, customPos:'Front + Back', customNote:'', colorChoice:'' };
-function openProduct(id, skipRoute){
+let pm = { id:null, size:0, qty:1, angle:0, customOn:false, customPos:'Front + Back', customNote:'', colorChoice:'' };
+function openProduct(id){
 const p = prodById(id);
 if (!p) return;
-pm = { id:id, color:0, size:0, qty:1, angle:0, customOn:false, customPos:'Front + Back', customNote:'', colorChoice:'' };
+pm = { id, size:0, qty:1, angle:0, customOn:false, customPos:'Front + Back', customNote:'', colorChoice:'' };
 drawProduct();
-openModal('productModal', true);
-if (!skipRoute) history.pushState({ modal:'productModal', id:id }, '', '#product/' + id);
+openModal('productModal');
 }
 function drawProduct(){
 const p = prodById(pm.id);
-const cn = p.colors[pm.color][0];
 const imgs = imgURLs(p);
-const isT = true;
-$('#productBody').innerHTML =
-'<div class="grid md:grid-cols-2 w-full">' +
-'<div class="p-3 md:p-8" style="background:var(--bg2);">' +
-'<div class="md:flex md:gap-4 w-full">' +
-(imgs.length > 1 ? '<div class="hidden md:flex flex-col gap-2 order-1">' + imgs.map(function(im,i){
-return '<button class="w-14 h-16 rounded-xl overflow-hidden border transition" style="border-color:' + (i===pm.angle ? 'var(--gold)' : 'var(--line)') + ';" data-angle="' + i + '">' + imgTag(p,cn,i,'pimg w-full h-full object-cover') + '</button>';
-}).join('') + '</div>' : '') +
-'<div class="relative flex-1 order-2 min-w-0">' +
-'<span class="absolute top-3 left-3 z-10 chip gap-1" style="background:var(--text); color:var(--gold);">' + ic('check','w-3 h-3') + ' COD</span>' +
-'<button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-share aria-label="Share">' + ic('share','w-4 h-4') + '</button>' +
-'<div class="rounded-[18px] md:rounded-[20px] overflow-hidden aspect-[4/5] w-full">' + imgTag(p,cn,pm.angle,'pimg w-full h-full object-cover','id="pmMain"') + '</div>' +
-(imgs.length > 1 ? '<button class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="-1" aria-label="Previous">‹</button><button class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="1" aria-label="Next">›</button>' : '') +
-'<p class="text-[10px] text-center mt-2" style="color:var(--mut);">View ' + (pm.angle+1) + '/2 • ' + ['FRONT','BACK'][pm.angle] + '</p>' +
-'</div></div>' +
-(imgs.length > 1 ? '<div class="md:hidden flex gap-2 overflow-x-auto no-scrollbar mt-3 w-full">' + imgs.map(function(im,i){
-return '<button class="shrink-0 w-14 h-16 rounded-xl overflow-hidden border" style="border-color:' + (i===pm.angle ? 'var(--gold)' : 'var(--line)') + ';" data-angle="' + i + '">' + imgTag(p,cn,i,'pimg w-full h-full object-cover') + '</button>';
-}).join('') + '</div>' : '') +
-'</div>' +
-'<div class="p-4 md:p-8 pb-28 md:pb-8 min-w-0">' +
-'<div class="flex items-start justify-between gap-3"><div class="min-w-0">' +
-'<p class="micro micro-gold">' + esc(CATMETA[p.cat].name) + '</p>' +
-'<h2 class="disp text-xl md:text-2xl mt-1 font-semibold">' + esc(p.name) + '</h2></div>' +
-'<button class="w-9 h-9 rounded-full border hairline shrink-0 transition" data-close="productModal" aria-label="Close">✕</button></div>' +
-'<div class="flex items-baseline gap-3 mt-3 flex-wrap"><b class="disp text-2xl md:text-3xl font-semibold">' + fmt(p.price) + '</b>' +
-'<s class="text-sm" style="color:var(--mut);">' + fmt(p.mrp) + '</s>' +
-'<span class="chip" style="background:rgba(16,185,129,.1); color:#059669;">' + offPct(p) + '% OFF</span></div>' +
-'<div class="flex items-center gap-2 mt-1">' + stars(p.rating) + '<span class="text-xs" style="color:var(--mut);">' + p.rating + ' · ' + p.reviews + ' reviews</span></div>' +
-'<div class="mt-4 md:mt-5 flex items-end justify-between gap-3 flex-wrap"><div>' +
-'<p class="micro mb-2" style="color:var(--mut);">Size</p>' +
-'<div class="flex gap-2 flex-wrap">' + p.sizes.map(function(s,i){ return '<button class="sizechip ' + (i===pm.size ? 'active' : '') + '" data-psize="' + i + '">' + esc(s) + '</button>'; }).join('') + '</div></div>' +
-'<button class="micro micro-gold flex items-center gap-1" data-sizeopen>' + ic('ruler','w-3 h-3') + ' Size Guide</button></div>' +
-'<div class="mt-4 md:mt-5 flex items-center gap-4"><p class="micro" style="color:var(--mut);">Qty</p>' +
-'<div class="flex items-center gap-2"><button class="qtybtn" data-pq="-1">−</button><b id="pmQty" class="w-6 text-center">' + pm.qty + '</b><button class="qtybtn" data-pq="1">+</button></div></div>' +
-'<div class="border hairline rounded-3xl p-4 mt-5" style="background:var(--bg2); border-color:var(--gold);">' +
-'<p class="text-xs font-bold flex items-center gap-1.5" style="color:var(--gold);">' + ic('palette','w-4 h-4') + ' Want YOUR own colour?</p>' +
-'<p class="text-[10px] mt-1" style="color:var(--mut);">Tell us your choice — we will confirm on WhatsApp. It goes into your bill.</p>' +
-'<input id="pmColorChoice" maxlength="40" class="field mt-2" placeholder="e.g. Olive Green, Pastel Pink…" value="' + esc(pm.colorChoice) + '"></div>' +
-'<div class="border hairline rounded-3xl p-4 mt-3" style="background:var(--bg2);">' +
-'<label class="flex items-center gap-2 text-xs font-bold cursor-pointer">' +
-'<input type="checkbox" id="pmCustomOn" class="accent-[#B08D57]" ' + (pm.customOn ? 'checked' : '') + '> ' + ic('palette','w-4 h-4') + ' Customise this T-Shirt (own text / design)</label>' +
-'<div id="pmCustomBox" class="' + (pm.customOn ? '' : 'hidden') + ' mt-3 space-y-2">' +
-'<select id="pmCustomPos" class="field">' +
-'<option ' + (pm.customPos==='Front' ? 'selected' : '') + '>Front</option>' +
-'<option ' + (pm.customPos==='Back' ? 'selected' : '') + '>Back</option>' +
-'<option ' + (pm.customPos==='Front + Back' ? 'selected' : '') + '>Front + Back</option></select>' +
-'<textarea id="pmCustomNote" maxlength="200" rows="2" class="field" placeholder="e.g. Print text: RIYA ❤ SURAT">' + esc(pm.customNote) + '</textarea>' +
-'<p class="text-[10px]" style="color:var(--mut);">Customisation details will appear clearly in your WhatsApp bill.</p></div></div>' +
-'<div class="border hairline rounded-3xl p-4 md:p-5 mt-5 text-xs space-y-1.5" style="background:var(--bg2);">' +
-'<p class="micro micro-gold mb-1">Highlights</p>' +
-'<p>◆ 240 GSM oversized cotton • Free Size</p>' +
-'<p>◆ Front + Back views of the uploaded colour</p>' +
-'<p class="rounded-full px-3 py-2 mt-2 font-bold flex items-center gap-1.5" style="background:rgba(220,38,38,.08); color:#DC2626;">' + ic('warn','w-4 h-4') + ' No Return / No Exchange</p></div>' +
-'<p class="text-sm leading-relaxed mt-4" style="color:var(--mut);">' + esc(p.desc) + '</p>' +
-'<div class="hidden md:grid grid-cols-2 gap-3 mt-6">' +
-'<button class="pill btn-ink py-3.5 text-xs tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-pm-add>' + ic('cart','w-4 h-4') + ' Add to Cart</button>' +
-'<button class="pill btn-gold py-3.5 text-xs tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-pm-buy>' + ic('cash','w-4 h-4') + ' Buy Now — COD</button></div>' +
-'<button class="hidden md:flex pill btn-line w-full mt-3 py-3 text-xs items-center justify-center gap-1.5" data-pm-wa>' + ic('chat','w-4 h-4') + ' Ask on WhatsApp</button>' +
-'</div></div>' +
-'<div class="md:hidden sticky bottom-0 border-t hairline p-3 flex gap-2 glassbar w-full">' +
-'<button class="pill btn-ink flex-1 py-3.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1" data-pm-add>' + ic('cart','w-4 h-4') + ' Add</button>' +
-'<button class="pill btn-gold flex-1 py-3.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1" data-pm-buy>' + ic('cash','w-4 h-4') + ' Buy</button>' +
-'<button class="pill btn-line w-12 py-3.5" data-pm-wa aria-label="WhatsApp">' + ic('chat','w-4 h-4') + '</button></div>';
+const isT = p.cat.includes('tee');
+$('#productBody').innerHTML = `
+<div class="grid md:grid-cols-2 w-full">
+<div class="p-3 md:p-8" style="background:var(--bg2);">
+<div class="md:flex md:gap-4 w-full">
+${imgs.length > 1 ? `<div class="hidden md:flex flex-col gap-2 order-1">${imgs.map((im,i) => `<button class="w-14 h-16 rounded-xl overflow-hidden border transition" style="border-color:${i===pm.angle ? 'var(--gold)' : 'var(--line)'};" data-angle="${i}">${imgTag(p,i,'w-full h-full object-cover')}</button>`).join('')}</div>` : ''}
+<div class="relative flex-1 order-2 min-w-0">
+<span class="absolute top-3 left-3 z-10 chip gap-1" style="background:var(--text); color:var(--gold);">${ic('check','w-3 h-3')} COD</span>
+<button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-share aria-label="Share">${ic('share','w-4 h-4')}</button>
+<div class="rounded-[18px] md:rounded-[20px] overflow-hidden aspect-[4/5] w-full">${imgTag(p,pm.angle,'w-full h-full object-cover','id="pmMain"')}</div>
+${imgs.length > 1 ? `<button class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="-1" aria-label="Previous">‹</button><button class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="1" aria-label="Next">›</button>` : ''}
+<p class="text-[10px] text-center mt-2" style="color:var(--mut);">${isT ? `View ${pm.angle+1}/2 • ${['FRONT','BACK'][pm.angle]}` : 'Front view'}</p>
+</div>
+</div>
+${imgs.length > 1 ? `<div class="md:hidden flex gap-2 overflow-x-auto no-scrollbar mt-3 w-full">${imgs.map((im,i) => `<button class="shrink-0 w-14 h-16 rounded-xl overflow-hidden border" style="border-color:${i===pm.angle ? 'var(--gold)' : 'var(--line)'};" data-angle="${i}">${imgTag(p,i,'w-full h-full object-cover')}</button>`).join('')}</div>` : ''}
+</div>
+<div class="p-4 md:p-8 pb-28 md:pb-8 min-w-0">
+<div class="flex items-start justify-between gap-3">
+<div class="min-w-0">
+<p class="micro micro-gold">${esc(CATMETA[p.cat].name)}</p>
+<h2 class="disp text-xl md:text-2xl mt-1 font-semibold">${esc(p.name)}</h2>
+</div>
+<button class="w-9 h-9 rounded-full border hairline shrink-0 transition" data-close="productModal" aria-label="Close">✕</button>
+</div>
+<div class="flex items-baseline gap-3 mt-3 flex-wrap">
+<b class="disp text-2xl md:text-3xl font-semibold">${fmt(p.price)}</b>
+<s class="text-sm" style="color:var(--mut);">${fmt(p.mrp)}</s>
+<span class="chip" style="background:rgba(16,185,129,.1); color:#059669;">${offPct(p)}% OFF</span>
+</div>
+<div class="flex items-center gap-2 mt-1">${stars(p.rating)}<span class="text-xs" style="color:var(--mut);">${p.rating} · ${p.reviews} reviews</span></div>
+<div class="mt-4 md:mt-5 flex items-end justify-between gap-3 flex-wrap">
+<div>
+<p class="micro mb-2" style="color:var(--mut);">Size</p>
+<div class="flex gap-2 flex-wrap">${p.sizes.map((s,i) => `<button class="sizechip ${i===pm.size ? 'active' : ''}" data-psize="${i}">${esc(s)}</button>`).join('')}</div>
+</div>
+<button class="micro micro-gold flex items-center gap-1" data-sizeopen>${ic('ruler','w-3 h-3')} Size Guide</button>
+</div>
+<div class="mt-4 md:mt-5 flex items-center gap-4">
+<p class="micro" style="color:var(--mut);">Qty</p>
+<div class="flex items-center gap-2">
+<button class="qtybtn" data-pq="-1">−</button>
+<b id="pmQty" class="w-6 text-center">${pm.qty}</b>
+<button class="qtybtn" data-pq="1">+</button>
+</div>
+</div>
+${isT ? `
+<div class="border hairline rounded-3xl p-4 mt-5" style="background:var(--bg2); border-color:var(--gold);">
+<p class="text-xs font-bold flex items-center gap-1.5" style="color:var(--gold);">${ic('palette','w-4 h-4')} Want YOUR own colour?</p>
+<p class="text-[10px] mt-1" style="color:var(--mut);">Tell us your choice — we'll confirm on WhatsApp. It goes into your bill.</p>
+<input id="pmColorChoice" maxlength="40" class="field mt-2" placeholder="e.g. Olive Green, Pastel Pink…" value="${esc(pm.colorChoice)}">
+</div>
+<div class="border hairline rounded-3xl p-4 mt-3" style="background:var(--bg2);">
+<label class="flex items-center gap-2 text-xs font-bold cursor-pointer">
+<input type="checkbox" id="pmCustomOn" class="accent-[#B08D57]" ${pm.customOn ? 'checked' : ''}>
+${ic('palette','w-4 h-4')} Customise this T-Shirt (own text / design)
+</label>
+<div id="pmCustomBox" class="${pm.customOn ? '' : 'hidden'} mt-3 space-y-2">
+<select id="pmCustomPos" class="field">
+<option ${pm.customPos==='Front' ? 'selected' : ''}>Front</option>
+<option ${pm.customPos==='Back' ? 'selected' : ''}>Back</option>
+<option ${pm.customPos==='Front + Back' ? 'selected' : ''}>Front + Back</option>
+</select>
+<textarea id="pmCustomNote" maxlength="200" rows="2" class="field" placeholder="e.g. Print text: RIYA ❤ SURAT">${esc(pm.customNote)}</textarea>
+<p class="text-[10px]" style="color:var(--mut);">Customisation details will appear clearly in your WhatsApp bill.</p>
+</div>
+</div>` : ''}
+<div class="border hairline rounded-3xl p-4 md:p-5 mt-5 text-xs space-y-1.5" style="background:var(--bg2);">
+<p class="micro micro-gold mb-1">Highlights</p>
+<p>◆ ${isT ? '240 GSM oversized cotton • Free Size' : 'Premium fabric • Free Size fit'}</p>
+<p>◆ Front + Back views of the uploaded colour</p>
+<p class="rounded-full px-3 py-2 mt-2 font-bold flex items-center gap-1.5" style="background:rgba(220,38,38,.08); color:#DC2626;">${ic('warn','w-4 h-4')} No Return / No Exchange</p>
+</div>
+<p class="text-sm leading-relaxed mt-4" style="color:var(--mut);">${esc(p.desc)}</p>
+<div class="hidden md:grid grid-cols-2 gap-3 mt-6">
+<button class="pill btn-ink py-3.5 text-xs tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-pm-add>${ic('cart','w-4 h-4')} Add to Cart</button>
+<button class="pill btn-gold py-3.5 text-xs tracking-wide2 uppercase flex items-center justify-center gap-1.5" data-pm-buy>${ic('cash','w-4 h-4')} Buy Now — COD</button>
+</div>
+<button class="hidden md:flex pill btn-line w-full mt-3 py-3 text-xs items-center justify-center gap-1.5" data-pm-wa>${ic('chat','w-4 h-4')} Ask on WhatsApp</button>
+</div>
+</div>
+<div class="md:hidden sticky bottom-0 border-t hairline p-3 flex gap-2 glassbar w-full">
+<button class="pill btn-ink flex-1 py-3.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1" data-pm-add>${ic('cart','w-4 h-4')} Add</button>
+<button class="pill btn-gold flex-1 py-3.5 text-[11px] tracking-wide2 uppercase flex items-center justify-center gap-1" data-pm-buy>${ic('cash','w-4 h-4')} Buy</button>
+<button class="pill btn-line w-12 py-3.5" data-pm-wa aria-label="WhatsApp">${ic('chat','w-4 h-4')}</button>
+</div>`;
 const on = $('#pmCustomOn');
-if (on){ on.addEventListener('change', function(){ pm.customOn = on.checked; $('#pmCustomBox').classList.toggle('hidden', !on.checked); }); }
+if (on){ on.addEventListener('change', () => { pm.customOn = on.checked; $('#pmCustomBox').classList.toggle('hidden', !on.checked); }); }
 }
-function readExtras(){
+function readExtras(p){
+if (!p.cat.includes('tee')) return null;
 const cc = $('#pmColorChoice') ? $('#pmColorChoice').value.trim() : '';
 let custom = null;
 if (pm.customOn){ custom = { pos: $('#pmCustomPos') ? $('#pmCustomPos').value : pm.customPos, note: $('#pmCustomNote') ? $('#pmCustomNote').value.trim() : pm.customNote }; }
-return { custom: custom, colorChoice: cc };
+return { custom, colorChoice: cc };
 }
-let cp = { cat:'', special:'', sort:'feat' };
-function openCatPage(cat, special, skipRoute){
-cat = cat || ''; special = special || '';
-cp = { cat:cat, special:special, sort: cp.sort || 'feat' };
+let cp = { cat:'', type:'', special:'', sort:'feat' };
+function openCatPage(cat='', type='', special=''){
+cp = { cat, type, special, sort: cp.sort || 'feat' };
 drawCatPage();
-openModal('catPage', true);
-if (!skipRoute){
-let hash = '#shop';
-if (special) hash += '/' + special;
-else if (cat) hash += '/' + encodeURIComponent(cat);
-history.pushState({ modal:'catPage', cat:cat, special:special }, '', hash);
-}
-}
-function sortItems(arr){
-switch (cp.sort){
-case 'low': arr.sort(function(a,b){ return a.price - b.price; }); break;
-case 'high': arr.sort(function(a,b){ return b.price - a.price; }); break;
-case 'rate': arr.sort(function(a,b){ return b.rating - a.rating; }); break;
-case 'off': arr.sort(function(a,b){ return offPct(b) - offPct(a); }); break;
-}
-return arr;
+openModal('catPage');
 }
 function cpItems(){
-let items = PRODUCTS.slice();
+let items = [...PRODUCTS];
 if (cp.special === 'new') items = items.filter(p => p.tags.includes('new'));
 if (cp.special === 'best') items = items.filter(p => p.tags.includes('best'));
 if (cp.special === 'under499') items = items.filter(p => p.price <= 499);
 if (cp.special === 'under599') items = items.filter(p => p.price <= 599);
 if (cp.special === 'under699') items = items.filter(p => p.price <= 699);
 if (cp.cat && CATMETA[cp.cat]) items = items.filter(p => p.cat === cp.cat);
-return sortItems(items);
+switch (cp.sort){
+case 'low': items.sort((a,b) => a.price - b.price); break;
+case 'high': items.sort((a,b) => b.price - a.price); break;
+case 'rate': items.sort((a,b) => b.rating - a.rating); break;
+case 'off': items.sort((a,b) => offPct(b) - offPct(a)); break;
+}
+return items;
 }
 function drawCatPage(){
 const items = cpItems();
@@ -1972,21 +2096,27 @@ else if (cp.special === 'under499') title = 'Under ₹499';
 else if (cp.special === 'under599') title = 'Under ₹599';
 else if (cp.special === 'under699') title = 'Under ₹699';
 else if (cp.cat && CATMETA[cp.cat]) title = CATMETA[cp.cat].name;
-$('#catPageTitle').textContent = title + ' (' + items.length + ')';
-let html;
-const grouped = !cp.cat && !cp.special;
-if (grouped){
-html = Object.keys(CATMETA).map(function(c){
-const list = sortItems(PRODUCTS.filter(p => p.cat === c));
-return '<div class="col-span-full flex items-end justify-between pt-5 pb-2 border-b hairline">' +
-'<h3 class="disp text-base md:text-lg font-semibold">' + CATMETA[c].name + '</h3>' +
-'<span class="micro">' + list.length + ' items</span></div>' +
-list.map(function(p,i){ return card(p,'a-up',(i%5)*40); }).join('');
-}).join('');
+$('#catPageTitle').textContent = `${title} (${items.length})`;
+
+// Group by category when showing "All Products" (no specific filter)
+if (!cp.cat && !cp.special){
+  const groups = {};
+  items.forEach(p => { (groups[p.cat] = groups[p.cat] || []).push(p); });
+  let html = '';
+  Object.keys(CATMETA).forEach((c, ci) => {
+    if (!groups[c] || !groups[c].length) return;
+    html += `<div class="col-span-full ${ci > 0 ? 'mt-8 md:mt-10' : ''}">
+      <div class="flex items-center justify-between border-b hairline pb-3 mb-2">
+        <h3 class="disp text-lg md:text-2xl font-semibold">${esc(CATMETA[c].name)} <span class="text-xs md:text-sm" style="color:var(--mut);">(${groups[c].length})</span></h3>
+        <button class="micro micro-gold" data-catpage="${c}">View Category →</button>
+      </div>
+    </div>`;
+    html += groups[c].map((p,i) => card(p,'a-up',(i%8)*50)).join('');
+  });
+  $('#catPageGrid').innerHTML = html || '<p class="col-span-full text-center py-20" style="color:var(--mut);">No products found.</p>';
 } else {
-html = items.map(function(p,i){ return card(p,'a-up',(i%8)*40); }).join('');
+  $('#catPageGrid').innerHTML = items.map((p,i) => card(p,'a-up',(i%8)*50)).join('') || '<p class="col-span-full text-center py-20" style="color:var(--mut);">No products found.</p>';
 }
-$('#catPageGrid').innerHTML = html || '<p class="col-span-full text-center py-20" style="color:var(--mut);">No products found.</p>';
 }
 function buildBill(info,t,oid,otp){
 const now = new Date();
@@ -1998,43 +2128,43 @@ L.push('   Professional Order Bill');
 L.push('╚══════════════════════════════╝');
 L.push('');
 L.push('── ORDER META ─────────────────');
-L.push('• Order ID .....: *' + oid + '*');
-L.push('• Delivery OTP .: *' + otp + '* (show to delivery agent)');
-L.push('• Date .........: ' + now.toLocaleDateString('en-IN'));
-L.push('• Time .........: ' + now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}));
-L.push('• Bill Currency : ' + c + ' (' + (COUNTRY_NAME[info.country] || info.country) + ') — LIVE rate');
+L.push(`• Order ID .....: *${oid}*`);
+L.push(`• Delivery OTP .: *${otp}* (show to delivery agent)`);
+L.push(`• Date .........: ${now.toLocaleDateString('en-IN')}`);
+L.push(`• Time .........: ${now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}`);
+L.push(`• Bill Currency : ${c} (${COUNTRY_NAME[info.country] || info.country}) — LIVE rate`);
 L.push('');
 L.push('── ITEMS ──────────────────────');
-cart.forEach(function(l,i){
+cart.forEach((l,i) => {
 const p = prodById(l.id);
-L.push('*#' + (i+1) + ' ' + p.name + '*');
-L.push('   • Category ..: ' + CATMETA[p.cat].name);
-if (l.colorChoice) L.push('   • 🎨 Customer Colour Choice: *' + l.colorChoice + '*');
-L.push('   • Size ......: ' + l.size);
-L.push('   • Qty .......: ' + l.qty);
-L.push('   • Unit Price : ' + fmt(p.price));
-L.push('   • Line Total : ' + fmt(p.price * l.qty));
+L.push(`*#${i+1} ${p.name}*`);
+L.push(`   • Category ..: ${CATMETA[p.cat].name}`);
+if (l.colorChoice) L.push(`   • 🎨 Customer Colour Choice: *${l.colorChoice}*`);
+L.push(`   • Size ......: ${l.size}`);
+L.push(`   • Qty .......: ${l.qty}`);
+L.push(`   • Unit Price : ${fmt(p.price)}`);
+L.push(`   • Line Total : ${fmt(p.price * l.qty)}`);
 if (l.custom){
 L.push('   • 🎨 CUSTOMISATION: *YES*');
-L.push('     - Print Position: ' + l.custom.pos);
-L.push('     - Customer Note : "' + (l.custom.note || '(none)') + '"');
+L.push(`     - Print Position: ${l.custom.pos}`);
+L.push(`     - Customer Note : "${l.custom.note || '(none)'}"`);
 }
 L.push('');
 });
 L.push('── TOTALS ─────────────────────');
-L.push('• Subtotal .....: ' + fmt(t.sub));
-L.push('• Delivery .....: ' + (t.del ? fmt(t.del) : 'FREE'));
-L.push('• *GRAND TOTAL : ' + fmt(t.total) + '*');
+L.push(`• Subtotal .....: ${fmt(t.sub)}`);
+L.push(`• Delivery .....: ${t.del ? fmt(t.del) : 'FREE'}`);
+L.push(`• *GRAND TOTAL : ${fmt(t.total)}*`);
 L.push('• Payment ......: *Cash on Delivery*');
 L.push('');
 L.push('── CUSTOMER ───────────────────');
-L.push('• Name ....: ' + info.name);
-L.push('• Mobile ..: ' + info.phone);
-L.push('• Country .: ' + (COUNTRY_NAME[info.country] || info.country));
-L.push('• State ...: ' + info.state);
-L.push('• City ....: ' + info.city);
-L.push('• Address .: ' + info.addr);
-L.push('• PIN/ZIP .: ' + info.pin);
+L.push(`• Name ....: ${info.name}`);
+L.push(`• Mobile ..: ${info.phone}`);
+L.push(`• Country .: ${COUNTRY_NAME[info.country] || info.country}`);
+L.push(`• State ...: ${info.state}`);
+L.push(`• City ....: ${info.city}`);
+L.push(`• Address .: ${info.addr}`);
+L.push(`• PIN/ZIP .: ${info.pin}`);
 L.push('');
 L.push('── POLICY ─────────────────────');
 L.push('• No Return / No Exchange.');
@@ -2042,7 +2172,7 @@ L.push('• India: COD at doorstep. Worldwide: confirmed on WhatsApp.');
 L.push('');
 L.push('💛 Thank you — *Joseph & James*, India');
 L.push('📞 7434053550');
-return L.join('\n');
+return { text: L.join('\n') };
 }
 const STAGES = [
 { t:'Order Placed', icon:'check' },
@@ -2057,8 +2187,9 @@ function getOrderStatus(order){
 if (order.deliveredAt || order.manualStatus === 'Delivered') return { text:'Delivered', icon:'check', color:'#059669' };
 if (order.manualStatus === 'Cancelled') return { text:'Cancelled', icon:'cross', color:'#DC2626' };
 if (order.manualStatus) return { text:order.manualStatus, icon:'box', color:'var(--gold)' };
-const hrs = (Date.now() - order.timestamp) / 3600000;
-if (hrs < 0.03) return { text:'Order Placed', icon:'check', color:'var(--mut)' };
+const mins = (Date.now() - order.timestamp) / 60000;
+const hrs = mins / 60;
+if (mins < 2) return { text:'Order Placed', icon:'check', color:'var(--mut)' };
 if (hrs < 2) return { text:'Order Confirmed', icon:'chat', color:'#25D366' };
 if (hrs < 24) return { text:'In Process', icon:'gear', color:'var(--gold)' };
 if (hrs < 30) return { text:'Order Ready', icon:'box', color:'#B08D57' };
@@ -2068,43 +2199,35 @@ return { text:'Out For Delivery', icon:'truck', color:'#0284C7' };
 function currentStageIdx(order){
 const st = getOrderStatus(order).text;
 const map = { 'Order Placed':0, 'Order Confirmed':1, 'In Process':2, 'Order Ready':3, 'Dispatched':4, 'Out For Delivery':5, 'Delivered':6, 'Cancelled':-1 };
-return map[st] === undefined ? 0 : map[st];
+return map[st] ?? 0;
 }
-/* LIVE timeline: line fills step by step, no blinking */
 function statusTimeline(order){
 const ci = currentStageIdx(order);
-if (ci === -1) return '<p class="text-xs font-bold flex items-center gap-2" style="color:#DC2626;">' + ic('cross','w-4 h-4') + ' Order Cancelled</p>';
+if (ci === -1) return `<p class="text-xs font-bold flex items-center gap-2" style="color:#DC2626;">${ic('cross','w-4 h-4')} Order Cancelled</p>`;
 const delivered = ci === 6;
-let html = '<div class="track-timeline">';
-STAGES.forEach(function(s,i){
-const done = delivered || i < ci;
+let html = `<div class="track-timeline">`;
+html += STAGES.map((s,i) => {
+const done = delivered ? true : i < ci;
 const active = !delivered && i === ci;
 const cls = done ? 'done' : (active ? 'active' : '');
-const dly = i * 380;
-html += '<div class="track-step ' + cls + '">';
-if (i < STAGES.length - 1){
-html += '<span class="track-line"><span class="track-fill" style="transition-delay:' + dly + 'ms"></span></span>';
-}
-html += '<div class="track-icon" style="animation-delay:' + (dly + 220) + 'ms">' + (done ? ic('check','w-4 h-4') : ic(s.icon,'w-4 h-4')) + '</div>';
-html += '<p class="text-[13px] font-bold mt-1" style="color:' + ((done || active) ? 'var(--text)' : 'var(--mut)') + ';">' + s.t + '</p>';
-if (active) html += '<p class="text-[11px] mt-0.5 font-medium" style="color:var(--gold);">● Currently In Progress</p>';
-if (done && i === 6) html += '<p class="text-[11px] mt-0.5 font-medium" style="color:#059669;">✓ Successfully Delivered</p>';
-html += '</div>';
-});
-html += '</div>';
-html += '<p class="text-[11px] mt-4 font-medium text-center" style="color:var(--mut);">🕒 Expected Delivery Time: 9:00 AM - 7:00 PM</p>';
+return `
+<div class="track-step ${cls}">
+<div class="track-icon">${done ? ic('check','w-4 h-4') : ic(s.icon,'w-4 h-4')}</div>
+<div class="pt-1">
+<p class="text-[13px] font-bold" style="color:${done || active ? 'var(--text)' : 'var(--mut)'};">${s.t}</p>
+${active ? `<p class="text-[11px] mt-0.5 font-medium flex items-center gap-1 justify-center" style="color:var(--gold);"><span class="w-1.5 h-1.5 rounded-full" style="background:var(--gold);"></span> In Progress</p>` : ''}
+${done && i===6 ? `<p class="text-[11px] mt-0.5 font-medium" style="color:#059669;">Delivered</p>` : ''}
+</div>
+</div>`;
+}).join('');
+html += `</div>`;
+html += `<p class="text-[11px] mt-4 font-medium text-center" style="color:var(--mut);">🕒 Expected Delivery: 9:00 AM - 7:00 PM</p>`;
 return html;
-}
-function animateTimelines(){
-$$('.track-timeline').forEach(function(tl){
-tl.classList.remove('run');
-requestAnimationFrame(function(){ requestAnimationFrame(function(){ tl.classList.add('run'); }); });
-});
 }
 let lock = false;
 function placeOrder(){
 if (lock) return;
-const err = function(m){ const e = $('#coErr'); e.textContent = m; e.classList.remove('hidden'); };
+const err = m => { const e = $('#coErr'); e.textContent = m; e.classList.remove('hidden'); };
 $('#coErr').classList.add('hidden');
 if (!cart.length) return err('Cart is empty — add products first.');
 if (country !== 'IN' && (!RATES || Number(RATES[curCode()]) <= 0)) return err('📡 Connecting live rates — please wait a moment and tap again.');
@@ -2123,125 +2246,139 @@ if (!state) return err('Please enter your state / province.');
 if (!/^[A-Za-z0-9 -]{4,10}$/.test(pin)) return err('Please enter a valid PIN / ZIP.');
 lock = true;
 $('#placeOrder').disabled = true;
-setTimeout(function(){ lock = false; $('#placeOrder').disabled = false; }, 4000);
+setTimeout(() => { lock = false; $('#placeOrder').disabled = false; }, 4000);
 const t = totals();
 const oid = 'JJ' + String(Date.now()).slice(-6);
 const otp = String(Math.floor(1000 + Math.random() * 9000));
-const order = { id:oid, otp:otp, timestamp:Date.now(), customer:{ name:name, phone:phone, addr:addr, country:country, city:city, state:state, pin:pin }, items:JSON.parse(JSON.stringify(cart)), totals:t, manualStatus:null, deliveredAt:null };
+const order = { id:oid, otp, timestamp:Date.now(), customer:{ name, phone, addr, country, city, state, pin }, items:JSON.parse(JSON.stringify(cart)), totals:t, manualStatus:null, deliveredAt:null };
 const orders = store.get('orders', []);
 orders.push(order);
 store.set('orders', orders);
-store.set('user', { name:name, phone:phone });
-const bill = buildBill({ name:name, phone:phone, addr:addr, country:country, city:city, state:state, pin:pin }, t, oid, otp);
+store.set('user', { name, phone });
+const bill = buildBill({ name, phone, addr, country, city, state, pin }, t, oid, otp);
 cart = []; store.set('cart', []);
 renderCart();
-closeAll(true);
-history.pushState(null, '', ' ');
-goWA(bill);
+closeModal('cartDrawer');
+goWA(bill.text);
 }
-function openHistory(skipRoute){
-renderHistory();
-openModal('historyModal', true);
-if (!skipRoute) history.pushState({ modal:'historyModal' }, '', '#orders');
-animateTimelines();
-}
+function openHistory(){ renderHistory(); openModal('historyModal'); }
 function renderHistory(){
-let orders = store.get('orders', []).sort(function(a,b){ return b.timestamp - a.timestamp; });
-orders = orders.filter(function(o){
+let orders = store.get('orders', []).sort((a,b) => b.timestamp - a.timestamp);
+orders = orders.filter(o => {
 const st = getOrderStatus(o).text;
 return st !== 'Delivered' && st !== 'Cancelled';
 });
 const box = $('#historyList');
 if (!orders.length){
-box.innerHTML = '<div class="text-center py-20 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4">' + ic('box','w-16 h-16') + '</span><p class="text-base font-bold">No active orders right now</p></div>';
+box.innerHTML = `<div class="text-center py-20 flex flex-col items-center" style="color:var(--mut);"><span class="mb-4 text-[var(--mut)]">${ic('box','w-16 h-16')}</span><p class="text-base font-bold">No active orders right now</p></div>`;
 return;
 }
-box.innerHTML = orders.map(function(o){
+box.innerHTML = orders.map(o => {
 const st = getOrderStatus(o);
-const canCancel = (Date.now() - o.timestamp < 86400000) && st.text !== 'Cancelled' && st.text !== 'Delivered';
+const canCancel = (Date.now() - o.timestamp < 24*60*60*1000) && st.text !== 'Cancelled' && st.text !== 'Delivered';
 const date = new Date(o.timestamp).toLocaleString('en-IN');
-return '<div class="card p-4 md:p-5 space-y-4">' +
-'<div class="flex justify-between items-start gap-3"><div>' +
-'<b class="disp text-sm">' + o.id + '</b>' +
-'<p class="text-[10px] mt-1" style="color:var(--mut);">' + date + '</p></div>' +
-'<span class="chip gap-1" style="background:' + st.color + '22; color:' + st.color + ';">' + ic(st.icon,'w-3 h-3') + ' ' + st.text + '</span></div>' +
-statusTimeline(o) +
-'<div class="border-t hairline pt-3 space-y-2">' +
-o.items.map(function(l){
+return `
+<div class="card p-4 md:p-5 space-y-4">
+<div class="flex justify-between items-start gap-3">
+<div>
+<b class="disp text-sm">${o.id}</b>
+<p class="text-[10px] mt-1" style="color:var(--mut);">${date}</p>
+</div>
+<span class="chip gap-1" style="background:${st.color}22; color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
+</div>
+${statusTimeline(o)}
+<div class="border-t hairline pt-3 space-y-2">
+${o.items.map(l => {
 const p = prodById(l.id);
-return '<div class="flex gap-3 items-center">' +
-'<div class="w-12 h-14 rounded-lg overflow-hidden shrink-0" style="background:var(--bg2);">' + imgTag(p,l.color,0,'w-full h-full object-cover ld') + '</div>' +
-'<div class="flex-1 min-w-0"><p class="text-xs font-bold truncate">' + esc(p.name) + '</p>' +
-'<p class="text-[10px]" style="color:var(--mut);">Qty: ' + l.qty + ' • ' + fmt(p.price * l.qty) + '</p></div></div>';
-}).join('') + '</div>' +
-'<div class="flex justify-between items-center pt-3 border-t hairline">' +
-'<b class="disp text-sm">Total: ' + fmt(o.totals.total) + '</b>' +
-'<div class="flex gap-2">' +
-(st.text !== 'Cancelled' && st.text !== 'Delivered' ? '<button class="chip border hairline text-[10px]" data-track-wa="' + o.id + '">Track on WA</button>' : '') +
-(canCancel ? '<button class="chip text-[10px]" style="background:rgba(220,38,38,.1); color:#DC2626;" data-cancel-order="' + o.id + '">Cancel Order</button>' : '') +
-'</div></div>' +
-(o.otp && st.text !== 'Cancelled' ? '<p class="text-[10px] font-bold text-center py-2 rounded-lg flex items-center justify-center gap-1.5" style="background:var(--bg2); color:var(--gold);">' + ic('lock','w-3 h-3') + ' Delivery OTP: ' + o.otp + '</p>' : '') +
-'</div>';
+if (!p) return '';
+return `<div class="flex gap-3 items-center">
+<div class="w-12 h-14 rounded-lg overflow-hidden shrink-0" style="background:var(--bg2);">${imgTag(p,0,'w-full h-full object-cover')}</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">${esc(p.name)}</p>
+<p class="text-[10px]" style="color:var(--mut);">Qty: ${l.qty} • ${fmt(p.price * l.qty)}</p>
+</div>
+</div>`;
+}).join('')}
+</div>
+<div class="flex justify-between items-center pt-3 border-t hairline">
+<b class="disp text-sm">Total: ${fmt(o.totals.total)}</b>
+<div class="flex gap-2">
+${st.text !== 'Cancelled' && st.text !== 'Delivered' ? `<button class="chip border hairline text-[10px]" data-track-wa="${o.id}">Track on WA</button>` : ''}
+${canCancel ? `<button class="chip text-[10px]" style="background:rgba(220,38,38,.1); color:#DC2626;" data-cancel-order="${o.id}">Cancel Order</button>` : ''}
+</div>
+</div>
+${o.otp && st.text !== 'Cancelled' ? `<p class="text-[10px] font-bold text-center py-2 rounded-lg flex items-center justify-center gap-1.5" style="background:var(--bg2); color:var(--gold);">${ic('lock','w-3 h-3')} Delivery OTP: ${o.otp}</p>` : ''}
+</div>`;
 }).join('');
-animateTimelines();
 }
 function cancelOrder(orderId){
 const orders = store.get('orders', []);
 const idx = orders.findIndex(o => o.id === orderId);
 if (idx !== -1){
-if (Date.now() - orders[idx].timestamp < 86400000){
+if (Date.now() - orders[idx].timestamp < 24*60*60*1000){
 const order = orders[idx];
 order.manualStatus = 'Cancelled';
 store.set('orders', orders);
 renderHistory();
 toast('Order Cancelled Successfully','cross');
-const L = [];
-L.push('🔔 *ORDER CANCELLED*');
-L.push('━━━━━━━━━━━━━━━━━━━━━━');
-L.push('• Order ID : *' + order.id + '*');
-L.push('• Customer : ' + order.customer.name);
-L.push('• Phone    : ' + order.customer.phone);
-L.push('• City     : ' + order.customer.city + ', ' + order.customer.state);
-L.push('• Total    : ' + fmt(order.totals.total));
-L.push('• Items:');
-order.items.forEach(function(l,i){ L.push('  ' + (i+1) + '. ' + prodById(l.id).name + ' × ' + l.qty); });
-L.push('• Cancelled At: ' + new Date().toLocaleString('en-IN'));
-L.push('━━━━━━━━━━━━━━━━━━━━━━');
-L.push('⚠️ This Order Is Cancelled By Customer. Please Do NOT Ship.');
-goWA(L.join('\n'));
-} else { toast('Cannot cancel after 24 hours','warn'); }
+const cancelMsg = [
+'🔔 *ORDER CANCELLED*',
+'',
+'━━━━━━━━━━━━━━━━━━━━━━',
+`• Order ID : *${order.id}*`,
+`• Customer : ${order.customer.name}`,
+`• Phone    : ${order.customer.phone}`,
+`• City     : ${order.customer.city}, ${order.customer.state}`,
+`• Total    : ${fmt(order.totals.total)}`,
+'',
+'• Items:',
+...order.items.map((l,i) => {
+const p = prodById(l.id);
+return `  ${i+1}. ${p.name} × ${l.qty}`;
+}),
+'',
+`• Cancelled At: ${new Date().toLocaleString('en-IN')}`,
+'━━━━━━━━━━━━━━━━━━━━━━',
+'',
+'⚠️ This Order Is Cancel By Customer',
+'Please Do NOT Ship This Order.'
+].join('\n');
+goWA(cancelMsg);
+} else {
+toast('Cannot cancel after 24 hours','warn');
+}
 }
 }
 let adminAuth = false;
-function openAdmin(skipRoute){
+function openAdmin(){
 if (adminAuth){ $('#adminLoginBox').classList.add('hidden'); $('#adminDashBox').classList.remove('hidden'); }
 else { $('#adminLoginBox').classList.remove('hidden'); $('#adminDashBox').classList.add('hidden'); }
-openModal('staffModal', true);
-if (!skipRoute) history.pushState({ modal:'staffModal' }, '', '#admin');
+openModal('staffModal');
 }
 function results(q){
 q = q.toLowerCase();
 return PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || CATMETA[p.cat].name.toLowerCase().includes(q)).slice(0,8);
 }
-const doSearch = debounce(function(){
+const doSearch = debounce(() => {
 const q = $('#searchInput').value.trim();
 const drop = $('#searchDrop');
 if (q.length < 2){ drop.classList.add('hidden'); return; }
 const r = results(q);
-drop.innerHTML = r.length ? r.map(function(p){
-return '<button class="w-full flex items-center gap-3 px-4 py-3 transition text-left hover:bg-bg2" style="color:var(--text);" data-open-product="' + p.id + '">' +
-'<span class="w-10 h-12 rounded-lg overflow-hidden shrink-0" style="background:var(--bg2);">' + imgTag(p,p.colors[0][0],0,'w-full h-full object-cover') + '</span>' +
-'<span class="flex-1 min-w-0"><span class="block text-xs font-extrabold truncate">' + esc(p.name) + '</span><span class="text-[10px]" style="color:var(--mut);">' + esc(CATMETA[p.cat].name) + '</span></span>' +
-'<b class="text-xs">' + fmt(p.price) + '</b></button>';
-}).join('') : '<p class="p-5 text-sm" style="color:var(--mut);">No results for "' + esc(q) + '"</p>';
+drop.innerHTML = r.length ? r.map(p => `
+<button class="w-full flex items-center gap-3 px-4 py-3 transition text-left" style="color:var(--text);" onmouseover="this.style.background='var(--bg2)'" onmouseout="this.style.background='transparent'" data-open-product="${p.id}">
+<span class="w-10 h-12 rounded-lg overflow-hidden shrink-0" style="background:var(--bg2);">${imgTag(p,0,'w-full h-full object-cover')}</span>
+<span class="flex-1 min-w-0"><span class="block text-xs font-extrabold truncate">${esc(p.name)}</span><span class="text-[10px]" style="color:var(--mut);">${esc(CATMETA[p.cat].name)}</span></span>
+<b class="text-xs">${fmt(p.price)}</b>
+</button>`).join('')
+: `<p class="p-5 text-sm" style="color:var(--mut);">No results for "${esc(q)}"</p>`;
 drop.classList.remove('hidden');
-}, 220);
-const doMSearch = debounce(function(){
+},220);
+const doMSearch = debounce(() => {
 const q = $('#mSearchInput').value.trim();
 $('#mResults').innerHTML = q.length < 2
 ? '<p class="col-span-2 text-center py-16 text-sm" style="color:var(--mut);">Search Joseph & James…</p>'
-: (results(q).map(function(p){ return card(p,'a-up',0); }).join('') || '<p class="col-span-2 text-center py-16" style="color:var(--mut);">Nothing found.</p>');
-}, 220);
+: (results(q).map(p => card(p,'a-up',0)).join('') || '<p class="col-span-2 text-center py-16" style="color:var(--mut);">Nothing found.</p>');
+},220);
 function track(){
 const id = $('#trackInput').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');
 if (!/^JJ\d{6}$/.test(id)){ $('#trackResult').innerHTML = '<p class="text-xs" style="color:#DC2626;">Format: JJ123456</p>'; return; }
@@ -2249,93 +2386,153 @@ const orders = store.get('orders', []);
 const o = orders.find(x => x.id === id);
 if (o){
 const st = getOrderStatus(o);
-$('#trackResult').innerHTML =
-'<div class="border hairline rounded-xl p-4 mb-4" style="background:var(--card);">' +
-'<div class="flex justify-between items-center mb-2"><b class="text-sm">' + o.id + '</b>' +
-'<span class="chip gap-1" style="background:' + st.color + '22; color:' + st.color + ';">' + ic(st.icon,'w-3 h-3') + ' ' + st.text + '</span></div>' +
-'<p class="text-[10px]" style="color:var(--mut);">Placed: ' + new Date(o.timestamp).toLocaleString('en-IN') + '</p></div>' +
-statusTimeline(o) +
-'<a class="pill btn-ink w-full py-3 mt-5 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/' + WA + '?text=' + encodeURIComponent('Hi! Track my order ' + id) + '" target="_blank" rel="noopener">' + ic('chat','w-4 h-4') + ' Live Help on WhatsApp</a>';
-animateTimelines();
+$('#trackResult').innerHTML = `
+<div class="border hairline rounded-xl p-4 mb-4" style="background:var(--card);">
+<div class="flex justify-between items-center mb-2">
+<b class="text-sm">${o.id}</b>
+<span class="chip gap-1" style="background:${st.color}22; color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
+</div>
+<p class="text-[10px]" style="color:var(--mut);">Placed: ${new Date(o.timestamp).toLocaleString('en-IN')}</p>
+</div>
+${statusTimeline(o)}
+<a class="pill btn-ink w-full py-3 mt-5 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">${ic('chat','w-4 h-4')} Live Help on WhatsApp</a>`;
 return;
 }
-$('#trackResult').innerHTML =
-'<p class="text-xs mb-3" style="color:var(--mut);">Order not found on this device. Ask us live on WhatsApp:</p>' +
-'<a class="pill btn-ink w-full py-3 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/' + WA + '?text=' + encodeURIComponent('Hi! Track my order ' + id) + '" target="_blank" rel="noopener">' + ic('chat','w-4 h-4') + ' Live Status on WhatsApp</a>';
+$('#trackResult').innerHTML = `
+<p class="text-xs mb-3" style="color:var(--mut);">Order not found on this device. Ask us live on WhatsApp:</p>
+<a class="pill btn-ink w-full py-3 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">${ic('chat','w-4 h-4')} Live Status on WhatsApp</a>`;
 }
-/* ------- ROUTING: back button / swipe / refresh safe ------- */
-function openModal(id, skipOverflow){
-$('#' + id).classList.remove('hidden');
-if (!skipOverflow) document.body.style.overflow = 'hidden';
+
+/* ==========================================================================
+   MODAL + HISTORY API  (fixes: back button leaves site, refresh goes home)
+   ========================================================================== */
+const ALL_MODALS = ['cartDrawer','wishDrawer','productModal','sizeModal','trackModal','catPage','mobileMenu','searchOverlay','historyModal','staffModal'];
+let pushedState = false;
+let suppressPop = false;
+let currentModalId = null;
+
+function anyModalOpen(){
+  return ALL_MODALS.some(id => !$('#'+id).classList.contains('hidden'));
 }
-function closeModal(id, skipHistory){
-const el = $('#' + id);
-if (el) el.classList.add('hidden');
-document.body.style.overflow = '';
-if (!skipHistory && window.location.hash) history.back();
+
+function saveViewState(id){
+  try {
+    if (id === 'historyModal') sessionStorage.setItem('jj_view', 'history');
+    else if (id === 'catPage') sessionStorage.setItem('jj_view', 'cat:' + cp.cat + ':' + cp.special + ':' + cp.sort);
+    else if (id === 'trackModal') sessionStorage.setItem('jj_view', 'track');
+    else if (id === 'productModal') sessionStorage.setItem('jj_view', 'product:' + pm.id);
+    else if (id === 'sizeModal') sessionStorage.setItem('jj_view', 'size');
+    else sessionStorage.removeItem('jj_view');
+  } catch(e){}
 }
-function closeAll(skipHistory){
-['cartDrawer','wishDrawer','productModal','sizeModal','trackModal','catPage','mobileMenu','searchOverlay','historyModal','staffModal'].forEach(function(id){
-$('#' + id).classList.add('hidden');
+function clearViewState(){ try{ sessionStorage.removeItem('jj_view'); }catch(e){} }
+
+function openModal(id){
+  ALL_MODALS.forEach(m => {
+    if (m === id) $('#'+m).classList.remove('hidden');
+    else $('#'+m).classList.add('hidden');
+  });
+  document.body.style.overflow = 'hidden';
+  currentModalId = id;
+  if (!pushedState){
+    try { history.pushState({ jj: true, top: id }, ''); } catch(e){}
+    pushedState = true;
+  } else {
+    try { history.replaceState({ jj: true, top: id }, ''); } catch(e){}
+  }
+  saveViewState(id);
+}
+
+function closeModal(id){
+  if (id && !$('#'+id).classList.contains('hidden')){
+    $('#'+id).classList.add('hidden');
+  } else {
+    ALL_MODALS.forEach(m => $('#'+m).classList.add('hidden'));
+  }
+  if (!anyModalOpen()){
+    document.body.style.overflow = '';
+    currentModalId = null;
+    if (pushedState){
+      pushedState = false;
+      suppressPop = true;
+      try { history.back(); } catch(e){}
+    }
+    clearViewState();
+  }
+}
+function closeAll(){ closeModal(); }
+
+window.addEventListener('popstate', () => {
+  if (suppressPop){ suppressPop = false; return; }
+  if (pushedState){
+    pushedState = false;
+    ALL_MODALS.forEach(m => $('#'+m).classList.add('hidden'));
+    document.body.style.overflow = '';
+    currentModalId = null;
+    clearViewState();
+  }
 });
-document.body.style.overflow = '';
+
+function restoreViewState(){
+  let v = null;
+  try { v = sessionStorage.getItem('jj_view'); }catch(e){}
+  if (!v) return;
+  try {
+    if (v === 'history'){ openHistory(); }
+    else if (v === 'track'){ openModal('trackModal'); }
+    else if (v === 'size'){ openModal('sizeModal'); }
+    else if (v.startsWith('product:')){
+      const id = v.slice(8);
+      if (prodById(id)) openProduct(id);
+    }
+    else if (v.startsWith('cat:')){
+      const parts = v.split(':');
+      cp = { cat: parts[1]||'', type:'', special: parts[2]||'', sort: parts[3]||'feat' };
+      const sortSel = $('#sortSel'); if (sortSel) sortSel.value = cp.sort;
+      drawCatPage();
+      openModal('catPage');
+    }
+  } catch(e){ clearViewState(); }
 }
-function handleRoute(){
-const hash = window.location.hash;
-closeAll(true);
-if (hash === '#cart'){ renderCart(); openModal('cartDrawer', true); }
-else if (hash === '#wishlist'){ renderWish(); openModal('wishDrawer', true); }
-else if (hash === '#orders'){ openHistory(true); }
-else if (hash === '#track'){ openModal('trackModal', true); }
-else if (hash === '#size'){ openModal('sizeModal', true); }
-else if (hash === '#admin'){ openAdmin(true); }
-else if (hash === '#menu'){ openModal('mobileMenu', true); }
-else if (hash === '#search'){ openModal('searchOverlay', true); }
-else if (hash === '#shop'){ openCatPage('', '', true); }
-else if (hash.indexOf('#shop/') === 0){
-const v = decodeURIComponent(hash.slice(6));
-if (['new','best','under499','under599','under699'].indexOf(v) > -1) openCatPage('', v, true);
-else openCatPage(v, '', true);
-}
-else if (hash.indexOf('#product/') === 0){
-openProduct(hash.slice(9), true);
-}
-}
-window.addEventListener('popstate', handleRoute);
-function openRoute(hash){
-if (window.location.hash !== hash) history.pushState({}, '', hash);
-handleRoute();
-}
-document.addEventListener('click', function(e){
+
+/* ========================================================================== */
+
+// Init
+try { history.replaceState({ base: true }, ''); } catch(e){}
+
+document.addEventListener('click', e => {
 const t = e.target.closest('[data-open-product],[data-add],[data-wish],[data-close],[data-slide-go],[data-catpage],[data-angle],[data-psize],[data-pq],[data-pm-add],[data-pm-buy],[data-pm-wa],[data-cq],[data-cr],[data-bnav],[data-share],[data-sizeopen],[data-cancel-order],[data-track-wa],[data-openhistory]');
-if (!t){ const d = $('#searchDrop'); if (d) d.classList.add('hidden'); return; }
+if (!t){ const sd = $('#searchDrop'); if (sd) sd.classList.add('hidden'); return; }
 if (t.hasAttribute('data-close')){ closeModal(t.getAttribute('data-close')); return; }
-if (t.hasAttribute('data-openhistory')){ closeAll(true); openHistory(); return; }
-if (t.hasAttribute('data-open-product')){ closeModal('mobileMenu', true); openProduct(t.getAttribute('data-open-product')); return; }
-if (t.hasAttribute('data-add')){ addToCart(t.getAttribute('data-add')); closeAll(true); openRoute('#cart'); return; }
+if (t.hasAttribute('data-openhistory')){ openHistory(); return; }
+if (t.hasAttribute('data-open-product')){ openProduct(t.getAttribute('data-open-product')); return; }
+if (t.hasAttribute('data-add')){
+  // Add directly from card — no modal involved
+  addToCart(t.getAttribute('data-add'));
+  return;
+}
 if (t.hasAttribute('data-wish')){ toggleWish(t.getAttribute('data-wish')); return; }
 if (t.hasAttribute('data-slide-go')){ goSlide(+t.getAttribute('data-slide-go')); clearInterval(sTimer); startSlider(); return; }
+if (t.hasAttribute('data-type')){ openCatPage('', t.getAttribute('data-type')); return; }
 if (t.hasAttribute('data-catpage')){
-closeModal('mobileMenu', true);
-closeAll(true);
 const v = t.getAttribute('data-catpage');
-if (['new','best','under499','under599','under699'].indexOf(v) > -1) openCatPage('', v);
-else openCatPage(v, '');
+if (['new','best','under499','under599','under699'].includes(v)) openCatPage('', '', v);
+else openCatPage(v, '', '');
 return;
 }
-if (t.hasAttribute('data-sizeopen')){ openModal('sizeModal'); history.pushState({ modal:'sizeModal' }, '', '#size'); return; }
+if (t.hasAttribute('data-sizeopen')){ openModal('sizeModal'); return; }
 if (t.hasAttribute('data-bnav')){
 const v = t.getAttribute('data-bnav');
-if (v === 'home'){ closeAll(true); window.scrollTo({ top:0, behavior:'smooth' }); if (window.location.hash) history.pushState(null, '', ' '); }
-if (v === 'shop') openCatPage();
-if (v === 'orders'){ closeAll(true); openHistory(); }
-if (v === 'track'){ closeAll(true); openModal('trackModal'); history.pushState({ modal:'trackModal' }, '', '#track'); }
+if (v==='home'){ closeAll(); window.scrollTo({ top:0, behavior:'smooth' }); }
+if (v==='shop') openCatPage();
+if (v==='orders') openHistory();
+if (v==='track') openModal('trackModal');
 return;
 }
 if (t.hasAttribute('data-share')){
 const p = prodById(pm.id);
-const txt = p.name + ' — ' + fmt(p.price) + ' on Joseph & James 💛';
-if (navigator.share){ navigator.share({ title:'Joseph & James', text:txt, url:location.href }).catch(function(){}); }
+const txt = `${p.name} — ${fmt(p.price)} on Joseph & James 💛`;
+if (navigator.share){ navigator.share({ title:'Joseph & James', text:txt, url:location.href }).catch(()=>{}); }
 else goWA(txt);
 return;
 }
@@ -2346,55 +2543,50 @@ pm.angle = a === -1 ? (pm.angle + n - 1) % n : a === 1 ? (pm.angle + 1) % n : a;
 drawProduct();
 return;
 }
-if (t.hasAttribute('data-psize')){ pm.size = +t.getAttribute('data-psize'); $$('#productBody .sizechip').forEach(function(s,i){ s.classList.toggle('active', i === pm.size); }); return; }
+if (t.hasAttribute('data-psize')){ pm.size = +t.getAttribute('data-psize'); $$('#productBody .sizechip').forEach((s,i) => s.classList.toggle('active', i === pm.size)); return; }
 if (t.hasAttribute('data-pq')){ pm.qty = Math.min(9, Math.max(1, pm.qty + +t.getAttribute('data-pq'))); $('#pmQty').textContent = pm.qty; return; }
 if (t.hasAttribute('data-pm-add')){
-const p = prodById(pm.id);
-addToCart(p.id, p.colors[pm.color][0], p.sizes[pm.size], pm.qty, readExtras());
-closeAll(true);
-openRoute('#cart');
-return;
+  const p = prodById(pm.id);
+  addToCart(p.id, p.colors[0][0], p.sizes[pm.size], pm.qty, readExtras(p));
+  // Issue 10: close product modal + open cart
+  closeModal('productModal');
+  renderCart();
+  setTimeout(() => openModal('cartDrawer'), 60);
+  return;
 }
 if (t.hasAttribute('data-pm-buy')){
-const p = prodById(pm.id);
-addToCart(p.id, p.colors[pm.color][0], p.sizes[pm.size], pm.qty, readExtras());
-closeAll(true);
-openRoute('#cart');
-return;
+  const p = prodById(pm.id);
+  addToCart(p.id, p.colors[0][0], p.sizes[pm.size], pm.qty, readExtras(p));
+  // Issue 10: close product modal + open cart
+  closeModal('productModal');
+  renderCart();
+  setTimeout(() => openModal('cartDrawer'), 60);
+  return;
 }
-if (t.hasAttribute('data-pm-wa')){
-const p = prodById(pm.id);
-goWA('Hi Joseph & James! 💛 Question about:\n*' + p.name + '*\nPrice: ' + fmt(p.price));
-return;
-}
-if (t.hasAttribute('data-cq')){
-const l = cart.find(x => x.key === t.getAttribute('data-cq'));
-l.qty = Math.min(9, Math.max(1, l.qty + +t.getAttribute('data-d')));
-store.set('cart', cart); renderCart();
-return;
-}
+if (t.hasAttribute('data-pm-wa')){ const p = prodById(pm.id); goWA(`Hi Joseph & James! 💛 Question about:\n*${p.name}*\nPrice: ${fmt(p.price)}`); return; }
+if (t.hasAttribute('data-cq')){ const l = cart.find(x => x.key === t.getAttribute('data-cq')); if (l){ l.qty = Math.min(9, Math.max(1, l.qty + +t.getAttribute('data-d'))); store.set('cart', cart); renderCart(); } return; }
 if (t.hasAttribute('data-cr')){ cart = cart.filter(x => x.key !== t.getAttribute('data-cr')); store.set('cart', cart); renderCart(); return; }
 if (t.hasAttribute('data-cancel-order')){ cancelOrder(t.getAttribute('data-cancel-order')); return; }
-if (t.hasAttribute('data-track-wa')){ goWA('Hi Joseph & James! 💛 Please update me on my order:\n*' + t.getAttribute('data-track-wa') + '*'); return; }
+if (t.hasAttribute('data-track-wa')){ goWA(`Hi Joseph & James! 💛 Please update me on my order:\n*${t.getAttribute('data-track-wa')}*`); return; }
 });
-$('#cartOpen').onclick = function(){ closeAll(true); renderCart(); openRoute('#cart'); };
-$('#wishOpen').onclick = function(){ closeAll(true); renderWish(); openRoute('#wishlist'); };
-$('#menuOpen').onclick = function(){ openModal('mobileMenu'); history.pushState({ modal:'mobileMenu' }, '', '#menu'); };
-$('#mSearchOpen').onclick = function(){ openModal('searchOverlay'); history.pushState({ modal:'searchOverlay' }, '', '#search'); };
-$('#trackOpen2').onclick = function(){ closeAll(true); openModal('trackModal'); history.pushState({ modal:'trackModal' }, '', '#track'); };
-$('#sizeOpen').onclick = function(){ openModal('sizeModal'); history.pushState({ modal:'sizeModal' }, '', '#size'); };
+$('#cartOpen').onclick = () => { renderCart(); openModal('cartDrawer'); };
+$('#wishOpen').onclick = () => { renderWish(); openModal('wishDrawer'); };
+$('#menuOpen').onclick = () => openModal('mobileMenu');
+$('#mSearchOpen').onclick = () => openModal('searchOverlay');
+$('#trackOpen2').onclick = () => openModal('trackModal');
+$('#sizeOpen').onclick = () => openModal('sizeModal');
 $('#placeOrder').onclick = placeOrder;
-$('#coDetect').onclick = function(){ detectCountry(true).then(function(){ refreshPrices(); }); ensureLive(true); };
-$('#curChip').onclick = function(){ detectCountry(true).then(function(){ refreshPrices(); }); ensureLive(true); };
-$('#heroPrev').onclick = function(){ goSlide(sIdx-1); clearInterval(sTimer); startSlider(); };
-$('#heroNext').onclick = function(){ goSlide(sIdx+1); clearInterval(sTimer); startSlider(); };
+$('#coDetect').onclick = () => { detectCountry(true).then(() => refreshPrices()); ensureLive(true); };
+$('#curChip').onclick = () => { detectCountry(true).then(() => refreshPrices()); ensureLive(true); };
+$('#heroPrev').onclick = () => { goSlide(sIdx-1); clearInterval(sTimer); startSlider(); };
+$('#heroNext').onclick = () => { goSlide(sIdx+1); clearInterval(sTimer); startSlider(); };
 $('#searchInput').addEventListener('input', doSearch);
 $('#mSearchInput').addEventListener('input', doMSearch);
-$('#sortSel').onchange = function(e){ cp.sort = e.target.value; drawCatPage(); };
+$('#sortSel').onchange = e => { cp.sort = e.target.value; drawCatPage(); saveViewState('catPage'); };
 $('#trackGo').onclick = track;
-$('#toTop').onclick = function(){ window.scrollTo({ top:0, behavior:'smooth' }); };
-$('#footAdmin').onclick = function(){ openAdmin(); };
-$('#delVerify').onclick = function(){
+$('#toTop').onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
+$('#footAdmin').onclick = openAdmin;
+$('#delVerify').onclick = () => {
 const id = $('#delOrderId').value.trim().toUpperCase();
 const otp = $('#delOtp').value.trim();
 const orders = store.get('orders', []);
@@ -2408,7 +2600,7 @@ toast('Delivery Confirmed!','check');
 $('#delOrderId').value = ''; $('#delOtp').value = '';
 } else { toast('Invalid OTP','cross'); }
 };
-$('#adminLoginBtn').onclick = function(){
+$('#adminLoginBtn').onclick = () => {
 if ($('#adminPass').value === 'JJ2026'){
 adminAuth = true;
 $('#adminLoginBox').classList.add('hidden');
@@ -2416,7 +2608,7 @@ $('#adminDashBox').classList.remove('hidden');
 toast('Admin Unlocked','lock');
 } else { toast('Wrong Passcode','cross'); }
 };
-$('#adminSearchId').addEventListener('input', debounce(function(){
+$('#adminSearchId').addEventListener('input', debounce(() => {
 const q = $('#adminSearchId').value.trim().toUpperCase();
 const res = $('#adminResult');
 if (q.length < 3){ res.innerHTML = ''; return; }
@@ -2424,98 +2616,113 @@ const orders = store.get('orders', []);
 const o = orders.find(x => x.id.includes(q));
 if (!o){ res.innerHTML = '<p class="text-xs text-center" style="color:var(--mut);">No order found.</p>'; return; }
 const st = getOrderStatus(o);
-res.innerHTML =
-'<div class="border hairline rounded-xl p-4" style="background:var(--card);">' +
-'<div class="flex justify-between items-center mb-2"><b class="text-sm">' + o.id + '</b>' +
-'<span class="chip gap-1" style="background:' + st.color + '22; color:' + st.color + ';">' + ic(st.icon,'w-3 h-3') + ' ' + st.text + '</span></div>' +
-'<p class="text-[10px] mb-3" style="color:var(--mut);">' + o.customer.name + ' • ' + o.customer.phone + '</p>' +
-'<div class="flex gap-2 flex-wrap">' +
-'<select id="adminStatusSel" class="field text-[10px] py-1 flex-1">' +
-'<option value="">Auto (Time-Based)</option><option>Order Placed</option><option>Order Confirmed</option>' +
-'<option>In Process</option><option>Order Ready</option><option>Dispatched</option>' +
-'<option>Out For Delivery</option><option>Delivered</option><option>Cancelled</option></select>' +
-'<button id="adminUpdateBtn" class="pill btn-ink px-4 text-[10px]">Update</button></div></div>';
+res.innerHTML = `
+<div class="border hairline rounded-xl p-4" style="background:var(--card);">
+<div class="flex justify-between items-center mb-2">
+<b class="text-sm">${o.id}</b>
+<span class="chip gap-1" style="background:${st.color}22; color:${st.color};">${ic(st.icon,'w-3 h-3')} ${st.text}</span>
+</div>
+<p class="text-[10px] mb-3" style="color:var(--mut);">${o.customer.name} • ${o.customer.phone}</p>
+<div class="flex gap-2 flex-wrap">
+<select id="adminStatusSel" class="field text-[10px] py-1 flex-1">
+<option value="">Auto (Time-Based)</option>
+<option value="Order Placed">Order Placed</option>
+<option value="Order Confirmed">Confirmed</option>
+<option value="In Process">Processing</option>
+<option value="Order Ready">Ready</option>
+<option value="Dispatched">Dispatched</option>
+<option value="Out For Delivery">Out for Delivery</option>
+<option value="Delivered">Delivered</option>
+<option value="Cancelled">Cancelled</option>
+</select>
+<button id="adminUpdateBtn" class="pill btn-ink px-4 text-[10px]">Update</button>
+</div>
+</div>`;
 $('#adminStatusSel').value = o.manualStatus || '';
-$('#adminUpdateBtn').onclick = function(){
+$('#adminUpdateBtn').onclick = () => {
 const v = $('#adminStatusSel').value;
-const orders2 = store.get('orders', []);
-const idx = orders2.findIndex(x => x.id === o.id);
+const orders = store.get('orders', []);
+const idx = orders.findIndex(x => x.id === o.id);
 if (idx !== -1){
-orders2[idx].manualStatus = v || null;
-if (v === 'Delivered') orders2[idx].deliveredAt = Date.now();
-store.set('orders', orders2);
+orders[idx].manualStatus = v || null;
+if (v === 'Delivered') orders[idx].deliveredAt = Date.now();
+store.set('orders', orders);
 toast('Status Updated','check');
 $('#adminSearchId').dispatchEvent(new Event('input'));
 }
 };
-}, 300));
-$$('details.faq').forEach(function(faq){
-faq.addEventListener('toggle', function(){
-if (faq.open){ $$('details.faq').forEach(function(other){ if (other !== faq) other.open = false; }); }
+},300));
+$$('details.faq').forEach(faq => {
+faq.addEventListener('toggle', () => {
+if (faq.open){
+$$('details.faq').forEach(other => { if (other !== faq) other.open = false; });
+}
 });
 });
-window.addEventListener('scroll', function(){
+window.addEventListener('scroll', () => {
 const s = scrollY > 600;
 const t = $('#toTop');
-t.style.opacity = s ? '1' : '0';
+t.style.opacity = s ? 1 : 0;
 t.style.pointerEvents = s ? 'auto' : 'none';
 $('#header').style.boxShadow = scrollY > 8 ? '0 10px 30px -18px rgba(0,0,0,.35)' : '';
 }, { passive:true });
-window.addEventListener('keydown', function(e){
-if (e.key === 'Escape'){ if (window.location.hash) history.back(); else closeAll(); }
+window.addEventListener('keydown', e => {
+if (e.key === 'Escape' && anyModalOpen()) closeAll();
 if (!$('#productModal').classList.contains('hidden')){
 const n = viewsOf(prodById(pm.id));
 if (e.key === 'ArrowRight'){ pm.angle = (pm.angle+1) % n; drawProduct(); }
 if (e.key === 'ArrowLeft'){ pm.angle = (pm.angle+n-1) % n; drawProduct(); }
 }
 });
-window.addEventListener('resize', debounce(sizeHero, 300));
-setInterval(function(){ if (document.visibilityState === 'visible') ensureLive(false); }, RATE_REFRESH_MS);
-document.addEventListener('visibilitychange', function(){
+window.addEventListener('resize', debounce(() => { sizeHero(); },300));
+setInterval(() => { if (document.visibilityState === 'visible') ensureLive(false); }, RATE_REFRESH_MS);
+document.addEventListener('visibilitychange', () => {
 if (!document.hidden && (!RATES || Date.now() - RATES_AT > RATE_REFRESH_MS)) ensureLive(false);
 });
-window.addEventListener('online', function(){ ensureLive(true); });
+window.addEventListener('online', () => ensureLive(true));
+
+/* Init */
 (async function init(){
-try{
-generateProducts();
-country = tzCountry();
-loadCachedRates();
-fxStatus = RATES ? 'live' : 'connecting';
-updateCountryUI();
-renderMobileNav();
-renderShopCats();
-renderInsta();
-renderHomeCats();
-renderHero();
-sizeHero();
-upgradeHeroImgs();
-renderCart();
-renderWish();
-reveal();
-startSlider();
-const heroSec = $('#heroSec');
-let touchStartX = 0, touchEndX = 0;
-if (heroSec){
-heroSec.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].screenX; }, { passive:true });
-heroSec.addEventListener('touchend', function(e){
-touchEndX = e.changedTouches[0].screenX;
-const diff = touchStartX - touchEndX;
-if (Math.abs(diff) > 50){
-if (diff > 0) goSlide(sIdx+1); else goSlide(sIdx-1);
-clearInterval(sTimer); startSlider();
-}
-}, { passive:true });
-}
-handleRoute();
-(async function(){
-const changed = await detectCountry(false);
-const fresh = await ensureLive(false);
-if (changed || fresh) refreshPrices();
-})();
-}catch(err){
-forceReveal();
-if (window.console) console.error(err);
-}
+  generateProducts();
+  country = tzCountry();
+  loadCachedRates();
+  fxStatus = RATES ? 'live' : 'connecting';
+  updateCountryUI();
+  renderMobileNav();
+  renderCircleCats();
+  renderInsta();
+  renderFeatured();
+  renderHero();
+  sizeHero();
+  upgradeHeroImgs();
+  renderCart();
+  renderWish();
+  reveal();
+  startSlider();
+
+  // Swipe hero (mobile)
+  const heroSec = $('#heroSec');
+  let touchStartX = 0;
+  if (heroSec){
+    heroSec.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    heroSec.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50){
+        if (diff > 0) goSlide(sIdx+1); else goSlide(sIdx-1);
+        clearInterval(sTimer); startSlider();
+      }
+    }, { passive: true });
+  }
+
+  // Restore view (fixes issue 7 — refresh keeps same page)
+  restoreViewState();
+
+  // Detect country + rates
+  (async () => {
+    const changed = await detectCountry(false);
+    const fresh = await ensureLive(false);
+    if (changed || fresh) refreshPrices();
+  })();
 })();
   </script>
 </body>
