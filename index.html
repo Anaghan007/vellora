@@ -21,8 +21,6 @@
     content="Graphic, Minimalist, Custom, Cropped, Polo & Anime Tees • New Drops • Best Sell • Under ₹499 / ₹599 / ₹699 • COD India • WhatsApp order.">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdn.tailwindcss.com https://fonts.googleapis.com https://fonts.gstatic.com https://wa.me https://api.whatsapp.com https://www.instagram.com https://www.google.com https://open.er-api.com https://ipapi.co https://ipwho.is;">
   <link rel="icon" type="image/png" href="images/android-chrome-512x512.png">
   <link rel="apple-touch-icon" href="images/android-chrome-512x512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +80,6 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
     html,
     body {
       overflow-x: hidden;
-      overflow-x: clip;
       max-width: 100%;
     }
 
@@ -696,108 +693,21 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       display: none;
     }
 
-    @keyframes pulseDot {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 60%, transparent);
-      }
-
-      50% {
-        box-shadow: 0 0 0 8px transparent;
-      }
+    details.faq summary {
+      list-style: none;
+      cursor: pointer;
     }
 
-    .st-active {
-      animation: pulseDot 1.6s infinite;
-    }
-
-    .track-timeline {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: 16px;
-      width: 100%;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .track-timeline::-webkit-scrollbar {
+    details.faq summary::-webkit-details-marker {
       display: none;
     }
 
-    .track-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      flex: 1;
-      min-width: 90px;
+    details.faq[open] .faqicon {
+      transform: rotate(45deg);
     }
 
-    .track-step::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 15px;
-      width: 100%;
-      height: 2px;
-      background: var(--line);
-      z-index: 0;
-      transition: background .5s ease;
-    }
-
-    .track-step:last-child::before {
-      display: none;
-    }
-
-    .track-step.done::before {
-      background: var(--text);
-    }
-
-    .track-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--card);
-      border: 2px solid var(--line);
-      color: var(--mut);
-      z-index: 2;
-      transition: all .4s cubic-bezier(.4, 0, .2, 1);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .05);
-      margin-bottom: 8px;
-    }
-
-    .track-step.done .track-icon {
-      background: var(--text);
-      border-color: var(--text);
-      color: var(--gold);
-    }
-
-    .track-step.active .track-icon {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #fff;
-      box-shadow: 0 0 0 6px rgba(176, 141, 87, .15), 0 4px 12px rgba(176, 141, 87, .3);
-      animation: pulseTrack 2.5s infinite;
-    }
-
-    @keyframes pulseTrack {
-      0% {
-        box-shadow: 0 0 0 0 rgba(176, 141, 87, .4), 0 4px 12px rgba(176, 141, 87, .3);
-      }
-
-      70% {
-        box-shadow: 0 0 0 12px rgba(176, 141, 87, 0), 0 4px 12px rgba(176, 141, 87, .3);
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 rgba(176, 141, 87, 0), 0 4px 12px rgba(176, 141, 87, .3);
-      }
+    .faqicon {
+      transition: transform .3s;
     }
 
     @media (max-width:767px) {
@@ -842,10 +752,6 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       body {
         padding-bottom: 0 !important;
       }
-
-      #heroSec {
-        min-height: calc(100vh - 140px);
-      }
     }
 
     @media (prefers-reduced-motion:reduce) {
@@ -860,23 +766,6 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
       html {
         scroll-behavior: auto;
       }
-    }
-
-    details.faq summary {
-      list-style: none;
-      cursor: pointer;
-    }
-
-    details.faq summary::-webkit-details-marker {
-      display: none;
-    }
-
-    details.faq[open] .faqicon {
-      transform: rotate(45deg);
-    }
-
-    .faqicon {
-      transition: transform .3s;
     }
   </style>
   <script type="application/ld+json">
@@ -894,49 +783,49 @@ letterSpacing: { wide2: '.08em', luxe: '.25em' }
 
 <body class="antialiased" id="home">
   <header id="header" class="sticky top-0 z-50 glassbar border-b hairline transition-shadow w-full">
-    <div class="wrap grid grid-cols-[auto_1fr_auto] items-center gap-6 py-3 md:py-4">
+    <div class="wrap grid grid-cols-[auto_1fr_auto] items-center gap-3 py-3 md:py-4">
       <div class="flex items-center gap-2 min-w-0">
         <button id="menuOpen" class="md:hidden p-2 -ml-1" aria-label="Menu">
 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h10M4 17h16"/></svg>
 </button>
         <a href="#home" class="flex items-center shrink-0" aria-label="Joseph & James home">
-          <img src="images/logo.png" class="h-10 md:h-12 w-auto object-contain ld" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="images/logo.png" class="h-12 w-auto object-contain ld" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="h-12 items-center font-luxe text-xl md:text-2xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH & JAMES</span>
         </a>
       </div>
-      <div class="relative hidden md:flex justify-center w-full max-w-2xl mx-auto">
-        <div class="flex items-center border hairline rounded-full w-full" style="background:var(--card);">
+      <div class="relative hidden md:flex justify-center w-full">
+        <div class="flex items-center border hairline rounded-full w-full max-w-lg" style="background:var(--card);">
           <input id="searchInput" type="search" maxlength="60" placeholder="Search oversized tees, polos…" class="flex-1 bg-transparent px-5 py-2.5 text-sm min-w-0" style="color:var(--text);" autocomplete="off">
           <button id="searchBtn" class="px-4" style="color:var(--gold);" aria-label="Search">
 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
 </button>
         </div>
         <div id="searchDrop"
-          class="absolute left-1/2 -translate-x-1/2 w-full top-[112%] border hairline rounded-3xl shadow-lift overflow-hidden hidden z-50"
+          class="absolute left-1/2 -translate-x-1/2 w-full max-w-lg top-[112%] border hairline rounded-3xl shadow-lift overflow-hidden hidden z-50"
           style="background:var(--card);"></div>
       </div>
-      <div class="flex items-center gap-1 md:gap-4 justify-end min-w-0">
+      <div class="flex items-center gap-1 md:gap-2 justify-end min-w-0">
         <button id="mSearchOpen" class="md:hidden p-2" aria-label="Search">
 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
 </button>
-        <button id="wishOpen" class="relative flex flex-col items-center justify-center px-2 md:px-3 transition group" style="color:var(--text);" aria-label="Wishlist">
-<div class="relative">
+        <button id="wishOpen" class="relative flex flex-col items-center px-2 md:px-3 transition" style="color:var(--text);" aria-label="Wishlist">
+<span class="relative inline-flex">
 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.7-10-9.3C.5 8 2.6 4.5 6.2 4.5c2.2 0 3.7 1.2 4.6 2.6.9-1.4 2.4-2.6 4.6-2.6 3.6 0 5.7 3.5 4.2 7.2C19.5 16.3 12 21 12 21z"/></svg>
 <span id="wishCount" class="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full text-white text-[9px] font-extrabold flex items-center justify-center" style="background:var(--gold);">0</span>
-</div>
+</span>
 <span class="micro mt-1 hidden md:block">Wishlist</span>
 </button>
-        <button id="cartOpen" class="relative flex flex-col items-center justify-center px-2 md:px-3 transition group" style="color:var(--text);" aria-label="Cart">
-<div class="relative">
+        <button id="cartOpen" class="relative flex flex-col items-center px-2 md:px-3 transition" style="color:var(--text);" aria-label="Cart">
+<span class="relative inline-flex">
 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l1.5 13h-15L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
 <span id="cartCount" class="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full text-[9px] font-extrabold flex items-center justify-center" style="background:var(--text); color:var(--bg);">0</span>
-</div>
+</span>
 <span class="micro mt-1 hidden md:block">Cart</span>
 </button>
       </div>
     </div>
     <nav class="hidden md:block border-t hairline w-full">
-      <div class="wrap flex items-center justify-center gap-8 py-3 overflow-x-auto no-scrollbar">
+      <div class="wrap flex items-center justify-center gap-7 py-2.5 overflow-x-auto no-scrollbar">
         <a href="#home" class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0"
           style="color:var(--text);">Home</a>
         <button class="text-[12px] font-semibold tracking-wide2 uppercase hover:text-gld shrink-0" data-catpage="new">New Drops</button>
@@ -955,6 +844,7 @@ Detecting…
       </div>
     </nav>
   </header>
+
   <div id="mobileMenu" class="fixed inset-0 z-[60] hidden w-full">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-md" data-close="mobileMenu"></div>
     <div class="absolute left-0 top-0 h-full w-[88%] max-w-sm overflow-y-auto flex flex-col border-r hairline"
@@ -962,12 +852,9 @@ Detecting…
       <div class="relative p-6 pb-5 border-b hairline overflow-hidden">
         <div class="absolute -top-12 -right-12 w-44 h-44 rounded-full opacity-25 blur-3xl pointer-events-none"
           style="background:var(--gold);"></div>
-        <div class="flex items-center justify-between relative">
-          <div class="flex items-center">
-            <img src="images/logo.png" class="h-12 w-auto object-contain" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <span class="h-12 items-center font-luxe text-xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH & JAMES</span>
-          </div>
-          <button data-close="mobileMenu" class="w-10 h-10 rounded-full border hairline flex items-center justify-center transition hover:border-[var(--gold)]" aria-label="Close">✕</button>
+        <div class="flex items-center relative">
+          <img src="images/logo.png" class="h-12 w-auto object-contain" alt="Joseph & James" style="opacity:1;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="h-12 items-center font-luxe text-xl font-bold tracking-luxe" style="display:none;color:var(--gold);">JOSEPH & JAMES</span>
         </div>
       </div>
       <nav class="flex-1 p-4 space-y-2.5" id="mobileNav"></nav>
@@ -984,6 +871,7 @@ Detecting…
       </div>
     </div>
   </div>
+
   <div id="searchOverlay" class="fixed inset-0 z-[60] hidden w-full" style="background:var(--bg); color:var(--text);">
     <div class="p-3 border-b hairline flex gap-2 items-center">
       <input id="mSearchInput" maxlength="60" class="field" placeholder="Search Joseph & James…" autocomplete="off">
@@ -991,6 +879,7 @@ Detecting…
     </div>
     <div id="mResults" class="p-3 grid grid-cols-2 gap-3 overflow-y-auto w-full"></div>
   </div>
+
   <main class="w-full">
     <section id="heroSec" class="relative overflow-hidden w-full" aria-label="Hero"
       style="background:radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb,var(--gold) 18%,transparent), transparent 60%), radial-gradient(900px 500px at 10% 110%, color-mix(in srgb,var(--gold) 12%,transparent), transparent 55%), linear-gradient(135deg,var(--bg2),var(--bg));">
@@ -1000,14 +889,16 @@ Detecting…
       <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 flex-wrap justify-center px-4 w-full"
         id="heroDots"></div>
     </section>
-    <section class="py-10 md:py-16 w-full" style="background:var(--bg2);" id="shopCatSec">
+
+    <section class="py-10 md:py-16 w-full" style="background:var(--bg2);">
       <div class="wrap text-center mb-8" data-reveal="up">
         <p class="micro micro-gold mb-2">Shop by Category</p>
         <h2 class="disp font-semibold" style="font-size:var(--fs-h2);">Find Your Style</h2>
       </div>
-      <div class="wrap grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6" id="shopCats" data-reveal="up"
+      <div class="wrap grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6" id="shopCats" data-reveal="up"
         data-delay="100"></div>
     </section>
+
     <section class="border-y hairline w-full" style="background:var(--bg);">
       <div class="wrap grid grid-cols-2 text-center">
         <div class="py-5 px-2 border-r hairline" data-reveal="up">
@@ -1020,6 +911,7 @@ Detecting…
         </div>
       </div>
     </section>
+
     <section class="py-10 md:py-16 w-full" style="background:var(--bg);" id="sec-featured">
       <div class="wrap flex items-end justify-between mb-6 md:mb-8" data-reveal="up">
         <div>
@@ -1028,9 +920,10 @@ Detecting…
         </div>
         <button class="micro micro-gold transition shrink-0" data-catpage="">View All →</button>
       </div>
-      <div class="wrap grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6" id="featuredGrid"
-        data-reveal="up" data-delay="100"></div>
+      <div class="wrap grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6" id="featuredGrid" data-reveal="up"
+        data-delay="100"></div>
     </section>
+
     <section class="wrap py-10 md:py-16 w-full">
       <div class="grid md:grid-cols-2 gap-4 md:gap-6">
         <div class="card p-7 text-center" data-reveal="zoom">
@@ -1047,6 +940,7 @@ Detecting…
         </div>
       </div>
     </section>
+
     <section class="wrap py-10 md:py-16 w-full max-w-6xl mx-auto" id="faq">
       <div class="text-center mb-8" data-reveal="up">
         <p class="micro micro-gold mb-2">SEO · Help · Keywords</p>
@@ -1129,6 +1023,7 @@ Detecting…
         </details>
       </div>
     </section>
+
     <section class="py-10 md:py-16 w-full" style="background:var(--bg2);" id="instagram">
       <div class="wrap">
         <div class="text-center mb-8" data-reveal="up">
@@ -1150,6 +1045,7 @@ Detecting…
       </div>
     </section>
   </main>
+
   <footer class="w-full border-t hairline" style="background:var(--bg2); color:var(--text);" id="contact">
     <div class="wrap py-12 md:py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
       <div data-reveal="left">
@@ -1223,6 +1119,7 @@ Detecting…
       </div>
     </div>
   </footer>
+
   <nav id="bottomNav"
     class="fixed bottom-0 inset-x-0 z-50 glassbar border-t hairline shadow-bar grid grid-cols-5 w-full">
     <button class="flex flex-col items-center py-2.5" style="color:var(--gold);" data-bnav="home">
@@ -1250,6 +1147,7 @@ Detecting…
       <span class="micro mt-1">Chat</span>
     </a>
   </nav>
+
   <div id="cartDrawer" class="fixed inset-0 z-[70] hidden w-full">
     <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-close="cartDrawer"></div>
     <aside class="sheet-wrap absolute right-0 top-0 h-full w-full flex justify-end pointer-events-none">
@@ -1318,6 +1216,7 @@ Place Order on WhatsApp — COD
         </div>
     </aside>
   </div>
+
   <div id="wishDrawer" class="fixed inset-0 z-[70] hidden w-full">
     <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-close="wishDrawer"></div>
     <aside class="sheet-wrap absolute left-0 top-0 h-full w-full flex justify-start pointer-events-none">
@@ -1331,6 +1230,7 @@ Place Order on WhatsApp — COD
       </div>
     </aside>
   </div>
+
   <div id="productModal" class="fixed inset-0 z-[80] hidden overflow-y-auto w-full">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close="productModal"></div>
     <div class="pm-wrap relative max-w-6xl mx-auto my-0 md:my-8 px-0 md:px-4 w-full">
@@ -1338,6 +1238,7 @@ Place Order on WhatsApp — COD
         style="background:var(--bg); color:var(--text); box-shadow:var(--shadow);" id="productBody"></div>
     </div>
   </div>
+
   <div id="trackModal" class="fixed inset-0 z-[85] hidden flex items-center justify-center px-4 w-full">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close="trackModal"></div>
     <div class="modalcard relative rounded-[24px] p-6 md:p-8 max-w-md w-full"
@@ -1353,6 +1254,7 @@ Place Order on WhatsApp — COD
       <div id="trackResult" class="mt-6"></div>
     </div>
   </div>
+
   <div id="historyModal" class="fixed inset-0 z-[85] hidden flex flex-col w-full" style="background:var(--bg);">
     <header class="shrink-0 glassbar border-b hairline w-full">
       <div class="wrap flex items-center gap-3 py-3">
@@ -1362,6 +1264,7 @@ Place Order on WhatsApp — COD
     </header>
     <div id="historyList" class="flex-1 overflow-y-auto overflow-x-hidden wrap py-6 space-y-4 w-full"></div>
   </div>
+
   <div id="staffModal" class="fixed inset-0 z-[95] hidden flex items-center justify-center px-4 w-full">
     <div class="absolute inset-0 bg-black/80 backdrop-blur-md" data-close="staffModal"></div>
     <div class="modalcard relative rounded-[24px] p-6 md:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto"
@@ -1405,6 +1308,7 @@ Place Order on WhatsApp — COD
       </div>
     </div>
   </div>
+
   <div id="sizeModal" class="fixed inset-0 z-[85] hidden flex items-center justify-center px-4 w-full">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close="sizeModal"></div>
     <div class="modalcard relative rounded-[24px] p-6 md:p-8 max-w-md w-full"
@@ -1438,6 +1342,7 @@ Place Order on WhatsApp — COD
         policy.</p>
     </div>
   </div>
+
   <div id="catPage" class="fixed inset-0 z-[75] hidden overflow-y-auto w-full"
     style="background:var(--bg); color:var(--text);">
     <header class="sticky top-0 z-10 glassbar border-b hairline w-full">
@@ -1454,10 +1359,11 @@ Place Order on WhatsApp — COD
       </div>
     </header>
     <div id="catPageGrid"
-      class="wrap py-6 md:py-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 w-full">
-    </div>
+      class="wrap py-6 md:py-8 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 w-full"></div>
   </div>
+
   <div id="toasts" class="fixed top-20 right-3 md:right-5 z-[99] space-y-3 w-[19rem] max-w-[92vw]"></div>
+
   <a id="waFloat" href="https://wa.me/917434053550?text=Hi%20Joseph%20%26%20James!" target="_blank" rel="noopener"
     aria-label="WhatsApp"
     class="wa-float fixed bottom-6 right-6 z-[65] w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lift transition hover:scale-110">
@@ -1467,6 +1373,7 @@ Place Order on WhatsApp — COD
     </svg>
   </a>
   <button id="toTop" class="fixed bottom-24 md:bottom-6 left-4 md:left-6 z-[65] w-11 h-11 rounded-full shadow-lift opacity-0 pointer-events-none transition hover:scale-110" style="background:var(--text); color:var(--bg);" aria-label="Top">↑</button>
+
   <script>
     'use strict';
 const $ = (s,r=document) => r.querySelector(s);
@@ -1474,10 +1381,20 @@ const $$ = (s,r=document) => [...r.querySelectorAll(s)];
 const esc = (s='') => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const debounce = (fn, ms=250) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
 const WA = '917434053550';
+const MODALS = ['cartDrawer','wishDrawer','productModal','sizeModal','trackModal','catPage','mobileMenu','searchOverlay','historyModal','staffModal'];
 const store = {
 get(k,d){ try{ return JSON.parse(localStorage.getItem('jj_'+k)) ?? d; }catch(e){ return d; } },
 set(k,v){ try{ localStorage.setItem('jj_'+k, JSON.stringify(v)); }catch(e){} }
 };
+/* SAFETY NET: guarantee all content becomes visible on every device */
+window.addEventListener('load', function(){
+setTimeout(function(){
+try{
+document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+document.body.style.overflow = '';
+}catch(e){}
+}, 2500);
+});
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function goWA(text){ window.location.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
 function shade(hex,p){
@@ -1681,9 +1598,7 @@ catch(e){ return c + ' ' + Math.round(v); }
 }
 return '…';
 }
-let liveRefresh = false;
 function refreshPrices(){
-liveRefresh = true;
 renderFeatured();
 updateHeroPrices();
 renderCart();
@@ -1698,8 +1613,6 @@ const CATMETA = {
 'polo-tee': { name:'Polo T-Shirts', main:'T-Shirt', type:'clothing', views:2 },
 'anime-tee': { name:'Anime/Gaming Tees', main:'T-Shirt', type:'clothing', views:2 }
 };
-const TSHIRT_CATS = Object.keys(CATMETA);
-const SHIRT_CATS = [];
 const PRODUCTS = [];
 function generateProducts() {
 const names = {
@@ -1736,12 +1649,11 @@ const prodById = id => PRODUCTS.find(p => p.id === id);
 const offPct = p => Math.round((1 - p.price / p.mrp) * 100);
 const stars = r => { const f = Math.round(r); return '<span style="color:var(--gold);font-size:11px;">' + '★'.repeat(f) + '☆'.repeat(5-f) + '</span>'; };
 const viewsOf = p => CATMETA[p.cat].views;
-const slug = c => c.toLowerCase().replace(/[^a-z0-9]+/g,'');
+/* IMAGE NAMING: 60 products → 20 photos (t1..t20), each with -1 front / -2 back */
 function imgURLs(p,color){
-const pidNum = parseInt(p.id.replace('p', ''), 10);
-const imgIndex = ((pidNum - 1) % 20) + 1;
-const base = 'images/t' + imgIndex + '-';
-return Array.from({ length: viewsOf(p) }, (_,i) => base + (i+1) + '.jpeg');
+const pidNum = parseInt(p.id.replace('p',''),10) || 1;
+const idx = ((pidNum - 1) % 20) + 1;
+return Array.from({ length: viewsOf(p) }, (_,i) => `images/t${idx}-${i+1}.jpeg`);
 }
 const hexOf = (p,c) => (p.colors.find(x => x[0] === c) || p.colors[0])[1];
 function imgTag(p,color,a,cls,extra,eager){
@@ -1800,16 +1712,9 @@ function renderFeatured(){
 const mixed = [...PRODUCTS].sort(() => Math.random() - 0.5).slice(0, 20);
 $('#featuredGrid').innerHTML = mixed.map((p, i) => `<div>${card(p, 'a-up', i * 50)}</div>`).join('');
 }
+/* SIDE MENU: only the header links (no extra categories) */
 function renderMobileNav(){
-const icons = {
-'graphic-tee':ic('sparkle'),
-'minimal-tee':ic('tshirt'),
-'custom-tee':ic('palette'),
-'cropped-tee':ic('heart'),
-'polo-tee':ic('shirt'),
-'anime-tee':ic('fire')
-};
-const top = [
+const items = [
 { l:'New Drops', a:'data-catpage="new"', i:ic('sparkle') },
 { l:'Best Sell', a:'data-catpage="best"', i:ic('fire') },
 { l:'Under ₹499', a:'data-catpage="under499"', i:ic('tag') },
@@ -1817,10 +1722,9 @@ const top = [
 { l:'Under ₹699', a:'data-catpage="under699"', i:ic('tag') },
 { l:'All Products', a:'data-catpage=""', i:ic('bag') },
 { l:'My Orders', a:'data-openhistory', i:ic('box') },
-{ l:'Contact', a:'href="#contact" data-close="mobileMenu"', i:ic('chat') }
+{ l:'Contact', a:'data-gotocontact', i:ic('chat') }
 ];
-const all = [...top];
-$('#mobileNav').innerHTML = all.map((it,idx) => `
+$('#mobileNav').innerHTML = items.map((it,idx) => `
 <button class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl border hairline transition active:scale-[0.98] text-left" style="background:color-mix(in srgb, var(--card) 55%, transparent); animation:fadeUp .5s both; animation-delay:${idx*40}ms;" ${it.a}>
 <span class="flex items-center gap-3 min-w-0">
 <span class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 text-[var(--gold)]" style="background:color-mix(in srgb, var(--gold) 14%, transparent);">${it.i}</span>
@@ -1828,33 +1732,21 @@ $('#mobileNav').innerHTML = all.map((it,idx) => `
 </span>
 <span class="micro micro-gold shrink-0">→</span>
 </button>`).join('');
-$('#footCats').innerHTML = Object.keys(CATMETA).map(c => `<li><button class="hover:text-[#E2C08D] transition" data-catpage="${c}">${esc(CATMETA[c].name)}</button></li>`).join('');
+$('#footCats').innerHTML = Object.keys(CATMETA).map(c => `<li><button class="hover:text-gld transition" data-catpage="${c}">${esc(CATMETA[c].name)}</button></li>`).join('');
 }
-function renderShopCats() {
-const icons = {
-'graphic-tee': ic('sparkle', 'w-6 h-6'),
-'minimal-tee': ic('tshirt', 'w-6 h-6'),
-'custom-tee': ic('palette', 'w-6 h-6'),
-'cropped-tee': ic('heart', 'w-6 h-6'),
-'polo-tee': ic('shirt', 'w-6 h-6'),
-'anime-tee': ic('fire', 'w-6 h-6')
-};
+/* CATEGORY GRID: product photo cards, NO icons */
+function renderShopCats(){
 $('#shopCats').innerHTML = Object.keys(CATMETA).map(c => {
 const prod = PRODUCTS.find(p => p.cat === c);
+if(!prod) return '';
 return `
-<button class="group flex flex-col items-center gap-3 text-center" data-catpage="${c}">
-<div class="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden border hairline shadow-soft transition group-hover:shadow-lift group-hover:-translate-y-2" style="background:var(--card);">
-${prod ? imgTag(prod, prod.colors[0][0], 0, 'w-full h-full object-cover transition group-hover:scale-110') : ''}
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-3 left-0 right-0 flex flex-col items-center gap-1 text-white">
-<div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-${icons[c]}
+<button class="group flex flex-col items-center gap-2.5 text-center" data-catpage="${c}">
+<div class="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden border hairline shadow-soft transition-all duration-500 group-hover:shadow-lift group-hover:-translate-y-2" style="background:var(--card);">
+${imgTag(prod, prod.colors[0][0], 0, 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110')}
+<div class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
 </div>
-</div>
-</div>
-<span class="text-xs md:text-sm font-semibold leading-tight" style="color:var(--text);">${CATMETA[c].name}</span>
-</button>
-`;
+<span class="text-[11px] md:text-xs font-semibold leading-tight" style="color:var(--text);">${CATMETA[c].name}</span>
+</button>`;
 }).join('');
 }
 function renderInsta(){
@@ -1879,7 +1771,6 @@ const S = buildSlides();
 $('#heroSlides').innerHTML = S.map((s,i) => {
 const p = s.rep;
 const meta = CATMETA[s.c];
-const isT = s.c.includes('tee');
 return `
 <div class="hero-slide w-full ${i ? 'hidden' : ''}" data-slide="${i}">
 <div class="wrap grid md:grid-cols-2 gap-6 md:gap-12 items-center py-8 md:py-16 w-full">
@@ -1955,11 +1846,24 @@ const sec = $('#heroSec');
 if (sec) sec.style.minHeight = avail + 'px';
 $$('.hero-slide').forEach(s => { s.style.minHeight = avail + 'px'; });
 }
+/* BULLETPROOF REVEAL: fallbacks guarantee content is never stuck hidden */
 function reveal(){
-const io = new IntersectionObserver(es => es.forEach(e => {
-if (e.isIntersecting){ const el = e.target; setTimeout(() => el.classList.add('revealed'), +el.dataset.delay || 0); io.unobserve(el); }
-}), { threshold:.1 });
-$$('[data-reveal]').forEach(el => io.observe(el));
+const els = $$('[data-reveal]');
+const showAll = () => els.forEach(el => el.classList.add('revealed'));
+if (!('IntersectionObserver' in window)) { showAll(); return; }
+try {
+const io = new IntersectionObserver((es) => {
+es.forEach(e => {
+if (e.isIntersecting){
+const el = e.target;
+setTimeout(() => el.classList.add('revealed'), +el.dataset.delay || 0);
+io.unobserve(el);
+}
+});
+}, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+els.forEach(el => io.observe(el));
+} catch(e){ showAll(); }
+setTimeout(showAll, 2500);
 }
 function toast(msg, iconName){
 const t = document.createElement('div');
@@ -2068,15 +1972,12 @@ return `
 }).join('');
 }
 let pm = { id:null, color:0, size:0, qty:1, angle:0, customOn:false, customPos:'Front + Back', customNote:'', colorChoice:'' };
-function openProduct(id, skipRoute = false){
+function openProduct(id){
 const p = prodById(id);
 if (!p) return;
 pm = { id, color:0, size:0, qty:1, angle:0, customOn:false, customPos:'Front + Back', customNote:'', colorChoice:'' };
 drawProduct();
-openModal('productModal', true);
-if (!skipRoute) {
-history.pushState({ modal: 'productModal', id }, '', '#product/' + id);
-}
+openModal('productModal');
 }
 function drawProduct(){
 const p = prodById(pm.id);
@@ -2093,7 +1994,7 @@ ${imgs.length > 1 ? `<div class="hidden md:flex flex-col gap-2 order-1">${imgs.m
 <button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-share aria-label="Share">${ic('share','w-4 h-4')}</button>
 <div class="rounded-[18px] md:rounded-[20px] overflow-hidden aspect-[4/5] w-full">${imgTag(p,cn,pm.angle,'pimg w-full h-full object-cover','id="pmMain"')}</div>
 ${imgs.length > 1 ? `<button class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="-1" aria-label="Previous">‹</button><button class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border hairline" style="background:var(--card);" data-angle="1" aria-label="Next">›</button>` : ''}
-<p class="text-[10px] text-center mt-2" style="color:var(--mut);">${isT ? `View ${pm.angle+1}/2 • ${['FRONT','BACK'][pm.angle]}` : 'Front view'}${p.hasColors ? ' • ' + esc(cn) : ''}</p>
+<p class="text-[10px] text-center mt-2" style="color:var(--mut);">${isT ? `View ${pm.angle+1}/2 • ${['FRONT','BACK'][pm.angle]}` : 'Front view'}</p>
 </div>
 </div>
 ${imgs.length > 1 ? `<div class="md:hidden flex gap-2 overflow-x-auto no-scrollbar mt-3 w-full">${imgs.map((im,i) => `<button class="shrink-0 w-14 h-16 rounded-xl overflow-hidden border" style="border-color:${i===pm.angle ? 'var(--gold)' : 'var(--line)'};" data-angle="${i}">${imgTag(p,cn,i,'pimg w-full h-full object-cover')}</button>`).join('')}</div>` : ''}
@@ -2178,16 +2079,10 @@ if (pm.customOn){ custom = { pos: $('#pmCustomPos') ? $('#pmCustomPos').value : 
 return { custom, colorChoice: cc };
 }
 let cp = { cat:'', type:'', special:'', sort:'feat' };
-function openCatPage(cat='', type='', special='', skipRoute=false){
+function openCatPage(cat='', type='', special=''){
 cp = { cat, type, special, sort: cp.sort || 'feat' };
 drawCatPage();
-openModal('catPage', true);
-if (!skipRoute) {
-let hash = '#shop';
-if (special) hash += '/' + special;
-else if (cat) hash += '/' + cat;
-history.pushState({ modal: 'catPage', cat, special }, '', hash);
-}
+openModal('catPage');
 }
 function cpItems(){
 let items = [...PRODUCTS];
@@ -2197,15 +2092,11 @@ if (cp.special === 'under499') items = items.filter(p => p.price <= 499);
 if (cp.special === 'under599') items = items.filter(p => p.price <= 599);
 if (cp.special === 'under699') items = items.filter(p => p.price <= 699);
 if (cp.cat && CATMETA[cp.cat]) items = items.filter(p => p.cat === cp.cat);
-if (!cp.cat && !cp.special) {
-items.sort(() => Math.random() - 0.5);
-} else {
 switch (cp.sort){
 case 'low': items.sort((a,b) => a.price - b.price); break;
 case 'high': items.sort((a,b) => b.price - a.price); break;
 case 'rate': items.sort((a,b) => b.rating - a.rating); break;
 case 'off': items.sort((a,b) => offPct(b) - offPct(a)); break;
-}
 }
 return items;
 }
@@ -2305,28 +2196,36 @@ const st = getOrderStatus(order).text;
 const map = { 'Order Placed':0, 'Order Confirmed':1, 'In Process':2, 'Order Ready':3, 'Dispatched':4, 'Out For Delivery':5, 'Delivered':6, 'Cancelled':-1 };
 return map[st] ?? 0;
 }
+/* LIVE TIMELINE — no blink, smooth gold line fills to current stage */
 function statusTimeline(order){
 const ci = currentStageIdx(order);
-if (ci === -1) return `<p class="text-xs font-bold flex items-center gap-2" style="color:#DC2626;">${ic('cross','w-4 h-4')} Order Cancelled</p>`;
+if (ci === -1) return `<p class="text-xs font-bold flex items-center gap-2 justify-center py-3" style="color:#DC2626;">${ic('cross','w-4 h-4')} Order Cancelled</p>`;
 const delivered = ci === 6;
-let html = `<div class="track-timeline">`;
+const segW = 85.7 / 6;
+const fillW = delivered ? 85.7 : (ci * segW);
+let html = `<div class="relative pt-1">`;
+html += `<div class="absolute h-[3px] rounded-full" style="top:15px; left:7.15%; right:7.15%; background:var(--line);"></div>`;
+html += `<div class="tl-fill absolute h-[3px] rounded-full" data-w="${fillW.toFixed(1)}" style="top:15px; left:7.15%; width:0%; max-width:85.7%; background:linear-gradient(90deg,var(--gold2),var(--gold)); transition:width 1.6s cubic-bezier(.25,.8,.25,1); box-shadow:0 0 8px rgba(176,141,87,.45);"></div>`;
+html += `<div class="relative flex justify-between">`;
 html += STAGES.map((s,i) => {
-const done = delivered ? true : i < ci;
-const active = !delivered && i === ci;
-const cls = done ? 'done' : (active ? 'active' : '');
+const done = delivered || i <= ci;
+const isCur = !delivered && i === ci;
 return `
-<div class="track-step ${cls}">
-<div class="track-icon">${done ? ic('check','w-4 h-4') : ic(s.icon,'w-4 h-4')}</div>
-<div class="pt-1">
-<p class="text-[13px] font-bold" style="color:${done || active ? 'var(--text)' : 'var(--mut)'};">${s.t}</p>
-${active ? `<p class="text-[11px] mt-0.5 font-medium flex items-center gap-1" style="color:var(--gold);"><span class="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse"></span> Currently In Progress</p>` : ''}
-${done && i===6 ? `<p class="text-[11px] mt-0.5 font-medium" style="color:#059669;">Successfully Delivered</p>` : ''}
+<div class="flex flex-col items-center" style="flex:1;min-width:0;">
+<div class="w-8 h-8 rounded-full flex items-center justify-center border-2 z-[1]" style="background:${done?'var(--gold)':'var(--card)'};border-color:${done?'var(--gold)':'var(--line)'};color:${done?'var(--on-gold)':'var(--mut)'};${isCur?'box-shadow:0 0 0 4px rgba(176,141,87,.18);':''}">
+${ic(done?'check':s.icon,'w-3.5 h-3.5')}
 </div>
+<p class="text-[8.5px] md:text-[10px] font-semibold mt-1.5 leading-tight text-center" style="color:${done?'var(--text)':'var(--mut)'};">${s.t}</p>
 </div>`;
 }).join('');
-html += `</div>`;
+html += `</div></div>`;
 html += `<p class="text-[11px] mt-4 font-medium text-center" style="color:var(--mut);">🕒 Expected Delivery Time: 9:00 AM - 7:00 PM</p>`;
 return html;
+}
+function animateTimelineFills(){
+requestAnimationFrame(() => setTimeout(() => {
+$$('.tl-fill').forEach(f => { f.style.width = (f.dataset.w || 0) + '%'; });
+}, 120));
 }
 let lock = false;
 function placeOrder(){
@@ -2362,10 +2261,11 @@ store.set('user', { name, phone });
 const bill = buildBill({ name, phone, addr, country, city, state, pin }, t, oid, otp);
 cart = []; store.set('cart', []);
 renderCart();
-closeModal('cartDrawer');
+closeModal('cartDrawer', true);
+history.pushState({}, '', '#orders');
 goWA(bill.text);
 }
-function openHistory(){ renderHistory(); openModal('historyModal', true); history.pushState({ modal: 'historyModal' }, '', '#orders'); }
+function openHistory(){ renderHistory(); openModal('historyModal'); }
 function renderHistory(){
 let orders = store.get('orders', []).sort((a,b) => b.timestamp - a.timestamp);
 orders = orders.filter(o => {
@@ -2413,6 +2313,7 @@ ${canCancel ? `<button class="chip text-[10px]" style="background:rgba(220,38,38
 ${o.otp && st.text !== 'Cancelled' ? `<p class="text-[10px] font-bold text-center py-2 rounded-lg flex items-center justify-center gap-1.5" style="background:var(--bg2); color:var(--gold);">${ic('lock','w-3 h-3')} Delivery OTP: ${o.otp}</p>` : ''}
 </div>`;
 }).join('');
+animateTimelineFills();
 }
 function cancelOrder(orderId){
 const orders = store.get('orders', []);
@@ -2453,11 +2354,10 @@ toast('Cannot cancel after 24 hours','warn');
 }
 }
 let adminAuth = false;
-function openAdmin(skipRoute){
+function openAdmin(){
 if (adminAuth){ $('#adminLoginBox').classList.add('hidden'); $('#adminDashBox').classList.remove('hidden'); }
 else { $('#adminLoginBox').classList.remove('hidden'); $('#adminDashBox').classList.add('hidden'); }
-openModal('staffModal', true);
-if (!skipRoute) history.pushState({ modal: 'staffModal' }, '', '#admin');
+openModal('staffModal');
 }
 function results(q){
 q = q.toLowerCase();
@@ -2500,92 +2400,82 @@ $('#trackResult').innerHTML = `
 </div>
 ${statusTimeline(o)}
 <a class="pill btn-ink w-full py-3 mt-5 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">${ic('chat','w-4 h-4')} Live Help on WhatsApp</a>`;
+animateTimelineFills();
 return;
 }
 $('#trackResult').innerHTML = `
 <p class="text-xs mb-3" style="color:var(--mut);">Order not found on this device. Ask us live on WhatsApp:</p>
 <a class="pill btn-ink w-full py-3 text-[10px] tracking-wide2 uppercase flex items-center justify-center gap-1.5" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! Track my order ' + id)}" target="_blank" rel="noopener">${ic('chat','w-4 h-4')} Live Status on WhatsApp</a>`;
 }
-const MODAL_HASH = {
-'cartDrawer': '#cart',
-'wishDrawer': '#wishlist',
-'historyModal': '#orders',
-'trackModal': '#track',
-'catPage': '#shop',
-'productModal': '#product',
-'sizeModal': '#size',
-'staffModal': '#admin',
-'mobileMenu': '#menu',
-'searchOverlay': '#search'
-};
-function openModal(id, skipOverflow = false){
-$('#'+id).classList.remove('hidden');
-if (!skipOverflow) document.body.style.overflow = 'hidden';
+/* MODAL + HISTORY ROUTING: back/swipe-back closes overlays, refresh stays on page */
+function openModal(id){ const el=$('#'+id); if(el) el.classList.remove('hidden'); document.body.style.overflow='hidden'; }
+function closeModal(id, skipHistory){
+const el=$('#'+id); if(el) el.classList.add('hidden');
+const anyOpen = MODALS.some(m => { const e=$('#'+m); return e && !e.classList.contains('hidden'); });
+if(!anyOpen) document.body.style.overflow='';
+if(!skipHistory && window.location.hash) history.back();
 }
-function closeModal(id, skipHistory = false){
-$('#'+id).classList.add('hidden');
-document.body.style.overflow = '';
-if (!skipHistory && window.location.hash) {
-history.back();
+function closeAll(){
+MODALS.forEach(id => { const e=$('#'+id); if(e) e.classList.add('hidden'); });
+document.body.style.overflow='';
 }
-}
-function closeAll(skipHistory = false){
-['cartDrawer','wishDrawer','productModal','sizeModal','trackModal','catPage','mobileMenu','searchOverlay','historyModal','staffModal'].forEach(id => {
-$('#'+id).classList.add('hidden');
-});
-document.body.style.overflow = '';
-}
-function handleRoute() {
-const hash = window.location.hash;
-closeAll(true);
-if (hash === '#cart') { renderCart(); openModal('cartDrawer', true); }
-else if (hash === '#wishlist') { renderWish(); openModal('wishDrawer', true); }
-else if (hash === '#orders') { renderHistory(); openModal('historyModal', true); }
-else if (hash === '#track') { openModal('trackModal', true); }
-else if (hash === '#shop' || hash.startsWith('#shop/')) {
-openModal('catPage', true);
-drawCatPage();
-}
-else if (hash.startsWith('#product/')) {
-const pid = hash.split('/')[1];
-openProduct(pid, true);
-}
-else if (hash === '#size') { openModal('sizeModal', true); }
-else if (hash === '#admin') { openAdmin(true); }
-else if (hash === '#menu') { openModal('mobileMenu', true); }
-else if (hash === '#search') { openModal('searchOverlay', true); }
-}
-window.addEventListener('popstate', handleRoute);
-function openRoute(hash, state = {}) {
-if (window.location.hash !== hash) {
-history.pushState(state, '', hash);
-}
+function navigate(hash){
+if(window.location.hash !== hash) history.pushState({}, '', hash);
 handleRoute();
 }
+function handleRoute(){
+const hash = window.location.hash;
+closeAll();
+if(hash === '#cart'){ renderCart(); openModal('cartDrawer'); }
+else if(hash === '#wishlist'){ renderWish(); openModal('wishDrawer'); }
+else if(hash === '#orders'){ renderHistory(); openModal('historyModal'); }
+else if(hash === '#track'){ openModal('trackModal'); }
+else if(hash === '#size'){ openModal('sizeModal'); }
+else if(hash === '#admin'){ openAdmin(); }
+else if(hash === '#search'){ openModal('searchOverlay'); }
+else if(hash === '#menu'){ openModal('mobileMenu'); }
+else if(hash.startsWith('#product/')){ openProduct(hash.split('/')[1]); }
+else if(hash.startsWith('#shop')){
+const seg = hash.split('/')[1] || 'all';
+if(['new','best','under499','under599','under699'].includes(seg)){ cp.special=seg; cp.cat=''; }
+else if(seg==='all'){ cp.special=''; cp.cat=''; }
+else { cp.cat=seg; cp.special=''; }
+drawCatPage(); openModal('catPage');
+}
+}
+window.addEventListener('popstate', handleRoute);
 document.addEventListener('click', e => {
-const t = e.target.closest('[data-open-product],[data-add],[data-wish],[data-close],[data-slide-go],[data-catpage],[data-angle],[data-pcolor],[data-psize],[data-pq],[data-pm-add],[data-pm-buy],[data-pm-wa],[data-cq],[data-cr],[data-type],[data-bnav],[data-share],[data-rc],[data-sizeopen],[data-cancel-order],[data-track-wa],[data-openhistory]');
+const t = e.target.closest('[data-open-product],[data-add],[data-wish],[data-close],[data-slide-go],[data-catpage],[data-angle],[data-pcolor],[data-psize],[data-pq],[data-pm-add],[data-pm-buy],[data-pm-wa],[data-cq],[data-cr],[data-type],[data-bnav],[data-share],[data-rc],[data-sizeopen],[data-cancel-order],[data-track-wa],[data-openhistory],[data-gotocontact]');
 if (!t){ $('#searchDrop')?.classList.add('hidden'); return; }
 if (t.hasAttribute('data-close')){ closeModal(t.getAttribute('data-close')); return; }
-if (t.hasAttribute('data-openhistory')){ closeAll(true); openHistory(); return; }
-if (t.hasAttribute('data-rc')){ return; }
-if (t.hasAttribute('data-open-product')){ closeAll(true); openProduct(t.getAttribute('data-open-product')); return; }
-if (t.hasAttribute('data-add')){ addToCart(t.getAttribute('data-add')); closeAll(true); openRoute('#cart'); return; }
-if (t.hasAttribute('data-wish')){ toggleWish(t.getAttribute('data-wish')); return; }
-if (t.hasAttribute('data-slide-go')){ goSlide(+t.getAttribute('data-slide-go')); clearInterval(sTimer); startSlider(); return; }
-if (t.hasAttribute('data-type')){ openCatPage('', t.getAttribute('data-type')); return; }
-if (t.hasAttribute('data-catpage')){
-const v = t.getAttribute('data-catpage');
-if (['new','best','under499','under599','under699'].includes(v)) openCatPage('', '', v);
-else openCatPage(v, '', '');
+if (t.hasAttribute('data-gotocontact')){
+closeModal('mobileMenu', true);
+if(window.location.hash) history.pushState({}, '', ' ');
+document.getElementById('contact').scrollIntoView({ behavior:'smooth' });
 return;
 }
-if (t.hasAttribute('data-sizeopen')){ openModal('sizeModal'); history.pushState({ modal: 'sizeModal' }, '', '#size'); return; }
+if (t.hasAttribute('data-openhistory')){ navigate('#orders'); return; }
+if (t.hasAttribute('data-rc')){ return; }
+if (t.hasAttribute('data-open-product')){ navigate('#product/' + t.getAttribute('data-open-product')); return; }
+if (t.hasAttribute('data-add')){ addToCart(t.getAttribute('data-add')); navigate('#cart'); return; }
+if (t.hasAttribute('data-wish')){ toggleWish(t.getAttribute('data-wish')); return; }
+if (t.hasAttribute('data-slide-go')){ goSlide(+t.getAttribute('data-slide-go')); clearInterval(sTimer); startSlider(); return; }
+if (t.hasAttribute('data-type')){ navigate('#shop'); return; }
+if (t.hasAttribute('data-catpage')){
+const v = t.getAttribute('data-catpage');
+let seg = 'all';
+if (['new','best','under499','under599','under699'].includes(v)) seg = v;
+else if(v) seg = v;
+navigate('#shop/' + seg);
+return;
+}
+if (t.hasAttribute('data-sizeopen')){ navigate('#size'); return; }
 if (t.hasAttribute('data-bnav')){
 const v = t.getAttribute('data-bnav');
-if (v==='home'){ closeAll(true); window.scrollTo({ top:0, behavior:'smooth' }); if(window.location.hash) history.pushState(null, '', ' '); }
-if (v==='shop') openCatPage();
-if (v==='orders'){ closeAll(true); openHistory(); }
-if (v==='track'){ closeAll(true); openModal('trackModal'); history.pushState({ modal: 'trackModal' }, '', '#track'); }
+if (v==='home'){ closeAll(); if(window.location.hash) history.pushState({}, '', ' '); window.scrollTo({ top:0, behavior:'smooth' }); }
+if (v==='shop') navigate('#shop/all');
+if (v==='orders') navigate('#orders');
+if (v==='track') navigate('#track');
 return;
 }
 if (t.hasAttribute('data-share')){
@@ -2605,20 +2495,21 @@ return;
 if (t.hasAttribute('data-pcolor')){ pm.color = +t.getAttribute('data-pcolor'); pm.angle = 0; drawProduct(); return; }
 if (t.hasAttribute('data-psize')){ pm.size = +t.getAttribute('data-psize'); $$('#productBody .sizechip').forEach((s,i) => s.classList.toggle('active', i === pm.size)); return; }
 if (t.hasAttribute('data-pq')){ pm.qty = Math.min(9, Math.max(1, pm.qty + +t.getAttribute('data-pq'))); $('#pmQty').textContent = pm.qty; return; }
-if (t.hasAttribute('data-pm-add')){ const p = prodById(pm.id); addToCart(p.id,p.colors[pm.color][0],p.sizes[pm.size],pm.qty,readExtras(p)); closeAll(true); openRoute('#cart'); return; }
-if (t.hasAttribute('data-pm-buy')){ const p = prodById(pm.id); addToCart(p.id,p.colors[pm.color][0],p.sizes[pm.size],pm.qty,readExtras(p)); closeAll(true); openRoute('#cart'); return; }
+if (t.hasAttribute('data-pm-add')){ const p = prodById(pm.id); addToCart(p.id,p.colors[pm.color][0],p.sizes[pm.size],pm.qty,readExtras(p)); navigate('#cart'); return; }
+if (t.hasAttribute('data-pm-buy')){ const p = prodById(pm.id); addToCart(p.id,p.colors[pm.color][0],p.sizes[pm.size],pm.qty,readExtras(p)); navigate('#cart'); return; }
 if (t.hasAttribute('data-pm-wa')){ const p = prodById(pm.id); goWA(`Hi Joseph & James! 💛 Question about:\n*${p.name}*\nPrice: ${fmt(p.price)}`); return; }
 if (t.hasAttribute('data-cq')){ const l = cart.find(x => x.key === t.getAttribute('data-cq')); l.qty = Math.min(9, Math.max(1, l.qty + +t.getAttribute('data-d'))); store.set('cart', cart); renderCart(); return; }
 if (t.hasAttribute('data-cr')){ cart = cart.filter(x => x.key !== t.getAttribute('data-cr')); store.set('cart', cart); renderCart(); return; }
 if (t.hasAttribute('data-cancel-order')){ cancelOrder(t.getAttribute('data-cancel-order')); return; }
 if (t.hasAttribute('data-track-wa')){ goWA(`Hi Joseph & James! 💛 Please update me on my order:\n*${t.getAttribute('data-track-wa')}*`); return; }
 });
-$('#cartOpen').onclick = () => { closeAll(true); renderCart(); openRoute('#cart'); };
-$('#wishOpen').onclick = () => { closeAll(true); renderWish(); openRoute('#wishlist'); };
-$('#menuOpen').onclick = () => { openModal('mobileMenu'); history.pushState({ modal: 'mobileMenu' }, '', '#menu'); };
-$('#mSearchOpen').onclick = () => { openModal('searchOverlay'); history.pushState({ modal: 'searchOverlay' }, '', '#search'); };
-$('#trackOpen2').onclick = () => { openModal('trackModal'); history.pushState({ modal: 'trackModal' }, '', '#track'); };
-$('#sizeOpen').onclick = () => { openModal('sizeModal'); history.pushState({ modal: 'sizeModal' }, '', '#size'); };
+$('#cartOpen').onclick = () => navigate('#cart');
+$('#wishOpen').onclick = () => navigate('#wishlist');
+$('#menuOpen').onclick = () => navigate('#menu');
+$('#mSearchOpen').onclick = () => navigate('#search');
+$('#trackOpen2').onclick = () => navigate('#track');
+$('#sizeOpen').onclick = () => navigate('#size');
+$('#footAdmin').onclick = () => navigate('#admin');
 $('#placeOrder').onclick = placeOrder;
 $('#coDetect').onclick = () => { detectCountry(true).then(() => refreshPrices()); ensureLive(true); };
 $('#curChip').onclick = () => { detectCountry(true).then(() => refreshPrices()); ensureLive(true); };
@@ -2629,7 +2520,6 @@ $('#mSearchInput').addEventListener('input', doMSearch);
 $('#sortSel').onchange = e => { cp.sort = e.target.value; drawCatPage(); };
 $('#trackGo').onclick = track;
 $('#toTop').onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
-$('#footAdmin').onclick = () => openAdmin();
 $('#delVerify').onclick = () => {
 const id = $('#delOrderId').value.trim().toUpperCase();
 const otp = $('#delOtp').value.trim();
@@ -2711,7 +2601,7 @@ t.style.pointerEvents = s ? 'auto' : 'none';
 $('#header').style.boxShadow = scrollY > 8 ? '0 10px 30px -18px rgba(0,0,0,.35)' : '';
 }, { passive:true });
 window.addEventListener('keydown', e => {
-if (e.key === 'Escape') { closeAll(); if(window.location.hash) history.back(); }
+if (e.key === 'Escape'){ const hash = window.location.hash; if(hash) history.back(); else closeAll(); }
 if (!$('#productModal').classList.contains('hidden')){
 const n = viewsOf(prodById(pm.id));
 if (e.key === 'ArrowRight'){ pm.angle = (pm.angle+1) % n; drawProduct(); }
@@ -2739,6 +2629,7 @@ icons:[
 { src:LOGO_URI, sizes:"512x512", type:"image/png", purpose:"any maskable" }
 ]
 };
+try{
 const manifestBlob = new Blob([JSON.stringify(manifest)], {type:'application/manifest+json'});
 const manifestURL = URL.createObjectURL(manifestBlob);
 const oldManifest = document.querySelector('link[rel="manifest"]');
@@ -2747,18 +2638,9 @@ const newManifest = document.createElement('link');
 newManifest.rel = 'manifest';
 newManifest.href = manifestURL;
 document.head.appendChild(newManifest);
-if ('serviceWorker' in navigator){
-const swCode = `
-self.addEventListener('install', (e) => self.skipWaiting());
-self.addEventListener('activate', (e) => self.clients.claim());
-self.addEventListener('fetch', (e) => {
-e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-});
-`;
-const blob = new Blob([swCode], { type:'application/javascript' });
-navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
-}
+}catch(e){}
 (async function init(){
+try{
 generateProducts();
 country = tzCountry();
 loadCachedRates();
@@ -2775,9 +2657,9 @@ renderCart();
 renderWish();
 reveal();
 startSlider();
+handleRoute();
 const heroSec = $('#heroSec');
-let touchStartX = 0;
-let touchEndX = 0;
+let touchStartX = 0, touchEndX = 0;
 if(heroSec) {
 heroSec.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
 heroSec.addEventListener('touchend', e => {
@@ -2791,11 +2673,17 @@ clearInterval(sTimer); startSlider();
 }, {passive: true});
 }
 (async () => {
+try{
 const changed = await detectCountry(false);
 const fresh = await ensureLive(false);
 if (changed || fresh) refreshPrices();
-handleRoute(); // Handle initial route on page load/refresh
+}catch(e){}
 })();
+}catch(err){
+/* LAST RESORT: never leave content hidden */
+document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('revealed'));
+document.body.style.overflow = '';
+}
 })();
   </script>
 </body>
