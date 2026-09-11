@@ -903,7 +903,7 @@ Detecting…
         <details class="faq card p-5">
           <summary class="flex justify-between items-center font-semibold text-sm">How do I order custom name or photo
             t-shirts?<span class="faqicon text-gld text-lg">+</span></summary>
-          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Select any tee from our Custom Category, add
+          <p class="text-xs mt-3 leading-relaxed" style="color:var(--mut);">Select any T-Shirt from our Custom Category, add
             your text or upload instructions in the notes, and checkout. We confirm the design on WhatsApp before
             printing.</p>
         </details>
@@ -1338,7 +1338,7 @@ window.__imgfb = function(t){
 try{
 if (!t || t.dataset.fbed) return;
 t.dataset.fbed = '1';
-t.src = studio(t.dataset.fbcat || 'graphic-tee', t.dataset.fbhex || '#171410', +(t.dataset.fba || 0));
+t.src = studio(t.dataset.fbcat || 'graphic-T-Shirt', t.dataset.fbhex || '#171410', +(t.dataset.fba || 0));
 }catch(e){}
 };
 window.__imgld = function(){};
@@ -1504,12 +1504,12 @@ const PRODUCTS = [];
 
 function generateProducts() {
 const names = {
-'graphic-tee': ['Urban Street Graphic','Retro Wave Print','Abstract Art Tee','Graffiti Soul','Cosmic Dream','Wild Tiger Graphic','Sunset Vibes','Neon Nights','Acid Wash Graphic','Bootleg Vintage'],
-'minimal-tee': ['Micro Dot Minimal','Line Art Tee','Pocket Hit','Typography Tee','Chest Logo','Blank Canvas','Subtle Stripe','Tone-on-Tone','Small Crest','Essential Minimal'],
-'custom-tee': ['Custom Name Tee','Photo Print Tee','Couple Custom Tee','Pet Photo Tee','Custom Quote Tee','Logo Custom Tee','Signature Tee','Memory Print Tee','Custom Graphic Tee','Initials Tee'],
-'cropped-tee': ['Boxy Crop White','Black Boxy Crop','Olive Crop Tee','Pastel Pink Crop','Grey Wash Crop','Ribbed Crop Tee','Drop Shoulder Crop','Raw Hem Crop','Faded Black Crop','Beige Boxy Crop'],
+'graphic-tee': ['Urban Street Graphic','Retro Wave Print','Abstract Art T-Shirt','Graffiti Soul','Cosmic Dream','Wild Tiger Graphic','Sunset Vibes','Neon Nights','Acid Wash Graphic','Bootleg Vintage'],
+'minimal-tee': ['Micro Dot Minimal','Line Art T-Shirt','Pocket Hit','Typography T-Shirt','Chest Logo','Blank Canvas','Subtle Stripe','Tone-on-Tone','Small Crest','Essential Minimal'],
+'custom-tee': ['Custom Name T-Shirt','Photo Print T-Shirt','Couple Custom T-Shirt','Pet Photo T-Shirt','Custom Quote T-Shirt','Logo Custom T-Shirt','Signature T-Shirt','Memory Print T-Shirt','Custom Graphic T-Shirt','Initials T-Shirt'],
+'cropped-tee': ['Boxy Crop White','Black Boxy Crop','Olive Crop T-Shirt','Pastel Pink Crop','Grey Wash Crop','Ribbed Crop T-Shirt','Drop Shoulder Crop','Raw Hem Crop','Faded Black Crop','Beige Boxy Crop'],
 'polo-tee': ['Classic White Polo','Black Premium Polo','Navy Blue Polo','Olive Green Polo','Grey Melange Polo','Burgundy Polo','Pastel Blue Polo','Striped Polo','Contrast Collar Polo','Textured Polo'],
-'anime-tee': ['Ninja Scroll Tee','Pirate King Tee','Mecha Anime Tee','Demon Slayer Tee','Cyberpunk Anime','Retro Anime Tee','Manga Panel Tee','Spirit Animal Tee','Gaming Logo Tee','Pixel Art Tee']
+'anime-tee': ['Ninja Scroll T-Shirt','Pirate King T-Shirt','Mecha Anime T-Shirt','Demon Slayer T-Shirt','Cyberpunk Anime','Retro Anime T-Shirt','Manga Panel T-Shirt','Spirit Animal T-Shirt','Gaming Logo T-Shirt','Pixel Art T-Shirt']
 };
 let pid = 1;
 for (const cat of CATKEYS) {
